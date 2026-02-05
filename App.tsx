@@ -1,13 +1,13 @@
 
 import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import PropertyList from './components/PropertyList';
-import Testimonials from './components/Testimonials';
-import CTA from './components/CTA';
-import Footer from './components/Footer';
-import FormModal from './components/FormModal';
+import Navbar from './Navbar';
+import Hero from './Hero';
+import Features from './Features';
+import PropertyList from './PropertyList';
+import Testimonials from './Testimonials';
+import CTA from './CTA';
+import Footer from './Footer';
+import FormModal from './FormModal';
 
 const App: React.FC = () => {
   const [modalType, setModalType] = useState<string | null>(null);
