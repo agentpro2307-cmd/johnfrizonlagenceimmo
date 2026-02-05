@@ -1,59 +1,83 @@
+import React from "react";
 
-import React from 'react';
+const PHONE_DISPLAY = "06 34 16 27 16"; // 
+const PHONE_TEL = "+33634162716"; //
+const EMAIL = "jfrizon@lagenceimmo01fr"; //
 
-interface CTAProps {
-  onEstimate: () => void;
-  onAppointment: () => void;
-}
-
-const CTA: React.FC<CTAProps> = ({ onEstimate, onAppointment }) => {
+const CTA: React.FC = () => {
   return (
-    <section className="py-24 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="relative overflow-hidden bg-slate-900 rounded-[3rem] p-12 lg:p-20 text-white flex flex-col lg:flex-row items-center justify-between gap-12">
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-500/10 to-transparent pointer-events-none"></div>
-          
-          <div className="relative z-10 max-w-2xl text-center lg:text-left">
-            <h2 className="text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              Prêt à concrétiser votre projet immobilier ?
+    <section className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="rounded-[48px] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 p-10 md:p-14 flex flex-col lg:flex-row items-center justify-between gap-10">
+          {/* Left */}
+          <div className="max-w-xl">
+            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+              Prêt à concrétiser votre
+              <br />
+              projet immobilier ?
             </h2>
-            <p className="text-xl text-slate-400 leading-relaxed mb-8">
-              Que vous souhaitiez vendre votre villa ou trouver l'appartement de vos rêves dans le Pays de Gex, nous sommes là pour vous.
+
+            <p className="mt-5 text-slate-300 text-lg leading-relaxed">
+              Que vous souhaitiez vendre votre villa ou trouver l&apos;appartement
+              de vos rêves dans le Pays de Gex, nous sommes là pour vous.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button 
-                onClick={onEstimate}
-                className="bg-white text-slate-900 px-10 py-4 rounded-2xl font-bold hover:bg-slate-100 transition-all text-lg shadow-xl"
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <a
+                href="#"
+                className="inline-flex items-center justify-center rounded-2xl px-6 py-4 font-semibold bg-white text-slate-900 hover:opacity-90 transition"
               >
                 Estimer mon bien gratuitement
-              </button>
-              <button 
-                onClick={onAppointment}
-                className="bg-slate-800 text-white px-10 py-4 rounded-2xl font-bold border border-slate-700 hover:bg-slate-700 transition-all text-lg"
+              </a>
+
+              <a
+                href="#"
+                className="inline-flex items-center justify-center rounded-2xl px-6 py-4 font-semibold border border-white/20 text-white hover:bg-white/10 transition"
               >
                 Prendre rendez-vous
-              </button>
+              </a>
             </div>
           </div>
 
-          <div className="relative z-10 lg:w-1/3">
-             <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/10 space-y-6">
+          {/* Right card */}
+          <div className="w-full lg:w-[420px]">
+            <div className="rounded-3xl bg-white/10 border border-white/10 backdrop-blur p-6 md:p-7">
+              <div className="space-y-5">
+                {/* Phone */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">📞</div>
+                  <div className="h-12 w-12 rounded-2xl bg-white/10 flex items-center justify-center">
+                    <span className="text-white text-xl">📞</span>
+                  </div>
                   <div>
-                    <p className="text-sm text-slate-400 font-medium">Appelez-nous</p>
-                    <p className="text-lg font-bold">06 34 16 27 16</p>
+                    <div className="text-sm text-slate-300">Appelez-moi</div>
+                    <a
+                      className="text-white font-bold text-lg hover:underline"
+                      href={`tel:${PHONE_TEL}`}
+                    >
+                      {PHONE_DISPLAY}
+                    </a>
                   </div>
                 </div>
+
+                {/* Email */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">📧</div>
+                  <div className="h-12 w-12 rounded-2xl bg-white/10 flex items-center justify-center">
+                    <span className="text-white text-xl">✉️</span>
+                  </div>
                   <div>
-                    <p className="text-sm text-slate-400 font-medium">Email direct</p>
-                    <p className="text-lg font-bold">jfrizon@lagenceimmo01.fr</p>
+                    <div className="text-sm text-slate-300">Email direct</div>
+                    <a
+                      className="text-white font-bold text-lg hover:underline break-all"
+                      href={`mailto:${EMAIL}`}
+                    >
+                      {EMAIL}
+                    </a>
                   </div>
                 </div>
-                </div>
-             </div>
+
+                {/* (SUPPRIMÉ) Conseillers disponibles + cercles */}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -62,3 +86,4 @@ const CTA: React.FC<CTAProps> = ({ onEstimate, onAppointment }) => {
 };
 
 export default CTA;
+
