@@ -1,66 +1,55 @@
+import React from "react";
 
-import React, { useState } from 'react';
-import { Property } from '../types';
+type Property = {
+  id: number;
+  title: string;
+  price: number;
+  location: string;
+  beds: number;
+  baths: number;
+  sqft: number;
+  type: string;
+  imageUrl: string;
+  url: string;
+};
 
 const MOCK_PROPERTIES: Property[] = [
   {
-    id: '1',
-    title: 'Villa d\'architecte avec vue Mont-Blanc',
-    price: 1850000,
-    location: 'Divonne-les-Bains (01220)',
-    beds: 5,
-    baths: 3,
-    sqft: 240,
-    type: 'Villa',
-    imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800'
+    id: 1,
+    title: "Chalet 6 pièces 160 m²",
+    price: 395000,
+    location: "Échallon (01130)",
+    beds: 0,
+    baths: 0,
+    sqft: 160,
+    type: "Chalet",
+    imageUrl: "/images/escarnot_00013.jpeg",
+    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3079918529",
   },
-  {
-    id: '2',
-    title: 'Attique contemporain avec terrasse',
-    price: 645000,
-    location: 'Ferney-Voltaire (01210)',
-    beds: 3,
-    baths: 2,
-    sqft: 95,
-    type: 'Appartement',
-    imageUrl: 'https://images.unsplash.com/photo-1567496898669-ee935f5f647a?auto=format&fit=crop&q=80&w=800'
-  },
-  {
-    id: '3',
-    title: 'Maison de caractère rénovée',
-    price: 920000,
-    location: 'Gex (01170)',
-    beds: 4,
-    baths: 2,
-    sqft: 180,
-    type: 'Maison',
-    imageUrl: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&q=80&w=800'
-  },
-  {
-    id: '4',
-    title: 'Propriété équestre d\'exception',
-    price: 2400000,
-    location: 'Saint-Genis-Pouilly (01630)',
-    beds: 7,
-    baths: 5,
-    sqft: 450,
-    type: 'Villa',
-    imageUrl: 'https://images.unsplash.com/photo-1500315331616-db4f707c24d1?auto=format&fit=crop&q=80&w=800'
-  }
+
+  // Tu pourras en rajouter d'autres après, en copiant/collant ce bloc et en changeant:
+  // id, title, price, location, type, imageUrl, url
 ];
 
 const PropertyList: React.FC = () => {
   return (
     <section id="biens" className="py-24 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-xl">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Dernières pépites du catalogue</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              Dernières pépites du catalogue
+            </h2>
             <p className="text-slate-500">
               Une sélection rigoureuse de biens dans les communes les plus prisées du Pays de Gex.
             </p>
           </div>
-          <button className="flex items-center gap-2 text-slate-900 font-bold hover:text-blue-600 transition-colors">
+
+          <button
+            type="button"
+            className="flex items-center gap-2 text-slate-900 font-bold hover:text-blue-600 transition-colors"
+          >
             Voir tout le catalogue (24 biens)
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -68,40 +57,73 @@ const PropertyList: React.FC = () => {
           </button>
         </div>
 
+        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {MOCK_PROPERTIES.map((prop) => (
-            <div key={prop.id} className="group cursor-pointer">
+            <a
+              key={prop.id}
+              href={prop.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group cursor-pointer block"
+            >
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-4 apple-shadow group-hover:shadow-lg transition-all">
-                <img 
-                  src={prop.imageUrl} 
+                <img
+                  src={prop.imageUrl}
                   alt={prop.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
+
+                {/* Type badge */}
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold text-slate-900 shadow-sm">
                   {prop.type}
                 </div>
-                <button className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/50 transition-all">
-                  ❤️
+
+                {/* Heart (visuel) */}
+                <button
+                  type="button"
+                  onClick={(e) => e.preventDefault()}
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-all"
+                  aria-label="Favori"
+                >
+                  ♥
                 </button>
               </div>
-              
+
               <div className="space-y-1">
                 <p className="text-lg font-bold text-slate-900">
-                  {new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(prop.price)}
+                  {new Intl.NumberFormat("fr-FR", {
+                    style: "currency",
+                    currency: "EUR",
+                    maximumFractionDigits: 0,
+                  }).format(prop.price)}
                 </p>
+
                 <h3 className="text-slate-800 font-medium truncate">{prop.title}</h3>
-                <p className="text-sm text-slate-500 flex items-center gap-1">
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+
+                <p className="text-sm text-slate-500 flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19.5 10.5c0 7-7.5 11-7.5 11s-7.5-4-7.5-11a7.5 7.5 0 1115 0z"
+                    />
+                  </svg>
                   {prop.location}
                 </p>
-                
-                <div className="flex items-center gap-4 pt-3 text-xs text-slate-400 font-bold uppercase tracking-wider">
-                  <span>{prop.beds} ch.</span>
-                  <span>{prop.baths} sdb.</span>
-                  <span>{prop.sqft} m²</span>
-                </div>
+
+                <p className="text-xs text-slate-400">
+                  {prop.sqft} m²
+                </p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
@@ -110,3 +132,5 @@ const PropertyList: React.FC = () => {
 };
 
 export default PropertyList;
+
+
