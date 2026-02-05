@@ -2,7 +2,7 @@ import React from "react";
 
 const PHONE_DISPLAY = "06 34 16 27 16"; // 
 const PHONE_TEL = "+33634162716"; //
-const EMAIL = "jfrizon@lagenceimmo01fr"; //
+const EMAIL = "jfrizon@lagenceimmo01.fr"; //
 
 const CTA: React.FC = () => {
   return (
