@@ -2,29 +2,46 @@
 import React from 'react';
 import { Testimonial } from '../types';
 
+function Avatar({ name, src }: { name: string; src?: string }) {
+  const initial = (name?.trim()?.[0] ?? "?").toUpperCase();
+
+  if (src && src.trim().length > 0) {
+    return (
+      <img
+        src={src}
+        alt={name}
+        className="h-14 w-14 rounded-full object-cover border border-slate-200"
+        loading="lazy"
+      />
+    );
+  }
+
+  return (
+    <div className="h-14 w-14 rounded-full flex items-center justify-center bg-slate-100 text-slate-700 font-bold border border-slate-200">
+      {initial}
+    </div>
+  );
+}
+
 const TESTIMONIALS: Testimonial[] = [
   {
-    id: '1',
-    companyLogo: 'https://picsum.photos/id/1/100/40',
-    quote: "Rapidité et professionnalisme
-Contact facile et humain
-Je recommande à 100 % !!",
-    author: "willis herfort",
+    id: "1",
+    companyLogo: "",
+    quote: "Rapidité et professionnalisme. Contact facile et humain. Je recommande à 100% !",
+    author: "Willis Herfort",
     role: "Acheteur",
-    avatar: "https://picsum.photos/id/64/100/100"
+    avatar: "", // mets une url si tu as une photo, sinon laisse ""
   },
   {
-    id: '2',
-    companyLogo: 'https://picsum.photos/id/2/100/40',
-    quote: "Pro et sympathique. Estimation complète et rapide. Je suis très satisfaite et le recommande vivement !",
+    id: "2",
+    companyLogo: "",
+    quote: "Pro et sympathique. Estimation complète et rapide. Je suis très satisfaite et je recommande vivement !",
     author: "Léonore Giuggiola",
-    role: "Vendeurs",
-    avatar: "https://picsum.photos/id/65/100/100"
+    role: "Vendeuse",
+    avatar: "", // idem
   },
-  {
-
-  }
 ];
+
 
 const Testimonials: React.FC = () => {
   return (
@@ -39,9 +56,10 @@ const Testimonials: React.FC = () => {
           {TESTIMONIALS.map((t) => (
             <div key={t.id} className="relative bg-white p-10 pt-16 rounded-[40px] apple-shadow-hover transition-all">
               {/* Floating Company Logo (Placeholder for visual style) */}
-              <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-32 h-16 bg-white rounded-2xl apple-shadow flex items-center justify-center p-4">
-                 <div className="w-full h-2 bg-slate-100 rounded-full animate-pulse"></div>
-              </div>
+
+              <div className="absolute -top-7 left-1/2 -translate-x-1/2">
+  <Avatar name={t.author} src={t.avatar} />
+</div>
               
               <p className="text-slate-600 italic leading-relaxed mb-8 text-center">
                 "{t.quote}"
