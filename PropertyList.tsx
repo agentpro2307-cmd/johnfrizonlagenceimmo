@@ -142,7 +142,7 @@ const PropertyList: React.FC = () => {
             >
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-4 apple-shadow group-hover:shadow-lg transition-all">
                 <img
-                  src={prop.imageUrl}
+                  src={`${import.meta.env.BASE_URL}${prop.imageUrl.replace(/^\//, "")}`}
                   alt={prop.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
