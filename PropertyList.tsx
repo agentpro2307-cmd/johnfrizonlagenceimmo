@@ -96,7 +96,7 @@ const MOCK_PROPERTIES: Property[] = [
   baths: 0,
   sqft: 34,
   type: "Appartement",
-  imageUrl: "/images/st_jean.png",
+  imageUrl: "/images/st-jean.png",
   url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3097744101",
 },
 
