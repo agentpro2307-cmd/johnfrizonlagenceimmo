@@ -87,6 +87,18 @@ const MOCK_PROPERTIES: Property[] = [
   imageUrl: "/images/majetniak.png",
   url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3079918531",
 },
+{
+  id: 6,
+  title: "Appartement 2 pièces 34 m²",
+  price: 215000,
+  location: "Saint-Jean-de-Gonville 01630",
+  beds: 0,
+  baths: 0,
+  sqft: 34,
+  type: "Appartement",
+  imageUrl: "/images/st jean.png",
+  url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3097744101",
+},
 
   // Tu pourras en rajouter d'autres après, en copiant/collant ce bloc et en changeant:
   // id, title, price, location, type, imageUrl, url
