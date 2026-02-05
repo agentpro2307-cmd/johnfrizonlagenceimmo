@@ -21,18 +21,18 @@ const Footer: React.FC = () => {
           {/* Links */}
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-slate-500">
             <a href="#" className="hover:text-slate-900">
-              
+              Mentions Légales
             </a>
-       <a
-  href={`${import.meta.env.BASE_URL}politique-confidentialite.html`}
-  className="hover:text-slate-900"
->
-  Politique de confidentialité
-</a>
 
+            <a
+              href={`${import.meta.env.BASE_URL}politique-confidentialite.html`}
+              className="hover:text-slate-900"
+            >
+              Politique de confidentialité
             </a>
+
             <a href="#" className="hover:text-slate-900">
-              
+              Recrutement
             </a>
           </div>
 
