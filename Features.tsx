@@ -191,7 +191,7 @@ const Features: React.FC = () => {
   const active = features.find((f) => f.id === openId);
 
   return (
-    <section className="py-24 bg-white">
+    <section id="nos-services" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase mb-4">
