@@ -106,7 +106,7 @@ const MOCK_PROPERTIES: Property[] = [
 
 const PropertyList: React.FC = () => {
   return (
-    <section id="biens" className="py-24 bg-white border-t border-slate-100">
+    <section id="nos-biens" className="py-24 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
