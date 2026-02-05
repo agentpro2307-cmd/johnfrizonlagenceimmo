@@ -22,9 +22,15 @@ const App: React.FC = () => {
       <main>
         <Hero 
           onFindHome={() => openForm('qualifying')} 
-          onEstimate={() => openForm('qualifying')} 
+          onEstimate={() => openForm('estimation')}
+
         />
 
+        <CTA 
+  onEstimate={() => openForm('estimation')} 
+  onAppointment={() => openForm('short')}
+/>
+        
         <Features />
 
         <PropertyList />
