@@ -18,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
           </div>
           <div className="flex items-center gap-3">
   <img
-    src="/images/logo.png"
+   src={`${import.meta.env.BASE_URL}images/logo.png`}
     alt="John Frizon - L'agence Immo"
     className="h-9 w-9 rounded-xl object-contain"
   />
