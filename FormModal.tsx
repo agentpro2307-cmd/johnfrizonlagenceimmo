@@ -39,8 +39,52 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
       ? "Estimer mon bien"
       : "Nous contacter";
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const FORM_ENDPOINT = "https://formspree.io/f/xojnaynp"; // 
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const payload: Record<string, string> = {
+    type,
+    name,
+    phone,
+    email,
+    message,
+  };
+  payload._subject = isEstimation
+  ? "Nouvelle demande d'estimation"
+  : type === "short"
+  ? "Nouvelle demande de rendez-vous"
+  : "Nouveau message";
+
+
+  if (isEstimation) {
+    payload.city = city;
+    payload.propertyType = propertyType;
+    payload.surface = surface;
+    payload.rooms = rooms;
+    payload.timeline = timeline;
+  }
+
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) throw new Error("Formspree error");
+
+    alert("Merci ! Votre demande a bien été envoyée.");
+    onClose();
+  } catch (err) {
+    alert("Oups… impossible d’envoyer pour le moment. Réessaie ou appelle-moi.");
+  }
+};
+
 
     // TODO: brancher vers Formspree ou n8n (on fera après)
     // Pour l'instant : juste log
