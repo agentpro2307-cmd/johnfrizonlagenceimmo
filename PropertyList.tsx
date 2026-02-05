@@ -23,7 +23,7 @@ const MOCK_PROPERTIES: Property[] = [
     baths: 0,
     sqft: 160,
     type: "Chalet",
-    imageUrl: "/images/escarnot.jpg",
+    imageUrl: "/images/escarnot.jpeg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3079918529",
   },
 {
