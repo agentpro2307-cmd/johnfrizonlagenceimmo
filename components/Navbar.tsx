@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
             Accueil
           </a>
           <a href="#biens" className="text-sm font-medium hover:text-blue-600 transition-colors">
-            Nos Logements
+            Nos Biens
           </a>
           <a href="#services" className="text-sm font-medium hover:text-blue-600 transition-colors">
             Nos Services
