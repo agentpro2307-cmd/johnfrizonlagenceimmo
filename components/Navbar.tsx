@@ -5,25 +5,26 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
-  const logoSrc = `${import.meta.env.BASE_URL}images/logo.png`; // IMPORTANT pour GitHub Pages
+  // IMPORTANT pour GitHub Pages (base URL du repo)
+  const logoSrc = `${import.meta.env.BASE_URL}images/logo.png`;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between glass-nav rounded-2xl px-8 py-3 apple-shadow">
-        {/* Logo + Nom */}
+        {/* LOGO + NOM */}
         <div className="flex items-center gap-3">
           <img
             src={logoSrc}
             alt="John Frizon - L'agence Immo"
-            className="h-9 w-9 rounded-xl object-contain"
+            className="h-9 w-9 rounded-xl object-contain bg-white"
           />
           <div className="leading-tight">
             <div className="font-semibold">John Frizon</div>
-            <div className="text-xs opacity-70">L'agence Immo</div>
+            <div className="text-xs opacity-70">L’agence Immo</div>
           </div>
         </div>
 
-        {/* Menu */}
+        {/* MENU */}
         <div className="hidden md:flex items-center gap-8">
           <a href="#" className="text-sm font-medium hover:text-blue-600 transition-colors">
             Accueil
@@ -39,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
           </a>
         </div>
 
-        {/* Bouton contact */}
+        {/* BOUTON */}
         <button
           onClick={onContactClick}
           className="bg-slate-900 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-slate-800 transition-all flex items-center gap-2"
@@ -55,3 +56,4 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
 };
 
 export default Navbar;
+
