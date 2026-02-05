@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+const [wantsEstimation, setWantsEstimation] = useState(false);
 
 type Props = {
   isOpen: boolean;
@@ -19,7 +20,11 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
   const [rooms, setRooms] = useState("");
   const [timeline, setTimeline] = useState("");
 
-  const isEstimation = type === "estimation";
+  const isEstimation = wantsEstimation;
+useEffect(() => {
+  if (!isOpen) return;
+  setWantsEstimation(type === "estimation");
+}, [isOpen, type]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -64,6 +69,8 @@ const handleSubmit = async (e: React.FormEvent) => {
     payload.surface = surface;
     payload.rooms = rooms;
     payload.timeline = timeline;
+    payload.estimation = wantsEstimation ? "oui" : "non";
+
   }
 
   try {
@@ -132,15 +139,16 @@ const handleSubmit = async (e: React.FormEvent) => {
         </div>
 
         {/* ✅ “Estimation” cochée automatiquement */}
-        <div className="mt-4 flex items-center gap-2 text-sm text-slate-700">
-          <input
-            type="checkbox"
-            checked={isEstimation}
-            readOnly
-            className="h-4 w-4"
-          />
-          <span>Demande d’estimation</span>
-        </div>
+       <label className="mt-4 inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none">
+  <input
+    type="checkbox"
+    checked={wantsEstimation}
+    onChange={(e) => setWantsEstimation(e.target.checked)}
+    className="h-4 w-4 accent-slate-900"
+  />
+  <span>Demande d’estimation</span>
+</label>
+
 
         <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
