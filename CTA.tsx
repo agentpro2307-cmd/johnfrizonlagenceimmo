@@ -42,23 +42,16 @@ const CTA: React.FC<CTAProps> = ({ onEstimate, onAppointment }) => {
                   <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">📞</div>
                   <div>
                     <p className="text-sm text-slate-400 font-medium">Appelez-nous</p>
-                    <p className="text-lg font-bold">04 50 40 XX XX</p>
+                    <p className="text-lg font-bold">06 34 16 27 16</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">📧</div>
                   <div>
                     <p className="text-sm text-slate-400 font-medium">Email direct</p>
-                    <p className="text-lg font-bold">contact@horizon-immo.fr</p>
+                    <p className="text-lg font-bold">jfrizon@lagenceimmo01.fr</p>
                   </div>
                 </div>
-                <div className="pt-4 flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    {[1,2,3].map(i => (
-                      <img key={i} src={`https://picsum.photos/id/${i+10}/40/40`} className="w-8 h-8 rounded-full border-2 border-slate-900" />
-                    ))}
-                  </div>
-                  <p className="text-xs text-slate-400">Conseillers disponibles</p>
                 </div>
              </div>
           </div>
