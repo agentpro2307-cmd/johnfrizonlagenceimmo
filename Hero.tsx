@@ -27,7 +27,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate }) => {
           </h1>
           
           <p className="text-lg text-slate-600 max-w-md leading-relaxed">
-            Expertise immobilière dans le Pays de Gex, l'Ain et la Haute-Savoie. Découvrez des propriétés d'exception et vendez au meilleur prix.
+            Expertise immobilière dans le Pays de Gex, l'Ain et la Haute-Savoie. Découvrez toutes nos propriétés et vendez au meilleur prix.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
