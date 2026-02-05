@@ -105,8 +105,19 @@ const MOCK_PROPERTIES: Property[] = [
   // id, title, price, location, type, imageUrl, url
 ];
 
-const PropertyList: React.FC = () => {
+const PropertyList: React.FC<{ filters?: { type?: string; location?: string } }> = ({ filters }) => {
+  const filtered = MOCK_PROPERTIES.filter((p) => {
+    const okType = !filters?.type || filters.type === "Tous" || p.type === filters.type;
+    const okLoc =
+      !filters?.location ||
+      filters.location === "Toutes" ||
+      p.location.toLowerCase().includes(filters.location.toLowerCase());
+    return okType && okLoc;
+  });
+
   return (
+    // ...
+
     <section id="nos-biens" className="py-24 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
@@ -133,7 +144,8 @@ const PropertyList: React.FC = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {MOCK_PROPERTIES.map((prop) => (
+          {filtered.map((prop) => (
+
             <a
               key={prop.id}
               href={prop.url}
