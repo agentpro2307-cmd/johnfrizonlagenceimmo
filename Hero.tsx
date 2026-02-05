@@ -49,7 +49,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate }) => {
         <div className="hidden lg:block relative animate-in fade-in zoom-in duration-1000">
            <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-4 apple-shadow">
               <img 
-                src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1000" 
+                src={`${import.meta.env.BASE_URL}images/escarnot_00013.jpeg`}
                 className="w-full h-full object-cover rounded-2xl"
                 alt="Featured Property"
               />
@@ -58,8 +58,8 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate }) => {
                    <span className="text-red-500 text-lg">❤️</span>
                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Exclusivité</span>
                 </div>
-                <h3 className="text-lg font-bold">Maison 6 pièces</h3>
-                <p className="text-xl font-medium text-slate-900">1 245 000€</p>
+                <h3 className="text-lg font-bold">Chalet 6 pièces</h3>
+                <p className="text-xl font-medium text-slate-900">395 000€</p>
                 <div className="mt-2 flex gap-1">
                   {[1,2,3,4,5].map(i => <div key={i} className="h-1 w-8 bg-slate-200 rounded-full last:bg-slate-900/10 overflow-hidden"></div>)}
                 </div>
