@@ -9,13 +9,6 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between glass-nav rounded-2xl px-8 py-3 apple-shadow">
-        <div className="flex items-center gap-2">
-          <div className="grid grid-cols-2 gap-0.5">
-            <div className="w-2 h-2 rounded-full bg-slate-800"></div>
-            <div className="w-2 h-2 rounded-full bg-slate-800"></div>
-            <div className="w-2 h-2 rounded-full bg-slate-400"></div>
-            <div className="w-2 h-2 rounded-full bg-slate-800"></div>
-          </div>
           <div className="flex items-center gap-3">
   <img
    src={`${import.meta.env.BASE_URL}images/logo.png`}
