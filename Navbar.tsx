@@ -16,7 +16,18 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
             <div className="w-2 h-2 rounded-full bg-slate-400"></div>
             <div className="w-2 h-2 rounded-full bg-slate-800"></div>
           </div>
-          <span className="text-xl font-bold tracking-tight">Horizon Immo</span>
+          <div className="flex items-center gap-3">
+  <img
+    src="/images/logo.png"
+    alt="John Frizon - L'agence Immo"
+    className="h-9 w-9 rounded-xl object-contain"
+  />
+  <div className="leading-tight">
+    <div className="font-semibold">John Frizon</div>
+    <div className="text-xs opacity-70">L’agence Immo</div>
+  </div>
+</div>
+
         </div>
         
         <div className="hidden md:flex items-center gap-8">
