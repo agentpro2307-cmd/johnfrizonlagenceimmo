@@ -45,7 +45,7 @@
       </a>
 
       <a
-        href="https://TON-LIEN-PAGE-PERSO"
+        href="https://www.lagenceimmo01.fr/conseiller/john.frizon,118"
         target="_blank"
         rel="noreferrer"
         className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-slate-900 hover:bg-slate-50"
