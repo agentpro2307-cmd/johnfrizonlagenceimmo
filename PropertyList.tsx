@@ -11,6 +11,7 @@ type Property = {
   type: string;
   imageUrl: string;
   url: string;
+  status?: string;
 };
 
 const MOCK_PROPERTIES: Property[] = [
