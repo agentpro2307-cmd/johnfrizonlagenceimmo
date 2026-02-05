@@ -35,9 +35,21 @@ const MOCK_PROPERTIES: Property[] = [
   baths: 0,
   sqft: 84,
   type: "Appartement",
-  imageUrl: "/images/P1011184.jpg",
+  imageUrl: "/images/studer.jpg",
   url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3136453554",
   status: "Sous offre",
+},
+{
+  id: 2,
+  title: "Appartement 5 pièces 112 m²",
+  price: 550000,
+  location: "Péron (01630)",
+  beds: 0,
+  baths: 0,
+  sqft: 112,
+  type: "Appartement",
+  imageUrl: "/images/piller.jpg",
+  url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3089369842",
 },
 
   // Tu pourras en rajouter d'autres après, en copiant/collant ce bloc et en changeant:
