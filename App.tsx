@@ -21,11 +21,14 @@ const App: React.FC = () => {
       <Navbar onContactClick={() => openForm('short')} />
       
       <main>
-        <Hero 
-          onFindHome={() => openForm('qualifying')} 
-          onEstimate={() => openForm('estimation')}
-
-        />
+        <Hero
+  onFindHome={() => openForm("qualifying")}
+  onEstimate={() => openForm("estimation")}
+  onSearch={(next) => {
+    setFilters(next);
+    document.getElementById("nos-biens")?.scrollIntoView({ behavior: "smooth" });
+  }}
+/>
 
         <CTA 
   onEstimate={() => openForm('estimation')} 
@@ -34,7 +37,7 @@ const App: React.FC = () => {
         
         <Features />
 
-        <PropertyList />
+        <PropertyList filters={filters} />
 
         <Testimonials />
 
