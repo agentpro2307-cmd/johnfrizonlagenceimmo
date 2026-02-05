@@ -57,17 +57,13 @@ const Testimonials: React.FC = () => {
             <div key={t.id} className="relative bg-white p-10 pt-16 rounded-[40px] apple-shadow-hover transition-all">
               {/* Floating Company Logo (Placeholder for visual style) */}
 
-              <div className="absolute -top-7 left-1/2 -translate-x-1/2">
-  <Avatar name={t.author} src={t.avatar} />
-</div>
               
               <p className="text-slate-600 italic leading-relaxed mb-8 text-center">
                 "{t.quote}"
               </p>
 
               <div className="flex flex-col items-center gap-3 border-t border-slate-100 pt-8">
-                <img 
-                  src={t.avatar} 
+                <Avatar name={t.author} src={t.avatar} />
                   alt={t.author} 
                   className="w-14 h-14 rounded-full object-cover border-4 border-slate-50"
                 />
