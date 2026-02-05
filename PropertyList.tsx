@@ -23,7 +23,7 @@ const MOCK_PROPERTIES: Property[] = [
     baths: 0,
     sqft: 160,
     type: "Chalet",
-    imageUrl: "/images/escarnot_00013.JPG",
+    imageUrl: "/images/escarnot_00013.jpg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3079918529",
   },
 {
@@ -72,7 +72,7 @@ const MOCK_PROPERTIES: Property[] = [
   baths: 0,
   sqft: 113,
   type: "Propriété",
-  imageUrl: "/images/pereira_00001 (2).jpg",
+  imageUrl: "/images/pereira_00001_2.jpg",
   url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3056257502",
 },
 {
@@ -96,7 +96,7 @@ const MOCK_PROPERTIES: Property[] = [
   baths: 0,
   sqft: 34,
   type: "Appartement",
-  imageUrl: "/images/st jean.png",
+  imageUrl: "/images/st_jean.png",
   url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3097744101",
 },
 
