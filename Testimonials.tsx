@@ -6,26 +6,23 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
     companyLogo: 'https://picsum.photos/id/1/100/40',
-    quote: "Grâce à Horizon Immo, nous avons vendu notre maison à Divonne en moins de 10 jours au prix de l'estimation. L'accompagnement a été parfait du début à la fin.",
-    author: "Sophie Bertrand",
-    role: "Propriétaire vendeuse",
+    quote: "Rapidité et professionnalisme
+Contact facile et humain
+Je recommande à 100 % !!",
+    author: "willis herfort",
+    role: "Acheteur",
     avatar: "https://picsum.photos/id/64/100/100"
   },
   {
     id: '2',
     companyLogo: 'https://picsum.photos/id/2/100/40',
-    quote: "Une équipe professionnelle qui connaît vraiment le secteur frontalier. Ils ont su dénicher l'appartement idéal pour notre famille à Ferney-Voltaire.",
-    author: "Marc & Clara Laurent",
-    role: "Acheteurs",
+    quote: "Pro et sympathique. Estimation complète et rapide. Je suis très satisfaite et le recommande vivement !",
+    author: "Léonore Giuggiola",
+    role: "Vendeurs",
     avatar: "https://picsum.photos/id/65/100/100"
   },
   {
-    id: '3',
-    companyLogo: 'https://picsum.photos/id/3/100/40',
-    quote: "La mise en valeur de mon bien avec les photos professionnelles a fait toute la différence. Je recommande vivement leurs services premium.",
-    author: "Julien Faure",
-    role: "Investisseur",
-    avatar: "https://picsum.photos/id/66/100/100"
+
   }
 ];
 
