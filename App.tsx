@@ -12,6 +12,7 @@ import FormModal from './FormModal';
 
 const App: React.FC = () => {
   const [modalType, setModalType] = useState<string | null>(null);
+const [filters, setFilters] = useState<{ type?: string; location?: string }>({});
 
   const openForm = (type: string) => setModalType(type);
   const closeForm = () => setModalType(null);
@@ -21,9 +22,9 @@ const App: React.FC = () => {
       <Navbar onContactClick={() => openForm('short')} />
       
       <main>
-        <Hero
-  onFindHome={() => openForm("qualifying")}
-  onEstimate={() => openForm("estimation")}
+        <Hero 
+  onFindHome={() => openForm('qualifying')} 
+  onEstimate={() => openForm('estimation')}
   onSearch={(next) => {
     setFilters(next);
     document.getElementById("nos-biens")?.scrollIntoView({ behavior: "smooth" });
