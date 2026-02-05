@@ -49,7 +49,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate }) => {
         <div className="hidden lg:block relative animate-in fade-in zoom-in duration-1000">
            <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-4 apple-shadow">
               <img 
-                src={`${import.meta.env.BASE_URL}images/escarnot_00013.jpeg`}
+                src={`${import.meta.env.BASE_URL}images/escarnot_00013.JPG`}
                 className="w-full h-full object-cover rounded-2xl"
                 alt="Featured Property"
               />
