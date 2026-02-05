@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-const [wantsEstimation, setWantsEstimation] = useState(false);
+
+type Mode = "short" | "qualifying" | "estimation";
 
 type Props = {
   isOpen: boolean;
@@ -8,10 +9,17 @@ type Props = {
 };
 
 export default function FormModal({ isOpen, onClose, type }: Props) {
+  // ✅ Formspree endpoint
+  const FORM_ENDPOINT = "https://formspree.io/f/xojnaypn";
+
+  // Base fields
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  // Estimation toggle (cliquable)
+  const [wantsEstimation, setWantsEstimation] = useState(false);
 
   // Estimation fields
   const [city, setCity] = useState("");
@@ -20,12 +28,15 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
   const [rooms, setRooms] = useState("");
   const [timeline, setTimeline] = useState("");
 
-  const isEstimation = wantsEstimation;
-useEffect(() => {
-  if (!isOpen) return;
-  setWantsEstimation(type === "estimation");
-}, [isOpen, type]);
+  // ✅ pré-cocher si ouverture depuis "Estimer"
+  useEffect(() => {
+    if (!isOpen) return;
+    setWantsEstimation(type === "estimation");
+  }, [isOpen, type]);
 
+  const isEstimation = wantsEstimation;
+
+  // ESC to close
   useEffect(() => {
     if (!isOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -44,77 +55,56 @@ useEffect(() => {
       ? "Estimer mon bien"
       : "Nous contacter";
 
-  const FORM_ENDPOINT = "https://formspree.io/f/xojnaynp"; // 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-
-  const payload: Record<string, string> = {
-    type,
-    name,
-    phone,
-    email,
-    message,
-  };
-  payload._subject = isEstimation
-  ? "Nouvelle demande d'estimation"
-  : type === "short"
-  ? "Nouvelle demande de rendez-vous"
-  : "Nouveau message";
-
-
-  if (isEstimation) {
-    payload.city = city;
-    payload.propertyType = propertyType;
-    payload.surface = surface;
-    payload.rooms = rooms;
-    payload.timeline = timeline;
-    payload.estimation = wantsEstimation ? "oui" : "non";
-
-  }
-
-  try {
-    const res = await fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (!res.ok) throw new Error("Formspree error");
-
-    alert("Merci ! Votre demande a bien été envoyée.");
-    onClose();
-  } catch (err) {
-    alert("Oups… impossible d’envoyer pour le moment. Réessaie ou appelle-moi.");
-  }
-};
-
-
-    // TODO: brancher vers Formspree ou n8n (on fera après)
-    // Pour l'instant : juste log
-    console.log({
+    const payload: Record<string, string> = {
       type,
       name,
       phone,
       email,
       message,
-      ...(isEstimation
-        ? { city, propertyType, surface, rooms, timeline }
-        : {}),
-    });
+      estimation: isEstimation ? "oui" : "non",
+      _subject: isEstimation
+        ? "Nouvelle demande d'estimation"
+        : type === "short"
+        ? "Nouvelle demande de rendez-vous"
+        : "Nouveau message",
+    };
 
-    alert("Merci ! Votre demande a été envoyée.");
-    onClose();
+    if (isEstimation) {
+      payload.city = city;
+      payload.propertyType = propertyType;
+      payload.surface = surface;
+      payload.rooms = rooms;
+      payload.timeline = timeline;
+    }
+
+    try {
+      // ✅ Formspree “béton” : FormData marche partout
+      const formData = new FormData();
+      Object.entries(payload).forEach(([k, v]) => formData.append(k, v));
+
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (!res.ok) throw new Error("Formspree error");
+
+      alert("Merci ! Votre demande a bien été envoyée.");
+      onClose();
+    } catch (err) {
+      alert("Oups… impossible d’envoyer pour le moment. Réessaie ou appelle-moi.");
+    }
   };
 
   return (
     <div
       className="fixed inset-0 z-[999] flex items-center justify-center px-4"
-      aria-modal="true"
       role="dialog"
+      aria-modal="true"
       onClick={onClose}
     >
       <div className="absolute inset-0 bg-black/50" />
@@ -124,9 +114,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
-          <h3 className="text-xl md:text-2xl font-bold text-slate-900">
-            {title}
-          </h3>
+          <h3 className="text-xl md:text-2xl font-bold text-slate-900">{title}</h3>
 
           <button
             type="button"
@@ -138,17 +126,16 @@ const handleSubmit = async (e: React.FormEvent) => {
           </button>
         </div>
 
-        {/* ✅ “Estimation” cochée automatiquement */}
-       <label className="mt-4 inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none">
-  <input
-    type="checkbox"
-    checked={wantsEstimation}
-    onChange={(e) => setWantsEstimation(e.target.checked)}
-    className="h-4 w-4 accent-slate-900"
-  />
-  <span>Demande d’estimation</span>
-</label>
-
+        {/* ✅ Checkbox cliquable (case + texte) */}
+        <label className="mt-4 inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={wantsEstimation}
+            onChange={(e) => setWantsEstimation(e.target.checked)}
+            className="h-4 w-4 accent-slate-900"
+          />
+          <span>Demande d’estimation</span>
+        </label>
 
         <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -177,12 +164,10 @@ const handleSubmit = async (e: React.FormEvent) => {
             required
           />
 
-          {/* ✅ Champs en plus uniquement si estimation */}
+          {/* ✅ Champs Estimation */}
           {isEstimation && (
             <div className="rounded-2xl border border-slate-200 p-4 space-y-4">
-              <p className="font-semibold text-slate-900">
-                Informations pour l’estimation
-              </p>
+              <p className="font-semibold text-slate-900">Informations pour l’estimation</p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
