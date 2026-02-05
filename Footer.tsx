@@ -23,8 +23,13 @@ const Footer: React.FC = () => {
             <a href="#" className="hover:text-slate-900">
               
             </a>
-            <a href="#" className="hover:text-slate-900">
-              Politique de confidentialité
+       <a
+  href={`${import.meta.env.BASE_URL}politique-confidentialite.html`}
+  className="hover:text-slate-900"
+>
+  Politique de confidentialité
+</a>
+
             </a>
             <a href="#" className="hover:text-slate-900">
               
