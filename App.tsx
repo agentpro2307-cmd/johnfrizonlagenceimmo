@@ -1,3 +1,4 @@
+const [filters, setFilters] = useState<{ type?: string; location?: string }>({});
 
 import React, { useState } from 'react';
 import Navbar from "./components/Navbar";
