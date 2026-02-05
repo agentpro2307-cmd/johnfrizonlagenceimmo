@@ -1,23 +1,25 @@
 
-import React from 'react';
-import { Testimonial } from '../types';
+import React from "react";
+import { Testimonial } from "../types";
 
 function Avatar({ name, src }: { name: string; src?: string }) {
   const initial = (name?.trim()?.[0] ?? "?").toUpperCase();
 
+  // Si on a une vraie photo
   if (src && src.trim().length > 0) {
     return (
       <img
         src={src}
         alt={name}
-        className="h-14 w-14 rounded-full object-cover border border-slate-200"
+        className="w-14 h-14 rounded-full object-cover border-4 border-slate-50"
         loading="lazy"
       />
     );
   }
 
+  // Sinon : une lettre dans un rond
   return (
-    <div className="h-14 w-14 rounded-full flex items-center justify-center bg-slate-100 text-slate-700 font-bold border border-slate-200">
+    <div className="w-14 h-14 rounded-full flex items-center justify-center bg-slate-100 text-slate-700 font-bold border-4 border-slate-50">
       {initial}
     </div>
   );
@@ -27,46 +29,49 @@ const TESTIMONIALS: Testimonial[] = [
   {
     id: "1",
     companyLogo: "",
-    quote: "Rapidité et professionnalisme. Contact facile et humain. Je recommande à 100% !",
+    quote:
+      "Rapidité et professionnalisme. Contact facile et humain. Je recommande à 100% !",
     author: "Willis Herfort",
     role: "Acheteur",
-    avatar: "", // mets une url si tu as une photo, sinon laisse ""
+    avatar: "", // mets une URL ou laisse ""
   },
   {
     id: "2",
     companyLogo: "",
-    quote: "Pro et sympathique. Estimation complète et rapide. Je suis très satisfaite et je recommande vivement !",
+    quote:
+      "Pro et sympathique. Estimation complète et rapide. Je suis très satisfaite et je recommande vivement !",
     author: "Léonore Giuggiola",
     role: "Vendeuse",
     avatar: "", // idem
   },
 ];
 
-
 const Testimonials: React.FC = () => {
   return (
     <section className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase mb-4">Témoignages</h2>
-          <p className="text-4xl font-bold text-slate-900">Ils nous ont fait confiance</p>
+          <h2 className="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase mb-4">
+            Témoignages
+          </h2>
+          <p className="text-4xl font-bold text-slate-900">
+            Ils nous ont fait confiance
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {TESTIMONIALS.map((t) => (
-            <div key={t.id} className="relative bg-white p-10 pt-16 rounded-[40px] apple-shadow-hover transition-all">
-              {/* Floating Company Logo (Placeholder for visual style) */}
-
-              
+            <div
+              key={t.id}
+              className="relative bg-white p-10 pt-16 rounded-[40px] apple-shadow-hover transition-all"
+            >
               <p className="text-slate-600 italic leading-relaxed mb-8 text-center">
                 "{t.quote}"
               </p>
 
               <div className="flex flex-col items-center gap-3 border-t border-slate-100 pt-8">
                 <Avatar name={t.author} src={t.avatar} />
-                  alt={t.author} 
-                  className="w-14 h-14 rounded-full object-cover border-4 border-slate-50"
-                />
+
                 <div className="text-center">
                   <p className="font-bold text-slate-900">{t.author}</p>
                   <p className="text-sm text-slate-400">{t.role}</p>
@@ -74,9 +79,14 @@ const Testimonials: React.FC = () => {
               </div>
 
               <div className="mt-8 text-center">
-                <a href="#" className="text-slate-900 font-bold text-sm inline-flex items-center gap-1 group">
-                  Lire le témoignage complet 
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <a
+                  href="#"
+                  className="text-slate-900 font-bold text-sm inline-flex items-center gap-1 group"
+                >
+                  Lire le témoignage complet
+                  <span className="group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
                 </a>
               </div>
             </div>
