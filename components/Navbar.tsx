@@ -34,7 +34,7 @@ export default function Navbar() {
                 />
               </button>
 
-              {/* ✅ Ta photo (plus grande + cliquable) */}
+              {/* ✅ Photo plus grande + cliquable */}
               <button
                 type="button"
                 onClick={() => setIsPhotoOpen(true)}
@@ -44,7 +44,8 @@ export default function Navbar() {
                 <img
                   src={`${import.meta.env.BASE_URL}images/john.jpg`}
                   alt="John Frizon"
-                  className="h-14 w-14 rounded-full object-cover border border-slate-200 shadow-sm hover:shadow-md transition"
+                  className="h-16 w-16 rounded-xl object-cover border border-slate-200 shadow-sm hover:shadow-md transition"
+
                   loading="eager"
                 />
               </button>
@@ -156,19 +157,20 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* ✅ Lightbox photo */}
+      {/* ✅ Lightbox avec anim */}
       {isPhotoOpen && (
         <div
-          className="fixed inset-0 z-[999] bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
+          className="fixed inset-0 z-[999] bg-black/70 backdrop-blur-sm flex items-center justify-center p-6 animate-fadeIn"
           onClick={() => setIsPhotoOpen(false)}
           role="dialog"
           aria-modal="true"
           aria-label="Photo de John Frizon"
         >
           <div
-            className="relative max-w-[520px] w-full"
-            onClick={(e) => e.stopPropagation()}
-          >
+  className="relative max-w-[760px] w-full animate-zoomIn"
+  onClick={(e) => e.stopPropagation()}
+>
+
             <button
               type="button"
               onClick={() => setIsPhotoOpen(false)}
@@ -179,18 +181,34 @@ export default function Navbar() {
             </button>
 
             <img
-              src={`${import.meta.env.BASE_URL}images/john.jpg`}
-              alt="John Frizon"
-              className="w-full aspect-square rounded-3xl object-cover border border-white/20 shadow-2xl"
-            />
+  src={`${import.meta.env.BASE_URL}images/john.jpg`}
+  alt="John Frizon"
+  className="w-full max-h-[75vh] rounded-3xl object-contain bg-black/10 border border-white/20 shadow-2xl"
+/>
+
 
             <div className="mt-4 text-center text-white">
               <div className="font-bold text-lg">John Frizon</div>
               <div className="text-white/80">Conseiller immobilier — Pays de Gex</div>
             </div>
           </div>
+
+          {/* Animations (pas besoin de fichier CSS, on injecte ici) */}
+          <style>{`
+            @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+            }
+            @keyframes zoomIn {
+              from { opacity: 0; transform: scale(0.92) translateY(6px); }
+              to { opacity: 1; transform: scale(1) translateY(0); }
+            }
+            .animate-fadeIn { animation: fadeIn 140ms ease-out; }
+            .animate-zoomIn { animation: zoomIn 180ms ease-out; }
+          `}</style>
         </div>
       )}
     </>
   );
 }
+
