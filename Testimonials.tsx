@@ -1,8 +1,18 @@
+import React from "react";
+import { Testimonial } from "../types";
+
 function StarRating({ value = 5 }: { value?: number }) {
   return (
-    <div className="mt-6 flex justify-center gap-1 text-yellow-400" aria-label={`Note : ${value} sur 5`}>
+    <div
+      className="mt-6 flex justify-center gap-1 text-yellow-400"
+      aria-label={`Note : ${value} sur 5`}
+    >
       {Array.from({ length: 5 }).map((_, i) => (
-        <span key={i} aria-hidden="true" className={i < value ? "" : "text-slate-200"}>
+        <span
+          key={i}
+          aria-hidden="true"
+          className={i < value ? "" : "text-slate-200"}
+        >
           ★
         </span>
       ))}
@@ -10,13 +20,9 @@ function StarRating({ value = 5 }: { value?: number }) {
   );
 }
 
-import React from "react";
-import { Testimonial } from "../types";
-
 function Avatar({ name, src }: { name: string; src?: string }) {
   const initial = (name?.trim()?.[0] ?? "?").toUpperCase();
 
-  // Si on a une vraie photo
   if (src && src.trim().length > 0) {
     return (
       <img
@@ -28,7 +34,6 @@ function Avatar({ name, src }: { name: string; src?: string }) {
     );
   }
 
-  // Sinon : une lettre dans un rond
   return (
     <div className="w-14 h-14 rounded-full flex items-center justify-center bg-slate-100 text-slate-700 font-bold border-4 border-slate-50">
       {initial}
@@ -36,7 +41,9 @@ function Avatar({ name, src }: { name: string; src?: string }) {
   );
 }
 
-const TESTIMONIALS: Testimonial[] = [
+type TestimonialUI = Testimonial & { rating?: number };
+
+const TESTIMONIALS: TestimonialUI[] = [
   {
     id: "1",
     companyLogo: "",
@@ -44,9 +51,8 @@ const TESTIMONIALS: Testimonial[] = [
       "Rapidité et professionnalisme. Contact facile et humain. Je recommande à 100% !",
     author: "Willis Herfort",
     role: "Acheteur",
-    avatar: "", // mets une URL ou laisse ""
-    <StarRating value={5} />
-
+    avatar: "",
+    rating: 5,
   },
   {
     id: "2",
@@ -55,39 +61,35 @@ const TESTIMONIALS: Testimonial[] = [
       "Pro et sympathique. Estimation complète et rapide. Je suis très satisfaite et je recommande vivement !",
     author: "Léonore Giuggiola",
     role: "Vendeuse",
-    avatar: "", // idem
-    <StarRating value={5} />
-
+    avatar: "",
+    rating: 5,
   },
-   {
+  {
     id: "3",
     companyLogo: "",
-    quote:
+    quote: "",
     author: "Sophie Hollies",
     role: "Vendeuse",
-    avatar: "", // mets une URL ou laisse ""
-    <StarRating value={5} />
-
+    avatar: "",
+    rating: 5,
   },
-   {
+  {
     id: "4",
     companyLogo: "",
-    quote:
+    quote: "",
     author: "Lionel Bouvier",
     role: "Vendeur",
-    avatar: "", // idem
-    <StarRating value={5} />
-
+    avatar: "",
+    rating: 5,
   },
   {
     id: "5",
     companyLogo: "",
-    quote:
-    author: "hubert Lechien",
+    quote: "",
+    author: "Hubert Lechien",
     role: "Acheteur",
-    avatar: "", // mets une URL ou laisse ""
-    <StarRating value={5} />
-
+    avatar: "",
+    rating: 5,
   },
 ];
 
@@ -110,11 +112,20 @@ const Testimonials: React.FC = () => {
               key={t.id}
               className="relative bg-white p-10 pt-16 rounded-[40px] apple-shadow-hover transition-all"
             >
-              <p className="text-slate-600 italic leading-relaxed mb-8 text-center">
-                "{t.quote}"
-              </p>
+              {t.quote ? (
+                <p className="text-slate-600 italic leading-relaxed mb-4 text-center">
+                  "{t.quote}"
+                </p>
+              ) : (
+                <p className="text-slate-400 italic leading-relaxed mb-4 text-center">
+                  ""
+                </p>
+              )}
 
-              <div className="flex flex-col items-center gap-3 border-t border-slate-100 pt-8">
+              {/* ✅ 5 étoiles jaunes (ou note personnalisée si tu changes rating) */}
+              <StarRating value={t.rating ?? 5} />
+
+              <div className="flex flex-col items-center gap-3 border-t border-slate-100 pt-8 mt-6">
                 <Avatar name={t.author} src={t.avatar} />
 
                 <div className="text-center">
