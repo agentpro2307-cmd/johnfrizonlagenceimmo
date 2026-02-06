@@ -106,13 +106,14 @@ const MOCK_PROPERTIES: Property[] = [
 ];
 
 const PropertyList: React.FC<{ filters?: { type?: string; location?: string } }> = ({ filters }) => {
-  const filtered = MOCK_PROPERTIES.filter((p) => {
-    const okType = !filters?.type || filters.type === "Tous" || p.type === filters.type;
-    const okLoc =
-      !filters?.location ||
-      filters.location === "Toutes" ||
-      p.location.toLowerCase().includes(filters.location.toLowerCase());
-    return okType && okLoc;
+const filtered = MOCK_PROPERTIES.filter((p) => {
+  const okType = !filters?.type || p.type === filters.type;
+  const okLoc =
+    !filters?.location ||
+    p.location.toLowerCase().includes(filters.location.toLowerCase());
+  return okType && okLoc;
+});
+
   });
 
   return (
