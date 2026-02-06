@@ -11,7 +11,37 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
   const [typeBien, setTypeBien] = useState("Tous les types");
-  const [zone, setZone] = useState("Pays de Gex (Divonne...)");
+  const [zone, setZone] = useState<string>("Toutes les communes");
+const COMMUNES = [
+  "Cessy",
+  "Challex",
+  "Chevry",
+  "Chézery-Forens",
+  "Collonges",
+  "Crozet",
+  "Divonne-les-Bains",
+  "Échenevex",
+  "Farges",
+  "Ferney-Voltaire",
+  "Gex",
+  "Grilly",
+  "Léaz",
+  "Léllex",
+  "Mijoux",
+  "Ornex",
+  "Péron",
+  "Pougny",
+  "Prévessin-Moëns",
+  "Saint-Genis-Pouilly",
+  "Saint-Jean-de-Gonville",
+  "Sauverny",
+  "Ségny",
+  "Sergy",
+  "Thoiry",
+  "Versonnex",
+  "Vesancy",
+] as const;
+
 
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-slate-50">
@@ -102,27 +132,35 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
       </label>
 
       <select
-        className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none"
-        value={zone}
-        onChange={(e) => setZone(e.target.value)}
-      >
-        <option value="Pays de Gex (Divonne...)">Pays de Gex (Divonne...)</option>
-        <option value="Haute-Savoie (74)">Haute-Savoie (74)</option>
-      </select>
+  className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none"
+  value={zone}
+  onChange={(e) => setZone(e.target.value)}
+>
+  <option value="Toutes les communes">Toutes les communes</option>
+  {COMMUNES.map((c) => (
+    <option key={c} value={c}>
+      {c}
+    </option>
+  ))}
+</select>
+
     </div>
 
-    <button
-      type="button"
-      onClick={() => {
-        const type = typeBien === "Tous les types" ? undefined : typeBien;
-        const location =
-          zone === "Pays de Gex (Divonne...)" ? "Péron" : "Annemasse";
-        onSearch({ type, location });
-      }}
-      className="w-full lg:w-auto bg-slate-900 text-white px-10 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all"
-    >
-      Rechercher
-    </button>
+   <button
+  type="button"
+  onClick={() => {
+    const type = typeBien === "Tous les types" ? undefined : typeBien;
+
+    // si "Toutes les communes" → pas de filtre localisation
+    const location = zone === "Toutes les communes" ? undefined : zone;
+
+    onSearch({ type, location });
+  }}
+  className="w-full lg:w-auto bg-slate-900 text-white px-10 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all"
+>
+  Rechercher
+</button>
+
 
   </div>
 </div>
