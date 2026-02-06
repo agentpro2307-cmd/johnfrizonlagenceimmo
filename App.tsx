@@ -54,9 +54,10 @@ const App: React.FC = () => {
         <Testimonials />
 
         <CTA
-          onEstimate={() => openForm("estimation")}
-          onAppointment={() => openForm("short")}
-        />
+  onEstimate={() => openForm("estimation")}
+  onAppointment={() => openForm("short")}
+/>
+
       </main>
 
       <Footer />
