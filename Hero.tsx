@@ -1,12 +1,18 @@
 
-import React from 'react';
+import React, { useState } from "react";
+
 
 interface HeroProps {
   onFindHome: () => void;
   onEstimate: () => void;
+  onSearch: (filters: { type?: string; location?: string }) => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate }) => {
+
+const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
+  const [typeBien, setTypeBien] = useState("Tous les types");
+  const [zone, setZone] = useState("Pays de Gex (Divonne...)");
+
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-slate-50">
       <div className="absolute inset-0 z-0">
@@ -69,30 +75,58 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate }) => {
       </div>
 
       <div className="max-w-5xl mx-auto px-6 mt-16 relative z-10">
-        <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 apple-shadow border border-white/40 flex flex-wrap lg:flex-nowrap gap-4 items-end">
-          <div className="flex-1 min-w-[200px] space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase ml-1">Type de bien 🏠</label>
-            <select className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none">
-              <option>Tous les types</option>
-              <option>Maison</option>
-              <option>Appartement</option>
-            </select>
-          </div>
-          <div className="flex-1 min-w-[200px] space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase ml-1">Localisation 📍</label>
-            <select className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none">
-              <option>Pays de Gex (Divonne...)</option>
-              <option>Haute-Savoie (74)</option>
-            </select>
-          </div>
-          <button 
-            onClick={onFindHome}
-            className="w-full lg:w-auto bg-slate-900 text-white px-10 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all"
-          >
-            Rechercher
-          </button>
-        </div>
-      </div>
+  <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 apple-shadow border border-white/40 flex flex-wrap lg:flex-nowrap gap-4 items-end">
+
+    <div className="flex-1 min-w-[200px] space-y-2">
+      <label className="text-xs font-bold text-slate-400 uppercase ml-1">
+        Type de bien 🏠
+      </label>
+
+      <select
+        className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none"
+        value={typeBien}
+        onChange={(e) => setTypeBien(e.target.value)}
+      >
+        <option value="Tous les types">Tous les types</option>
+        <option value="Maison">Maison</option>
+        <option value="Appartement">Appartement</option>
+        <option value="Chalet">Chalet</option>
+        <option value="Villa">Villa</option>
+        <option value="Propriété">Propriété</option>
+      </select>
+    </div>
+
+    <div className="flex-1 min-w-[200px] space-y-2">
+      <label className="text-xs font-bold text-slate-400 uppercase ml-1">
+        Localisation 📍
+      </label>
+
+      <select
+        className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none"
+        value={zone}
+        onChange={(e) => setZone(e.target.value)}
+      >
+        <option value="Pays de Gex (Divonne...)">Pays de Gex (Divonne...)</option>
+        <option value="Haute-Savoie (74)">Haute-Savoie (74)</option>
+      </select>
+    </div>
+
+    <button
+      type="button"
+      onClick={() => {
+        const type = typeBien === "Tous les types" ? undefined : typeBien;
+        const location =
+          zone === "Pays de Gex (Divonne...)" ? "Péron" : "Annemasse";
+        onSearch({ type, location });
+      }}
+      className="w-full lg:w-auto bg-slate-900 text-white px-10 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all"
+    >
+      Rechercher
+    </button>
+
+  </div>
+</div>
+
     </section>
   );
 };
