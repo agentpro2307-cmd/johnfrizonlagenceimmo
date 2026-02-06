@@ -44,7 +44,7 @@ export default function Navbar() {
                 <img
                   src={`${import.meta.env.BASE_URL}images/john.jpg`}
                   alt="John Frizon"
-                  className="h-16 w-16 rounded-xl object-cover border border-slate-200 shadow-sm hover:shadow-md transition"
+                  className="h-12 w-12 rounded-xl object-cover border border-slate-200 shadow-sm hover:shadow-md transition"
 
                   loading="eager"
                 />
@@ -167,7 +167,8 @@ export default function Navbar() {
           aria-label="Photo de John Frizon"
         >
           <div
-  className="relative max-w-[760px] w-full animate-zoomIn"
+  className="w-full max-h-[75vh] rounded-3xl object-cover object-top bg-black/10 border border-white/20 shadow-2xl"
+
   onClick={(e) => e.stopPropagation()}
 >
 
