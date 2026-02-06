@@ -17,9 +17,18 @@ export default function Navbar() {
           >
             <img
               src={`${import.meta.env.BASE_URL}images/logo.png`}
-              alt="John Frizon - L'agence Immo"
+              alt="L'agence Immo"
               className="h-10 w-10 rounded-xl object-contain"
             />
+
+            {/* ✅ Ta photo */}
+            <img
+              src={`${import.meta.env.BASE_URL}images/john.jpg`}
+              alt="John Frizon"
+              className="h-10 w-10 rounded-full object-cover border border-slate-200"
+              loading="eager"
+            />
+
             <div className="leading-tight text-left">
               <div className="font-bold text-slate-900">John Frizon</div>
               <div className="text-sm text-slate-500">L’agence Immo</div>
@@ -40,17 +49,16 @@ export default function Navbar() {
               </li>
 
               <li>
-               <button
-  type="button"
-  onClick={() => {
-    window.dispatchEvent(new CustomEvent("reset-property-filters"));
-    scrollToId("nos-biens");
-  }}
-  className="text-slate-900 hover:text-slate-700 font-medium"
->
-  Nos Biens
-</button>
-
+                <button
+                  type="button"
+                  onClick={() => {
+                    window.dispatchEvent(new CustomEvent("reset-property-filters"));
+                    scrollToId("nos-biens");
+                  }}
+                  className="text-slate-900 hover:text-slate-700 font-medium"
+                >
+                  Nos Biens
+                </button>
               </li>
 
               <li>
@@ -63,6 +71,7 @@ export default function Navbar() {
                 </button>
               </li>
 
+              {/* Réseaux sociaux */}
               <li className="relative group">
                 <button
                   type="button"
@@ -124,3 +133,4 @@ export default function Navbar() {
     </header>
   );
 }
+
