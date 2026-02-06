@@ -1,3 +1,14 @@
+function StarRating({ value = 5 }: { value?: number }) {
+  return (
+    <div className="mt-6 flex justify-center gap-1 text-yellow-400" aria-label={`Note : ${value} sur 5`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <span key={i} aria-hidden="true" className={i < value ? "" : "text-slate-200"}>
+          ★
+        </span>
+      ))}
+    </div>
+  );
+}
 
 import React from "react";
 import { Testimonial } from "../types";
@@ -34,6 +45,8 @@ const TESTIMONIALS: Testimonial[] = [
     author: "Willis Herfort",
     role: "Acheteur",
     avatar: "", // mets une URL ou laisse ""
+    <StarRating value={5} />
+
   },
   {
     id: "2",
@@ -43,6 +56,38 @@ const TESTIMONIALS: Testimonial[] = [
     author: "Léonore Giuggiola",
     role: "Vendeuse",
     avatar: "", // idem
+    <StarRating value={5} />
+
+  },
+   {
+    id: "3",
+    companyLogo: "",
+    quote:
+    author: "Sophie Hollies",
+    role: "Vendeuse",
+    avatar: "", // mets une URL ou laisse ""
+    <StarRating value={5} />
+
+  },
+   {
+    id: "4",
+    companyLogo: "",
+    quote:
+    author: "Lionel Bouvier",
+    role: "Vendeur",
+    avatar: "", // idem
+    <StarRating value={5} />
+
+  },
+  {
+    id: "5",
+    companyLogo: "",
+    quote:
+    author: "hubert Lechien",
+    role: "Acheteur",
+    avatar: "", // mets une URL ou laisse ""
+    <StarRating value={5} />
+
   },
 ];
 
