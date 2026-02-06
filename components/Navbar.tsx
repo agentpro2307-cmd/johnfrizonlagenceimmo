@@ -40,17 +40,17 @@ export default function Navbar() {
               </li>
 
               <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    // reset filtres (App écoutera cet event)
-                    window.dispatchEvent(new CustomEvent("reset-property-filters"));
-                    scrollToId("nos-biens");
-                  }}
-                  className="text-slate-900 hover:text-slate-700 font-medium"
-                >
-                  Nos Biens
-                </button>
+               <button
+  type="button"
+  onClick={() => {
+    window.dispatchEvent(new CustomEvent("reset-property-filters"));
+    scrollToId("nos-biens");
+  }}
+  className="text-slate-900 hover:text-slate-700 font-medium"
+>
+  Nos Biens
+</button>
+
               </li>
 
               <li>
