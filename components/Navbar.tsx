@@ -1,24 +1,20 @@
 import React from "react";
 
-type NavbarProps = {
-  onContactClick?: () => void;
-  onGoHome?: () => void;
-  onGoProperties?: () => void;
-  onGoServices?: () => void;
-};
+function scrollToId(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
 
-export default function Navbar({
-  onContactClick,
-  onGoHome,
-  onGoProperties,
-  onGoServices,
-}: NavbarProps) {
+export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mt-4 rounded-3xl bg-white/80 backdrop-blur border border-slate-200 shadow-sm px-6 py-3 flex items-center justify-between">
           {/* Brand */}
-          <button type="button" onClick={onGoHome} className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex items-center gap-3"
+          >
             <img
               src={`${import.meta.env.BASE_URL}images/logo.png`}
               alt="John Frizon - L'agence Immo"
@@ -36,32 +32,37 @@ export default function Navbar({
               <li>
                 <button
                   type="button"
-                  onClick={onGoHome}
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                   className="text-slate-900 hover:text-slate-700 font-medium"
                 >
                   Accueil
                 </button>
               </li>
+
               <li>
                 <button
                   type="button"
-                  onClick={onGoProperties}
+                  onClick={() => {
+                    // reset filtres (App écoutera cet event)
+                    window.dispatchEvent(new CustomEvent("reset-property-filters"));
+                    scrollToId("nos-biens");
+                  }}
                   className="text-slate-900 hover:text-slate-700 font-medium"
                 >
                   Nos Biens
                 </button>
               </li>
+
               <li>
                 <button
                   type="button"
-                  onClick={onGoServices}
+                  onClick={() => scrollToId("nos-services")}
                   className="text-slate-900 hover:text-slate-700 font-medium"
                 >
                   Nos Services
                 </button>
               </li>
 
-              {/* Réseaux sociaux */}
               <li className="relative group">
                 <button
                   type="button"
@@ -113,7 +114,7 @@ export default function Navbar({
           {/* CTA */}
           <button
             type="button"
-            onClick={onContactClick}
+            onClick={() => window.dispatchEvent(new CustomEvent("open-contact-modal"))}
             className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
           >
             Nous Contacter <span>→</span>
