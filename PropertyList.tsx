@@ -41,7 +41,7 @@ const MOCK_PROPERTIES: Property[] = [
   status: "Sous offre",
 },
 {
-  id: 2,
+  id: 3,
   title: "Appartement 5 pièces 112 m²",
   price: 550000,
   location: "Péron (01630)",
@@ -53,7 +53,7 @@ const MOCK_PROPERTIES: Property[] = [
   url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3089369842",
 },
 {
-  id: 3,
+  id: 4,
   title: "Appartement 2 pièces 51 m²",
   price: 190000,
   location: "Annemasse 74100 · Quartier Vernand",
@@ -65,7 +65,7 @@ const MOCK_PROPERTIES: Property[] = [
   url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3115340035",
 },
 {
-  id: 4,
+  id: 5,
   title: "Propriété 5 pièces 113 m²",
   price: 435000,
   location: "Collonges 01550",
@@ -77,7 +77,7 @@ const MOCK_PROPERTIES: Property[] = [
   url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3056257502",
 },
 {
-  id: 5,
+  id: 6,
   title: "Villa 8 pièces 228 m²",
   price: 697000,
   location: "Farges 01550",
@@ -89,7 +89,7 @@ const MOCK_PROPERTIES: Property[] = [
   url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3079918531",
 },
 {
-  id: 6,
+  id: 7,
   title: "Appartement 2 pièces 34 m²",
   price: 215000,
   location: "Saint-Jean-de-Gonville 01630",
