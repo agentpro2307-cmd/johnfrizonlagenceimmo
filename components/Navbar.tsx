@@ -1,40 +1,68 @@
 import React from "react";
 
-export default function Navbar() {
+type NavbarProps = {
+  onContactClick?: () => void;
+  onGoHome?: () => void;
+  onGoProperties?: () => void;
+  onGoServices?: () => void;
+};
+
+export default function Navbar({
+  onContactClick,
+  onGoHome,
+  onGoProperties,
+  onGoServices,
+}: NavbarProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mt-4 rounded-3xl bg-white/80 backdrop-blur border border-slate-200 shadow-sm px-6 py-3 flex items-center justify-between">
           {/* Brand */}
-          <a href="#" className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={onGoHome}
+            className="flex items-center gap-3"
+          >
             <img
               src={`${import.meta.env.BASE_URL}images/logo.png`}
               alt="John Frizon - L'agence Immo"
               className="h-10 w-10 rounded-xl object-contain"
             />
-            <div className="leading-tight">
+            <div className="leading-tight text-left">
               <div className="font-bold text-slate-900">John Frizon</div>
               <div className="text-sm text-slate-500">L’agence Immo</div>
             </div>
-          </a>
+          </button>
 
           {/* Menu */}
           <nav>
             <ul className="hidden md:flex items-center gap-8">
               <li>
-                <a href="#" className="text-slate-900 hover:text-slate-700 font-medium">
+                <button
+                  type="button"
+                  onClick={onGoHome}
+                  className="text-slate-900 hover:text-slate-700 font-medium"
+                >
                   Accueil
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#nos-biens" className="text-slate-900 hover:text-slate-700 font-medium">
+                <button
+                  type="button"
+                  onClick={onGoProperties}
+                  className="text-slate-900 hover:text-slate-700 font-medium"
+                >
                   Nos Biens
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#nos-services" className="text-slate-900 hover:text-slate-700 font-medium">
+                <button
+                  type="button"
+                  onClick={onGoServices}
+                  className="text-slate-900 hover:text-slate-700 font-medium"
+                >
                   Nos Services
-                </a>
+                </button>
               </li>
 
               {/* Réseaux sociaux */}
@@ -114,12 +142,13 @@ export default function Navbar() {
           </nav>
 
           {/* CTA */}
-          <a
-            href="#contact"
+          <button
+            type="button"
+            onClick={onContactClick}
             className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
           >
             Nous Contacter <span>→</span>
-          </a>
+          </button>
         </div>
       </div>
     </header>
