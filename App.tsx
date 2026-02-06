@@ -35,7 +35,8 @@ const App: React.FC = () => {
 
         <Features />
 
-        <PropertyList filters={filters} />
+       <PropertyList filters={filters} onResetFilters={() => setFilters({})} />
+
 
         <Testimonials />
 
