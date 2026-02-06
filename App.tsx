@@ -1,6 +1,6 @@
 const [filters, setFilters] = useState<{ type?: string; location?: string }>({});
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from './Hero';
 import Features from './Features';
