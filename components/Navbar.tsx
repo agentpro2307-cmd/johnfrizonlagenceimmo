@@ -1,3 +1,5 @@
+export default function Navbar({ onContactClick }: { onContactClick?: () => void }) {
+
 import React from "react";
 
 export default function Navbar() {
@@ -107,6 +109,14 @@ export default function Navbar() {
             className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
           >
             Nous Contacter <span>→</span>
+            <button
+  type="button"
+  onClick={onContactClick}
+  className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
+>
+  Nous Contacter <span>→</span>
+</button>
+
           </a>
         </div>
       </div>
