@@ -73,7 +73,7 @@ const MOCK_PROPERTIES: Property[] = [
   },
   {
     id: 4,
-    title: "Propriété 5 pièces 113 m²",
+    title: "Maison 5 pièces 113 m²",
     price: 435000,
     location: "Collonges 01550",
     beds: 0,
@@ -106,6 +106,17 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Appartement",
     imageUrl: "/images/st-jean.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3097744101",
+  },
+   id: 7,
+    title: "Appartement 3 pièces 61m²",
+    price: 345000,
+    location: "Saint Genis Pouilly (01630)",
+    beds: 0,
+    baths: 0,
+    sqft: 61,
+    type: "Appartement",
+    imageUrl: "/images/guyot.png",
+    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3105580714",
   },
 ];
 
