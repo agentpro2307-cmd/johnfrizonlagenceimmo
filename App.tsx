@@ -34,7 +34,8 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-white selection:bg-blue-100 selection:text-blue-900">
       <Navbar onContactClick={() => openForm("short")} />
 
-      <main>
+      <main id="top">
+
         <Hero
           onFindHome={() => openForm("qualifying")}
           onEstimate={() => openForm("estimation")}
