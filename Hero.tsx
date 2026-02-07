@@ -130,7 +130,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
             <div className="rou
 
               <div className="mt-2 text-[11px] text-slate-500">
-                {PHONE_DISPLAY} • {EMAIL}
+                <div className="mt-2 text-[11px] text-slate-500">{PHONE_DISPLAY} • {EMAIL}</div>
               </div>
             </div>
           </div>
