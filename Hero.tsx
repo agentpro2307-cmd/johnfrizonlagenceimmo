@@ -257,7 +257,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
               <option value="Appartement">Appartement</option>
               <option value="Chalet">Chalet</option>
               <option value="Villa">Villa</option>
-              <option value="Propriété">Propriété</option>
+          
             </select>
           </div>
 
