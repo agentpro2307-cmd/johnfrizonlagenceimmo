@@ -1,6 +1,4 @@
-
 import React, { useState } from "react";
-
 
 interface HeroProps {
   onFindHome: () => void;
@@ -8,46 +6,52 @@ interface HeroProps {
   onSearch: (filters: { type?: string; location?: string }) => void;
 }
 
-
 const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
   const [typeBien, setTypeBien] = useState("Tous les types");
   const [zone, setZone] = useState<string>("Toutes les communes");
-const COMMUNES = [
-  "Cessy",
-  "Challex",
-  "Chevry",
-  "Chézery-Forens",
-  "Collonges",
-  "Crozet",
-  "Divonne-les-Bains",
-  "Échenevex",
-  "Farges",
-  "Ferney-Voltaire",
-  "Gex",
-  "Grilly",
-  "Léaz",
-  "Léllex",
-  "Mijoux",
-  "Ornex",
-  "Péron",
-  "Pougny",
-  "Prévessin-Moëns",
-  "Saint-Genis-Pouilly",
-  "Saint-Jean-de-Gonville",
-  "Sauverny",
-  "Ségny",
-  "Sergy",
-  "Thoiry",
-  "Versonnex",
-  "Vesancy",
-] as const;
 
+  const COMMUNES = [
+    "Cessy",
+    "Challex",
+    "Chevry",
+    "Chézery-Forens",
+    "Collonges",
+    "Crozet",
+    "Divonne-les-Bains",
+    "Échenevex",
+    "Farges",
+    "Ferney-Voltaire",
+    "Gex",
+    "Grilly",
+    "Léaz",
+    "Lélex",
+    "Mijoux",
+    "Ornex",
+    "Péron",
+    "Pougny",
+    "Prévessin-Moëns",
+    "Saint-Genis-Pouilly",
+    "Saint-Jean-de-Gonville",
+    "Sauverny",
+    "Ségny",
+    "Sergy",
+    "Thoiry",
+    "Versonnex",
+    "Vesancy",
+  ] as const;
+
+  const PHONE_DISPLAY = "06 34 16 27 16";
+  const PHONE_INTL = "+33634162716";
+  const EMAIL = "jfrizon@lagenceimmo01.fr";
+  const WHATSAPP_MESSAGE = encodeURIComponent(
+    "Bonjour John, j’ai un projet immobilier dans le Pays de Gex. Pouvez-vous me rappeler ?"
+  );
 
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-slate-50">
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000" 
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000"
           className="w-full h-full object-cover"
           alt="Luxury Home Background"
         />
@@ -57,114 +61,182 @@ const COMMUNES = [
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight tracking-tight text-slate-900">
-            Trouvez le <span className="relative">
-              <span className="relative z-10 text-white px-4 py-1 bg-slate-900 rounded-lg">logement idéal</span>
-            </span> <br /> pour votre budget.
+            Trouvez le{" "}
+            <span className="relative">
+              <span className="relative z-10 text-white px-4 py-1 bg-slate-900 rounded-lg">
+                logement idéal
+              </span>
+            </span>{" "}
+            <br /> pour votre budget.
           </h1>
-          
+
           <p className="text-lg text-slate-600 max-w-md leading-relaxed">
-            Expertise immobilière dans le Pays de Gex, l'Ain et la Haute-Savoie. Découvrez toutes nos propriétés et vendez au meilleur prix.
+            Expertise immobilière dans le Pays de Gex, l&apos;Ain et la Haute-Savoie.
+            Découvrez toutes nos propriétés et vendez au meilleur prix.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <button 
+            <button
               onClick={onFindHome}
               className="bg-white text-slate-900 px-8 py-4 rounded-xl font-semibold apple-shadow flex items-center justify-center gap-2 hover:bg-slate-50 transition-all"
             >
               Trouver mon logement idéal 🏡
             </button>
-            <button 
+            <button
               onClick={onEstimate}
               className="bg-slate-900 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-slate-800 transition-all"
             >
               Estimer mon bien gratuitement
             </button>
           </div>
+
+          {/* ✅ Bloc rassurant + carte contact */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-4">
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 rounded-xl bg-slate-900 text-white text-xs font-bold">
+                  📍 Pays de Gex • Frontière Genève
+                </span>
+                <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
+                  🏠 Appart • Villa • Chalet • Invest
+                </span>
+                <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
+                  ⚡ Réponse sous 2h
+                </span>
+              </div>
+
+              <p className="mt-3 text-sm text-slate-600">
+                Une approche claire, réactive et locale — pour vendre au meilleur prix
+                ou trouver le bon bien.
+              </p>
+            </div>
+
+            <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-4">
+              <div className="text-sm font-bold text-slate-900">Contact direct</div>
+
+              <div className="mt-3 grid grid-cols-2 gap-2">
+                <a
+                  href={`tel:${PHONE_INTL}`}
+                  className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50 text-center"
+                >
+                  📞 Appeler
+                </a>
+
+                <a
+                  href={`https://wa.me/${PHONE_INTL.replace("+", "")}?text=${WHATSAPP_MESSAGE}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50 text-center"
+                >
+                  💬 WhatsApp
+                </a>
+
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50 text-center"
+                >
+                  ✉️ Email
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent("open-contact-modal"))}
+                  className="rounded-xl bg-slate-900 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-800"
+                >
+                  📅 RDV
+                </button>
+              </div>
+
+              <div className="mt-3 text-xs text-slate-600">
+                {PHONE_DISPLAY} • {EMAIL}
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="hidden lg:block relative animate-in fade-in zoom-in duration-1000">
-           <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-4 apple-shadow">
-              <img 
-                src={`${import.meta.env.BASE_URL}images/escarnot.jpeg`}
-                className="w-full h-full object-cover rounded-2xl"
-                alt="Featured Property"
-              />
-              <div className="absolute bottom-8 right-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-white/50">
-                <div className="flex items-center gap-2 mb-1">
-                   <span className="text-red-500 text-lg">❤️</span>
-                   <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Exclusivité</span>
-                </div>
-                <h3 className="text-lg font-bold">Chalet 6 pièces</h3>
-                <p className="text-xl font-medium text-slate-900">395 000€</p>
-                <div className="mt-2 flex gap-1">
-                  {[1,2,3,4,5].map(i => <div key={i} className="h-1 w-8 bg-slate-200 rounded-full last:bg-slate-900/10 overflow-hidden"></div>)}
-                </div>
+          <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-4 apple-shadow">
+            <img
+              src={`${import.meta.env.BASE_URL}images/escarnot.jpeg`}
+              className="w-full h-full object-cover rounded-2xl"
+              alt="Featured Property"
+            />
+            <div className="absolute bottom-8 right-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-white/50">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-red-500 text-lg">❤️</span>
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  Exclusivité
+                </span>
               </div>
-           </div>
+              <h3 className="text-lg font-bold">Chalet 6 pièces</h3>
+              <p className="text-xl font-medium text-slate-900">395 000€</p>
+              <div className="mt-2 flex gap-1">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div
+                    key={i}
+                    className="h-1 w-8 bg-slate-200 rounded-full last:bg-slate-900/10 overflow-hidden"
+                  ></div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
+      {/* Search bar */}
       <div className="max-w-5xl mx-auto px-6 mt-16 relative z-10">
-  <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 apple-shadow border border-white/40 flex flex-wrap lg:flex-nowrap gap-4 items-end">
+        <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 apple-shadow border border-white/40 flex flex-wrap lg:flex-nowrap gap-4 items-end">
+          <div className="flex-1 min-w-[200px] space-y-2">
+            <label className="text-xs font-bold text-slate-400 uppercase ml-1">
+              Type de bien 🏠
+            </label>
 
-    <div className="flex-1 min-w-[200px] space-y-2">
-      <label className="text-xs font-bold text-slate-400 uppercase ml-1">
-        Type de bien 🏠
-      </label>
+            <select
+              className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none"
+              value={typeBien}
+              onChange={(e) => setTypeBien(e.target.value)}
+            >
+              <option value="Tous les types">Tous les types</option>
+              <option value="Maison">Maison</option>
+              <option value="Appartement">Appartement</option>
+              <option value="Chalet">Chalet</option>
+              <option value="Villa">Villa</option>
+              <option value="Propriété">Propriété</option>
+            </select>
+          </div>
 
-      <select
-        className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none"
-        value={typeBien}
-        onChange={(e) => setTypeBien(e.target.value)}
-      >
-        <option value="Tous les types">Tous les types</option>
-        <option value="Maison">Maison</option>
-        <option value="Appartement">Appartement</option>
-        <option value="Chalet">Chalet</option>
-        <option value="Villa">Villa</option>
-        <option value="Propriété">Propriété</option>
-      </select>
-    </div>
+          <div className="flex-1 min-w-[200px] space-y-2">
+            <label className="text-xs font-bold text-slate-400 uppercase ml-1">
+              Localisation 📍
+            </label>
 
-    <div className="flex-1 min-w-[200px] space-y-2">
-      <label className="text-xs font-bold text-slate-400 uppercase ml-1">
-        Localisation 📍
-      </label>
+            <select
+              className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none"
+              value={zone}
+              onChange={(e) => setZone(e.target.value)}
+            >
+              <option value="Toutes les communes">Toutes les communes</option>
+              {COMMUNES.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </div>
 
-      <select
-  className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none"
-  value={zone}
-  onChange={(e) => setZone(e.target.value)}
->
-  <option value="Toutes les communes">Toutes les communes</option>
-  {COMMUNES.map((c) => (
-    <option key={c} value={c}>
-      {c}
-    </option>
-  ))}
-</select>
-
-    </div>
-
-   <button
-  type="button"
-  onClick={() => {
-    const type = typeBien === "Tous les types" ? undefined : typeBien;
-
-    // si "Toutes les communes" → pas de filtre localisation
-    const location = zone === "Toutes les communes" ? undefined : zone;
-
-    onSearch({ type, location });
-  }}
-  className="w-full lg:w-auto bg-slate-900 text-white px-10 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all"
->
-  Rechercher
-</button>
-
-
-  </div>
-</div>
-
+          <button
+            type="button"
+            onClick={() => {
+              const type = typeBien === "Tous les types" ? undefined : typeBien;
+              const location = zone === "Toutes les communes" ? undefined : zone;
+              onSearch({ type, location });
+            }}
+            className="w-full lg:w-auto bg-slate-900 text-white px-10 py-3 rounded-xl font-bold hover:bg-slate-800 transition-all"
+          >
+            Rechercher
+          </button>
+        </div>
+      </div>
     </section>
   );
 };
