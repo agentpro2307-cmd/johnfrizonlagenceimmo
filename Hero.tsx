@@ -94,41 +94,44 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
             </button>
           </div>
 
-          {/* Bloc rassurant + contact compact */}
-         <div className="grid grid-cols-1 gap-4 pt-2">
-            <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-4">
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 rounded-xl bg-slate-900 text-white text-xs font-bold">
-                  📍 Pays de Gex • Frontière Genève
-                </span>
-                <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
-                  🏠 Appart • Villa • Chalet • Invest
-                </span>
-                <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
-                  ⚡ Réponse sous 2h
-                </span>
-              </div>
+         {/* Bloc rassurant + contact compact */}
+<div className="grid grid-cols-1 gap-4 pt-2">
+  <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-4">
+    <div className="flex flex-wrap gap-2">
+      <span className="px-3 py-1 rounded-xl bg-slate-900 text-white text-xs font-bold">
+        📍 Pays de Gex • Frontière Genève
+      </span>
+      <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
+        🏠 Appart • Villa • Chalet • Invest
+      </span>
+      <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
+        ⚡ Réponse sous 2h
+      </span>
+    </div>
 
-              <p className="mt-3 text-sm text-slate-600">
-                Une approche claire, réactive et locale — pour vendre au meilleur prix
-                ou trouver le bon bien.
-              </p>
+    <p className="mt-3 text-sm text-slate-600">
+      Une approche claire, réactive et locale — pour vendre au meilleur prix
+      ou trouver le bon bien.
+    </p>
 
-            <button
-  type="button"
-  onClick={() =>
-    document
-      .getElementById("faisons-connaissance")
-      ?.scrollIntoView({ behavior: "smooth" })
-  }
-  className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors"
->
-  Faisons connaissance <span className="text-slate-400">→</span>
-</button>
+    <button
+      type="button"
+      onClick={() =>
+        document
+          .getElementById("faisons-connaissance")
+          ?.scrollIntoView({ behavior: "smooth" })
+      }
+      className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors"
+    >
+      Faisons connaissance <span className="text-slate-400">→</span>
+    </button>
 
-<div className="mt-2 text-[11px] text-slate-500">
-  {PHONE_DISPLAY} • {EMAIL}
+    <div className="mt-2 text-[11px] text-slate-500">
+      {PHONE_DISPLAY} • {EMAIL}
+    </div>
+  </div>
 </div>
+
 
         <div className="hidden lg:block relative animate-in fade-in zoom-in duration-1000">
           <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-4 apple-shadow">
