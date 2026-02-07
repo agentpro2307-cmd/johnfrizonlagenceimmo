@@ -9,26 +9,21 @@ type Props = {
 };
 
 export default function FormModal({ isOpen, onClose, type }: Props) {
-  // ✅ Formspree endpoint
   const FORM_ENDPOINT = "https://formspree.io/f/xojnaypn";
 
-  // Base fields
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  // Estimation toggle (cliquable)
   const [wantsEstimation, setWantsEstimation] = useState(false);
 
-  // Estimation fields
   const [city, setCity] = useState("");
   const [propertyType, setPropertyType] = useState("");
   const [surface, setSurface] = useState("");
   const [rooms, setRooms] = useState("");
   const [timeline, setTimeline] = useState("");
 
-  // ✅ pré-cocher si ouverture depuis "Estimer"
   useEffect(() => {
     if (!isOpen) return;
     setWantsEstimation(type === "estimation");
@@ -36,7 +31,6 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
 
   const isEstimation = wantsEstimation;
 
-  // ESC to close
   useEffect(() => {
     if (!isOpen) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -45,6 +39,16 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isOpen, onClose]);
+
+  // ✅ bloque le scroll de la page derrière (mobile surtout)
+  useEffect(() => {
+    if (!isOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -81,7 +85,6 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
     }
 
     try {
-      // ✅ Formspree “béton” : FormData marche partout
       const formData = new FormData();
       Object.entries(payload).forEach(([k, v]) => formData.append(k, v));
 
@@ -102,18 +105,27 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
 
   return (
     <div
-      className="fixed inset-0 z-[999] flex items-center justify-center px-4"
+      className="fixed inset-0 z-[999] flex items-end md:items-center justify-center"
       role="dialog"
       aria-modal="true"
-      onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/50" />
+      {/* overlay cliquable */}
+      <button
+        type="button"
+        className="absolute inset-0 bg-black/50"
+        aria-label="Fermer"
+        onClick={onClose}
+      />
 
+      {/* ✅ container : plein écran en mobile, carte sur desktop */}
       <div
-        className="relative w-full max-w-2xl rounded-3xl bg-white p-6 md:p-8 shadow-xl"
+        className="relative w-full md:max-w-2xl bg-white md:rounded-3xl shadow-xl
+                   h-[100dvh] md:h-auto md:max-h-[85dvh]
+                   flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-start justify-between gap-4">
+        {/* ✅ header sticky : X toujours visible */}
+        <div className="sticky top-0 z-10 bg-white/95 backdrop-blur border-b border-slate-100 px-6 py-4 md:rounded-t-3xl flex items-start justify-between gap-4">
           <h3 className="text-xl md:text-2xl font-bold text-slate-900">{title}</h3>
 
           <button
@@ -126,104 +138,113 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
           </button>
         </div>
 
-        {/* ✅ Checkbox cliquable (case + texte) */}
-        <label className="mt-4 inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none">
-          <input
-            type="checkbox"
-            checked={wantsEstimation}
-            onChange={(e) => setWantsEstimation(e.target.checked)}
-            className="h-4 w-4 accent-slate-900"
-          />
-          <span>Demande d’estimation</span>
-        </label>
-
-        <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* ✅ contenu scrollable */}
+        <div className="flex-1 overflow-y-auto px-6 py-5">
+          <label className="inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none">
             <input
-              className="w-full rounded-2xl border border-slate-200 px-4 py-3"
-              placeholder="Nom"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
+              type="checkbox"
+              checked={wantsEstimation}
+              onChange={(e) => setWantsEstimation(e.target.checked)}
+              className="h-4 w-4 accent-slate-900"
             />
-            <input
-              className="w-full rounded-2xl border border-slate-200 px-4 py-3"
-              placeholder="Téléphone"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required
-            />
-          </div>
+            <span>Demande d’estimation</span>
+          </label>
 
-          <input
-            className="w-full rounded-2xl border border-slate-200 px-4 py-3"
-            placeholder="Email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-
-          {/* ✅ Champs Estimation */}
-          {isEstimation && (
-            <div className="rounded-2xl border border-slate-200 p-4 space-y-4">
-              <p className="font-semibold text-slate-900">Informations pour l’estimation</p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  className="w-full rounded-2xl border border-slate-200 px-4 py-3"
-                  placeholder="Commune"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                />
-                <input
-                  className="w-full rounded-2xl border border-slate-200 px-4 py-3"
-                  placeholder="Type de bien (appartement, maison...)"
-                  value={propertyType}
-                  onChange={(e) => setPropertyType(e.target.value)}
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <input
-                  className="w-full rounded-2xl border border-slate-200 px-4 py-3"
-                  placeholder="Surface (m²)"
-                  inputMode="numeric"
-                  value={surface}
-                  onChange={(e) => setSurface(e.target.value)}
-                />
-                <input
-                  className="w-full rounded-2xl border border-slate-200 px-4 py-3"
-                  placeholder="Pièces"
-                  inputMode="numeric"
-                  value={rooms}
-                  onChange={(e) => setRooms(e.target.value)}
-                />
-                <input
-                  className="w-full rounded-2xl border border-slate-200 px-4 py-3"
-                  placeholder="Délai (optionnel)"
-                  value={timeline}
-                  onChange={(e) => setTimeline(e.target.value)}
-                />
-              </div>
+          <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input
+                className="w-full rounded-2xl border border-slate-200 px-4 py-3"
+                placeholder="Nom"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <input
+                className="w-full rounded-2xl border border-slate-200 px-4 py-3"
+                placeholder="Téléphone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+              />
             </div>
-          )}
 
-          <textarea
-            className="w-full rounded-2xl border border-slate-200 px-4 py-3 min-h-[120px]"
-            placeholder={
-              isEstimation
-                ? "Détails utiles (travaux, charges, vue, expo...)"
-                : "Votre message"
-            }
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
+            <input
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3"
+              placeholder="Email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
 
-          <button className="w-full rounded-2xl bg-slate-900 text-white font-semibold py-3 hover:opacity-90">
-            Envoyer
-          </button>
-        </form>
+            {isEstimation && (
+              <div className="rounded-2xl border border-slate-200 p-4 space-y-4">
+                <p className="font-semibold text-slate-900">
+                  Informations pour l’estimation
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3"
+                    placeholder="Commune"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                  />
+                  <input
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3"
+                    placeholder="Type de bien (appartement, maison...)"
+                    value={propertyType}
+                    onChange={(e) => setPropertyType(e.target.value)}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <input
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3"
+                    placeholder="Surface (m²)"
+                    inputMode="numeric"
+                    value={surface}
+                    onChange={(e) => setSurface(e.target.value)}
+                  />
+                  <input
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3"
+                    placeholder="Pièces"
+                    inputMode="numeric"
+                    value={rooms}
+                    onChange={(e) => setRooms(e.target.value)}
+                  />
+                  <input
+                    className="w-full rounded-2xl border border-slate-200 px-4 py-3"
+                    placeholder="Délai (optionnel)"
+                    value={timeline}
+                    onChange={(e) => setTimeline(e.target.value)}
+                  />
+                </div>
+              </div>
+            )}
+
+            <textarea
+              className="w-full rounded-2xl border border-slate-200 px-4 py-3 min-h-[120px]"
+              placeholder={
+                isEstimation
+                  ? "Détails utiles (travaux, charges, vue, expo...)"
+                  : "Votre message"
+              }
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+
+            {/* ✅ footer sticky : bouton toujours accessible sur mobile */}
+            <div className="sticky bottom-0 bg-white pt-3 pb-2">
+              <button
+                className="w-full rounded-2xl bg-slate-900 text-white font-semibold py-3 hover:opacity-90"
+                type="submit"
+              >
+                Envoyer
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
