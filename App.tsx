@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./Hero";
 import Features from "./Features";
@@ -7,7 +7,7 @@ import Testimonials from "./Testimonials";
 import CTA from "./CTA";
 import Footer from "./Footer";
 import FormModal from "./FormModal";
-import React, { useEffect, useState } from "react";
+
 
 type Filters = { type?: string; location?: string };
 
