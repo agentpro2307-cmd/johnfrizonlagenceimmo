@@ -139,6 +139,8 @@ function badgeClass(label: string) {
     return "bg-slate-900/90 text-white border border-white/20";
   if (l.includes("nouveau"))
     return "bg-blue-600/90 text-white border border-white/20";
+  if (l.includes("spécial investissement"))
+    return "bg-blue-600/90 text-white border border-white/20";
   if (l.includes("coup"))
     return "bg-rose-600/90 text-white border border-white/20";
   return "bg-white/90 text-slate-900 border border-slate-200";
