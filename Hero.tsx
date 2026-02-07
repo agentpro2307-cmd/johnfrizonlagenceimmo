@@ -127,7 +127,8 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
               </button>
             </div>
 
-            <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-3">
+            <div className="rounded-2xl bg-white/85 backdrop-blur border border-white/60 apple-shadow p-4 w-full">
+
               <div className="flex items-center justify-between gap-3">
                 <div className="text-sm font-bold text-slate-900">Contact direct</div>
 
