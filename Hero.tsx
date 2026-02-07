@@ -40,12 +40,9 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
   const [typeBien, setTypeBien] = useState("Tous les types");
   const [zone, setZone] = useState<string>("Toutes les communes");
 
-  const PHONE_DISPLAY = "06 34 16 27 16";
-  const EMAIL = "jfrizon@lagenceimmo01.fr";
-
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-slate-50">
-      {/* BG */}
+      {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000"
@@ -55,10 +52,10 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
         <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent" />
       </div>
 
-      {/* Main grid */}
+      {/* Top content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* LEFT */}
-        <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
+        <div className="space-y-8">
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight tracking-tight text-slate-900">
             Trouvez le{" "}
             <span className="relative">
@@ -71,14 +68,13 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
 
           <p className="text-lg text-slate-600 max-w-md leading-relaxed">
             Expertise immobilière dans le Pays de Gex, l&apos;Ain et la Haute-Savoie.
-            Découvrez nos propriétés et vendez au meilleur prix.
+            Découvrez toutes nos propriétés et vendez au meilleur prix.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={onFindHome}
               className="bg-white text-slate-900 px-8 py-4 rounded-xl font-semibold apple-shadow flex items-center justify-center gap-2 hover:bg-slate-50 transition-all"
-              type="button"
             >
               Trouver mon logement idéal 🏡
             </button>
@@ -86,13 +82,12 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
             <button
               onClick={onEstimate}
               className="bg-slate-900 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-slate-800 transition-all"
-              type="button"
             >
               Estimer mon bien gratuitement
             </button>
           </div>
 
-          {/* Petit bloc rassurant (compact) */}
+          {/* Bloc rassurant (compact) */}
           <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-4">
             <div className="flex flex-wrap gap-2">
               <span className="px-3 py-1 rounded-xl bg-slate-900 text-white text-xs font-bold">
@@ -114,21 +109,19 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
             <button
               type="button"
               onClick={() =>
-                document.getElementById("faisons-connaissance")?.scrollIntoView({ behavior: "smooth" })
+                document
+                  .getElementById("faisons-connaissance")
+                  ?.scrollIntoView({ behavior: "smooth" })
               }
               className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors"
             >
               Faisons connaissance <span className="text-slate-400">→</span>
             </button>
-
-            <div className="mt-2 text-[11px] text-slate-500">
-              {PHONE_DISPLAY} • {EMAIL}
-            </div>
           </div>
         </div>
 
-        {/* RIGHT (desktop) */}
-        <div className="hidden lg:block relative animate-in fade-in zoom-in duration-1000">
+        {/* RIGHT (desktop only) */}
+        <div className="hidden lg:block relative">
           <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-4 apple-shadow">
             <img
               src={`${import.meta.env.BASE_URL}images/escarnot.jpeg`}
@@ -148,18 +141,24 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
             </div>
           </div>
 
-          {/* Petit cadre sous la photo */}
+          {/* petit cadre sous la photo */}
           <div className="mt-4 rounded-2xl bg-white/85 backdrop-blur border border-white/60 apple-shadow p-4">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <div className="text-sm font-bold text-slate-900">Faisons connaissance</div>
-                <div className="text-xs text-slate-500">Votre conseiller immobilier — Pays de Gex</div>
+                <div className="text-sm font-bold text-slate-900">
+                  Faisons connaissance
+                </div>
+                <div className="text-xs text-slate-500">
+                  Votre conseiller immobilier — Pays de Gex
+                </div>
               </div>
 
               <button
                 type="button"
                 onClick={() =>
-                  document.getElementById("faisons-connaissance")?.scrollIntoView({ behavior: "smooth" })
+                  document
+                    .getElementById("faisons-connaissance")
+                    ?.scrollIntoView({ behavior: "smooth" })
                 }
                 className="rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-slate-800"
               >
@@ -186,7 +185,9 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
       <div className="max-w-5xl mx-auto px-6 mt-16 relative z-10">
         <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 apple-shadow border border-white/40 flex flex-wrap lg:flex-nowrap gap-4 items-end">
           <div className="flex-1 min-w-[200px] space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase ml-1">Type de bien 🏠</label>
+            <label className="text-xs font-bold text-slate-400 uppercase ml-1">
+              Type de bien 🏠
+            </label>
 
             <select
               className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none"
@@ -198,12 +199,13 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
               <option value="Appartement">Appartement</option>
               <option value="Chalet">Chalet</option>
               <option value="Villa">Villa</option>
-              {/* Propriété supprimé */}
             </select>
           </div>
 
           <div className="flex-1 min-w-[200px] space-y-2">
-            <label className="text-xs font-bold text-slate-400 uppercase ml-1">Localisation 📍</label>
+            <label className="text-xs font-bold text-slate-400 uppercase ml-1">
+              Localisation 📍
+            </label>
 
             <select
               className="w-full bg-slate-50 border-none rounded-xl p-3 text-slate-700 outline-none"
