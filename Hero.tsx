@@ -114,29 +114,22 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
                 ou trouver le bon bien.
               </p>
 
-              <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("faisons-connaissance")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors"
-              >
-                Faisons connaissance <span className="text-slate-400">→</span>
-              </button>
-            </div>
+            <button
+  type="button"
+  onClick={() =>
+    document
+      .getElementById("faisons-connaissance")
+      ?.scrollIntoView({ behavior: "smooth" })
+  }
+  className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors"
+>
+  Faisons connaissance <span className="text-slate-400">→</span>
+</button>
 
-            <div className="rou
+<div className="mt-2 text-[11px] text-slate-500">
+  {PHONE_DISPLAY} • {EMAIL}
+</div>
 
-              <div className="mt-2 text-[11px] text-slate-500">
-                <div className="mt-2 text-[11px] text-slate-500">{PHONE_DISPLAY} • {EMAIL}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT (desktop) */}
         <div className="hidden lg:block relative animate-in fade-in zoom-in duration-1000">
           <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-4 apple-shadow">
             <img
