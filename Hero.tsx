@@ -95,7 +95,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
           </div>
 
           {/* Bloc rassurant + contact compact */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+         <div className="grid grid-cols-1 gap-4 pt-2">
             <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-4">
               <div className="flex flex-wrap gap-2">
                 <span className="px-3 py-1 rounded-xl bg-slate-900 text-white text-xs font-bold">
@@ -127,49 +127,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
               </button>
             </div>
 
-            <div className="rounded-2xl bg-white/85 backdrop-blur border border-white/60 apple-shadow p-4 w-full">
-
-              <div className="flex items-center justify-between gap-3">
-                <div className="text-sm font-bold text-slate-900">Contact direct</div>
-
-                <div className="flex items-center gap-2 flex-wrap justify-end">
-                  <a
-                    href={`tel:${PHONE_INTL}`}
-                    className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-xs font-bold text-slate-900 hover:bg-slate-50"
-                  >
-                    📞 Appeler
-                  </a>
-
-                  <a
-                    href={`https://wa.me/${PHONE_INTL.replace(
-                      "+",
-                      ""
-                    )}?text=${WHATSAPP_MESSAGE}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-xs font-bold text-slate-900 hover:bg-slate-50"
-                  >
-                    💬 WhatsApp
-                  </a>
-
-                  <a
-                    href={`mailto:${EMAIL}`}
-                    className="hidden sm:inline-flex rounded-xl bg-white border border-slate-200 px-3 py-2 text-xs font-bold text-slate-900 hover:bg-slate-50"
-                  >
-                    ✉️ Email
-                  </a>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      window.dispatchEvent(new CustomEvent("open-contact-modal"))
-                    }
-                    className="rounded-xl bg-slate-900 px-3 py-2 text-xs font-bold text-white hover:bg-slate-800"
-                  >
-                    📅 RDV
-                  </button>
-                </div>
-              </div>
+            <div className="rou
 
               <div className="mt-2 text-[11px] text-slate-500">
                 {PHONE_DISPLAY} • {EMAIL}
