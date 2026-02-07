@@ -144,16 +144,17 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
               </div>
 
               <button
-                type="button"
-                onClick={() =>
-                  document
-                    .getElementById("faisons-connaissance")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-slate-800"
-              >
-                Découvrir →
-              </button>
+  type="button"
+  onClick={() =>
+    document
+      .getElementById("faisons-connaissance")
+      ?.scrollIntoView({ behavior: "smooth" })
+  }
+  className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors"
+>
+  Faisons connaissance <span className="text-slate-400">→</span>
+</button>
+
             </div>
 
             <div className="mt-3 flex flex-wrap gap-2">
