@@ -49,16 +49,19 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
 
   return (
     <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-slate-50">
+      {/* BG */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=2000"
           className="w-full h-full object-cover"
           alt="Luxury Home Background"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent" />
       </div>
 
+      {/* Main grid */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* LEFT */}
         <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight tracking-tight text-slate-900">
             Trouvez le{" "}
@@ -82,6 +85,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
             >
               Trouver mon logement idéal 🏡
             </button>
+
             <button
               onClick={onEstimate}
               className="bg-slate-900 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:bg-slate-800 transition-all"
@@ -90,94 +94,90 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
             </button>
           </div>
 
-          {/* ✅ Bloc rassurant + carte contact */}
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-  {/* Bloc rassurant */}
-  <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-4">
-    <div className="flex flex-wrap gap-2">
-      <span className="px-3 py-1 rounded-xl bg-slate-900 text-white text-xs font-bold">
-        📍 Pays de Gex • Frontière Genève
-      </span>
-      <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
-        🏠 Appart • Villa • Chalet • Invest
-      </span>
-      <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
-        ⚡ Réponse sous 2h
-      </span>
-    </div>
+          {/* Bloc rassurant + contact compact */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-4">
+              <div className="flex flex-wrap gap-2">
+                <span className="px-3 py-1 rounded-xl bg-slate-900 text-white text-xs font-bold">
+                  📍 Pays de Gex • Frontière Genève
+                </span>
+                <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
+                  🏠 Appart • Villa • Chalet • Invest
+                </span>
+                <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
+                  ⚡ Réponse sous 2h
+                </span>
+              </div>
 
-    <p className="mt-3 text-sm text-slate-600">
-      Une approche claire, réactive et locale — pour vendre au meilleur prix
-      ou trouver le bon bien.
-    </p>
+              <p className="mt-3 text-sm text-slate-600">
+                Une approche claire, réactive et locale — pour vendre au meilleur prix
+                ou trouver le bon bien.
+              </p>
 
-    {/* ✅ Petit “onglet” discret */}
-    <button
-      type="button"
-      onClick={() =>
-        document.getElementById("faisons-connaissance")?.scrollIntoView({ behavior: "smooth" })
-      }
-      className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors"
-    >
-      Faisons connaissance <span className="text-slate-400">→</span>
-    </button>
-  </div>
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("faisons-connaissance")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-slate-900 hover:text-blue-600 transition-colors"
+              >
+                Faisons connaissance <span className="text-slate-400">→</span>
+              </button>
+            </div>
 
-  {/* ✅ Contact direct compact (2x plus petit) */}
-  <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-3">
-    <div className="flex items-center justify-between gap-3">
-      <div className="text-sm font-bold text-slate-900">Contact direct</div>
+            <div className="rounded-2xl bg-white/80 backdrop-blur border border-white/60 apple-shadow p-3">
+              <div className="flex items-center justify-between gap-3">
+                <div className="text-sm font-bold text-slate-900">Contact direct</div>
 
-      {/* boutons compacts */}
-      <div className="flex items-center gap-2">
-        <a
-          href={`tel:${PHONE_INTL}`}
-          className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-xs font-bold text-slate-900 hover:bg-slate-50"
-        >
-          📞 Appeler
-        </a>
+                <div className="flex items-center gap-2 flex-wrap justify-end">
+                  <a
+                    href={`tel:${PHONE_INTL}`}
+                    className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-xs font-bold text-slate-900 hover:bg-slate-50"
+                  >
+                    📞 Appeler
+                  </a>
 
-        <a
-          href={`https://wa.me/${PHONE_INTL.replace("+", "")}?text=${WHATSAPP_MESSAGE}`}
-          target="_blank"
-          rel="noreferrer"
-          className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-xs font-bold text-slate-900 hover:bg-slate-50"
-        >
-          💬 WhatsApp
-        </a>
+                  <a
+                    href={`https://wa.me/${PHONE_INTL.replace(
+                      "+",
+                      ""
+                    )}?text=${WHATSAPP_MESSAGE}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-xs font-bold text-slate-900 hover:bg-slate-50"
+                  >
+                    💬 WhatsApp
+                  </a>
 
-        <a
-          href={`mailto:${EMAIL}`}
-          className="hidden sm:inline-flex rounded-xl bg-white border border-slate-200 px-3 py-2 text-xs font-bold text-slate-900 hover:bg-slate-50"
-        >
-          ✉️ Email
-        </a>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    className="hidden sm:inline-flex rounded-xl bg-white border border-slate-200 px-3 py-2 text-xs font-bold text-slate-900 hover:bg-slate-50"
+                  >
+                    ✉️ Email
+                  </a>
 
-        <button
-          type="button"
-          onClick={() => window.dispatchEvent(new CustomEvent("open-contact-modal"))}
-          className="rounded-xl bg-slate-900 px-3 py-2 text-xs font-bold text-white hover:bg-slate-800"
-        >
-          📅 RDV
-        </button>
-      </div>
-    </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      window.dispatchEvent(new CustomEvent("open-contact-modal"))
+                    }
+                    className="rounded-xl bg-slate-900 px-3 py-2 text-xs font-bold text-white hover:bg-slate-800"
+                  >
+                    📅 RDV
+                  </button>
+                </div>
+              </div>
 
-    {/* ligne info ultra discrète */}
-    <div className="mt-2 text-[11px] text-slate-500">
-      {PHONE_DISPLAY} • {EMAIL}
-    </div>
-  </div>
-</div>
-
-
-              <div className="mt-3 text-xs text-slate-600">
+              <div className="mt-2 text-[11px] text-slate-500">
                 {PHONE_DISPLAY} • {EMAIL}
               </div>
             </div>
           </div>
         </div>
 
+        {/* RIGHT (desktop) */}
         <div className="hidden lg:block relative animate-in fade-in zoom-in duration-1000">
           <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-4 apple-shadow">
             <img
@@ -185,37 +185,6 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
               className="w-full h-full object-cover rounded-2xl"
               alt="Featured Property"
             />
-            {/* ✅ Petit cadre "Faisons connaissance" (sous la photo du chalet) */}
-<div className="mt-4 rounded-2xl bg-white/85 backdrop-blur border border-white/60 apple-shadow p-4">
-  <div className="flex items-center justify-between gap-3">
-    <div>
-      <div className="text-sm font-bold text-slate-900">Faisons connaissance</div>
-      <div className="text-xs text-slate-500">Votre conseiller immobilier — Pays de Gex</div>
-    </div>
-
-    <button
-      type="button"
-      onClick={() =>
-        document.getElementById("faisons-connaissance")?.scrollIntoView({ behavior: "smooth" })
-      }
-      className="rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-slate-800"
-    >
-      Découvrir →
-    </button>
-  </div>
-
-  <div className="mt-3 flex flex-wrap gap-2">
-    <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
-      🤝 Suivi personnalisé
-    </span>
-    <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
-      📸 Mise en valeur premium
-    </span>
-    <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
-      📍 Pays de Gex • Genève
-    </span>
-  </div>
-</div>
 
             <div className="absolute bottom-8 right-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-white/50">
               <div className="flex items-center gap-2 mb-1">
@@ -231,9 +200,47 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
                   <div
                     key={i}
                     className="h-1 w-8 bg-slate-200 rounded-full last:bg-slate-900/10 overflow-hidden"
-                  ></div>
+                  />
                 ))}
               </div>
+            </div>
+          </div>
+
+          {/* petit cadre sous la photo */}
+          <div className="mt-4 rounded-2xl bg-white/85 backdrop-blur border border-white/60 apple-shadow p-4">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <div className="text-sm font-bold text-slate-900">
+                  Faisons connaissance
+                </div>
+                <div className="text-xs text-slate-500">
+                  Votre conseiller immobilier — Pays de Gex
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() =>
+                  document
+                    .getElementById("faisons-connaissance")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-slate-800"
+              >
+                Découvrir →
+              </button>
+            </div>
+
+            <div className="mt-3 flex flex-wrap gap-2">
+              <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
+                🤝 Suivi personnalisé
+              </span>
+              <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
+                📸 Mise en valeur premium
+              </span>
+              <span className="px-3 py-1 rounded-xl bg-white text-slate-900 text-xs font-bold border border-slate-200">
+                📍 Pays de Gex • Genève
+              </span>
             </div>
           </div>
         </div>
@@ -257,7 +264,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
               <option value="Appartement">Appartement</option>
               <option value="Chalet">Chalet</option>
               <option value="Villa">Villa</option>
-          
+              {/* Propriété supprimé */}
             </select>
           </div>
 
