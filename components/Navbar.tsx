@@ -5,9 +5,9 @@ type Props = {
 };
 
 // ✅ Mets tes vrais liens ici
-const INSTAGRAM_URL = "https://www.instagram.com/TON_COMPTE/";
-const FACEBOOK_URL = "https://www.facebook.com/TON_COMPTE/";
-const LINKEDIN_URL = "https://www.linkedin.com/in/TON_COMPTE/";
+const INSTAGRAM_URL = "hhttps://www.instagram.com/john_lagence_immo/";
+const FACEBOOK_URL = "https://www.facebook.com/profile.php?id=61578031168900";
+const LINKEDIN_URL = "https://www.linkedin.com/in/john-frizon-l%E2%80%99agence-immo-8a749a2b6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app";
 
 const PHONE_INTL = "+33634162716";
 const WHATSAPP_MESSAGE = encodeURIComponent(
