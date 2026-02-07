@@ -107,6 +107,7 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/st-jean.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3097744101",
   },
+   {
    id: 7,
     title: "Appartement 3 pièces 61m²",
     price: 345000,
