@@ -1,154 +1,114 @@
-import React from "react";
+import React, { useState } from "react";
 
 type Props = {
   onContactClick?: () => void;
 };
 
+const PHONE_INTL = "+33634162716";
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  "Bonjour John, j’ai un projet immobilier dans le Pays de Gex. Pouvez-vous me rappeler ?"
+);
+const WHATSAPP_URL = `https://wa.me/${PHONE_INTL.replace("+", "")}?text=${WHATSAPP_MESSAGE}`;
+
 export default function Navbar({ onContactClick }: Props) {
-  const WHATSAPP_NUMBER_INTL = "33634162716"; // sans +
-  const WHATSAPP_TEXT = encodeURIComponent(
-    "Bonjour John, j’ai un projet immobilier dans le Pays de Gex. Pouvez-vous me rappeler ?"
-  );
-  const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER_INTL}?text=${WHATSAPP_TEXT}`;
+  const [openSocial, setOpenSocial] = useState(false);
 
-  const goTop = () => {
-    document.getElementById("top")?.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const goNosBiensReset = () => {
-    // reset des filtres (écouté dans App.tsx)
+  const goNosBiens = () => {
     window.dispatchEvent(new Event("reset-property-filters"));
-    document.getElementById("nos-biens")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const goServices = () => {
-    document.getElementById("nos-services")?.scrollIntoView({ behavior: "smooth" });
+    scrollTo("nos-biens");
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mt-4 rounded-3xl bg-white/80 backdrop-blur border border-slate-200 shadow-sm px-6 py-3 flex items-center justify-between">
-          {/* Brand */}
-          <button onClick={goTop} className="flex items-center gap-3" type="button">
-            <img
-              src={`${import.meta.env.BASE_URL}images/logo.png`}
-              alt="John Frizon - L'agence Immo"
-              className="h-10 w-10 rounded-xl object-contain"
-            />
-            <div className="leading-tight text-left">
-              <div className="font-bold text-slate-900">John Frizon</div>
-              <div className="text-sm text-slate-500">L’agence Immo</div>
-            </div>
+    <header className="fixed top-0 left-0 right-0 z-[1000] px-4 pt-4">
+      <div className="max-w-7xl mx-auto glass-nav rounded-3xl apple-shadow px-4 py-3 flex items-center justify-between gap-4">
+        {/* Logo / Brand */}
+        <button
+          type="button"
+          onClick={() => scrollTo("top")}
+          className="flex items-center gap-3"
+          aria-label="Accueil"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}images/logo.png`}
+            alt="Logo"
+            className="w-10 h-10 rounded-2xl object-cover"
+          />
+          <div className="text-left leading-tight">
+            <div className="font-bold text-slate-900">John Frizon</div>
+            <div className="text-xs text-slate-500">L’agence Immo</div>
+          </div>
+        </button>
+
+        {/* Nav */}
+        <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700">
+          <button type="button" className="hover:text-slate-900" onClick={() => scrollTo("top")}>
+            Accueil
           </button>
 
-          {/* Menu */}
-          <nav>
-            <ul className="hidden md:flex items-center gap-8">
-              <li>
-                <button
-                  type="button"
-                  onClick={goTop}
-                  className="text-slate-900 hover:text-slate-700 font-medium"
-                >
-                  Accueil
-                </button>
-              </li>
+          <button type="button" className="hover:text-slate-900" onClick={goNosBiens}>
+            Nos Biens
+          </button>
 
-              <li>
-                <button
-                  type="button"
-                  onClick={goNosBiensReset}
-                  className="text-slate-900 hover:text-slate-700 font-medium"
-                >
-                  Nos Biens
-                </button>
-              </li>
-
-              <li>
-                <button
-                  type="button"
-                  onClick={goServices}
-                  className="text-slate-900 hover:text-slate-700 font-medium"
-                >
-                  Nos Services
-                </button>
-              </li>
-
-              {/* Réseaux sociaux */}
-              <li className="relative group">
-                <button
-                  type="button"
-                  className="text-slate-900 hover:text-slate-700 font-medium inline-flex items-center gap-2"
-                >
-                  Réseaux sociaux <span className="text-slate-500">▾</span>
-                </button>
-
-                <div className="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition">
-                  <div className="min-w-[240px] rounded-2xl bg-white border border-slate-200 shadow-lg p-2">
-                    <a
-                      href="https://www.facebook.com/share/1J8bsPv9qG/?mibextid=wwXIfr"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-slate-900 hover:bg-slate-50"
-                    >
-                      Facebook
-                    </a>
-
-                    <a
-                      href="https://www.instagram.com/john_lagence_immo"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-slate-900 hover:bg-slate-50"
-                    >
-                      Instagram
-                    </a>
-
-                    <a
-                      href="https://www.linkedin.com/in/john-frizon-l%E2%80%99agence-immo-8a749a2b6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-slate-900 hover:bg-slate-50"
-                    >
-                      LinkedIn
-                    </a>
-
-                    <a
-                      href="https://www.lagenceimmo01.fr/conseiller/john.frizon,118"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-slate-900 hover:bg-slate-50"
-                    >
-                      Profil L’agence immo
-                    </a>
-                  </div>
-                </div>
-              </li>
-
-              {/* WhatsApp (nouvel onglet) */}
-              <li>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-slate-900 hover:text-slate-700 font-medium inline-flex items-center gap-2"
-                  title="WhatsApp"
-                >
-                  WhatsApp
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          {/* CTA */}
           <button
             type="button"
-            onClick={() => onContactClick?.()}
-            className="inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
+            className="hover:text-slate-900"
+            onClick={() => scrollTo("services")}
           >
-            Nous Contacter <span>→</span>
+            Nos Services
           </button>
-        </div>
+
+          {/* Réseaux sociaux */}
+          <div className="relative">
+            <button
+              type="button"
+              className="hover:text-slate-900 inline-flex items-center gap-2"
+              onClick={() => setOpenSocial((v) => !v)}
+            >
+              Réseaux sociaux <span className="text-slate-400">▼</span>
+            </button>
+
+            {openSocial && (
+              <div
+                className="absolute right-0 mt-2 w-56 rounded-2xl bg-white apple-shadow border border-slate-100 p-2"
+                onMouseLeave={() => setOpenSocial(false)}
+              >
+                <a className="block px-3 py-2 rounded-xl hover:bg-slate-50" href="#" target="_blank" rel="noreferrer">
+                  Instagram
+                </a>
+                <a className="block px-3 py-2 rounded-xl hover:bg-slate-50" href="#" target="_blank" rel="noreferrer">
+                  Facebook
+                </a>
+                <a className="block px-3 py-2 rounded-xl hover:bg-slate-50" href="#" target="_blank" rel="noreferrer">
+                  LinkedIn
+                </a>
+              </div>
+            )}
+          </div>
+
+          {/* WhatsApp */}
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl px-3 py-2 bg-white/70 hover:bg-white border border-slate-200"
+            title="WhatsApp"
+          >
+            WhatsApp
+          </a>
+        </nav>
+
+        {/* CTA */}
+        <button
+          type="button"
+          onClick={() => onContactClick?.()}
+          className="rounded-2xl bg-slate-900 text-white px-4 py-2 font-bold text-sm hover:bg-slate-800"
+        >
+          Nous Contacter →
+        </button>
       </div>
     </header>
   );
