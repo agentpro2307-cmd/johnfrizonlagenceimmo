@@ -61,7 +61,8 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Appartement",
     imageUrl: "/images/piller.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3089369842",
-    badges: ["Nouveauté"],
+       badges: ["Exclusivité"],
+     status: "Sous offre",
   },
   {
     id: 3,
@@ -74,6 +75,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Appartement",
     imageUrl: "/images/traitée.jpg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3115340035",
+     badges: ["Exclusivité"],
   },
   {
     id: 4,
@@ -83,10 +85,10 @@ const MOCK_PROPERTIES: Property[] = [
     beds: 0,
     baths: 0,
     sqft: 113,
-    type: "Propriété",
+    type: "Maison mitoyenne",
     imageUrl: "/images/pereira_00001_2.jpg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3056257502",
-    badges: ["Coup de cœur"],
+    badges: ["Nouveauté"],
   },
   {
     id: 5,
@@ -99,6 +101,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Villa",
     imageUrl: "/images/majetniak.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3079918531",
+     badges: ["Coup de coeur"],
   },
   {
     id: 6,
@@ -111,6 +114,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Appartement",
     imageUrl: "/images/st-jean.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3097744101",
+     badges: ["Spécial investissement"],
   },
   {
     id: 8, // ✅ (avant 7) pour éviter doublon
@@ -123,7 +127,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Appartement",
     imageUrl: "/images/guyot.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3105580714",
-    badges: ["Nouveauté"],
+    badges: ["Exclusivité"],
   },
 ];
 
