@@ -33,7 +33,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Chalet",
     imageUrl: "/images/escarnot.jpeg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3079918529",
-  },
+  }, 
   {
     id: 2,
     title: "Appartement 4 pièces 84 m²",
