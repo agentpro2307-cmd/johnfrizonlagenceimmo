@@ -97,6 +97,18 @@ export default function Navbar() {
                 </li>
 
                 {/* Réseaux sociaux */}
+               <li>
+  <a
+    href="https://wa.me/33634162716?text=Bonjour%20John%2C%20j%E2%80%99ai%20un%20projet%20immobilier%20dans%20le%20Pays%20de%20Gex.%20Pouvez-vous%20me%20rappeler%20%3F"
+    target="_blank"
+    rel="noreferrer"
+    className="text-slate-900 hover:text-slate-700 font-medium inline-flex items-center gap-2"
+  >
+    WhatsApp
+    <span className="text-slate-500">💬</span>
+  </a>
+</li>
+
                 <li className="relative group">
                   <button
                     type="button"
