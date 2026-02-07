@@ -11,7 +11,8 @@ type Property = {
   type: string;
   imageUrl: string;
   url: string;
-  status?: string;
+  status?: string;     // ex: "Sous offre"
+  badges?: string[];   // ex: ["Exclusivité", "Nouveauté"]
 };
 
 type Filters = { type?: string; location?: string };
@@ -33,7 +34,8 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Chalet",
     imageUrl: "/images/escarnot.jpeg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3079918529",
-  }, 
+    badges: ["Exclusivité"],
+  },
   {
     id: 2,
     title: "Appartement 4 pièces 84 m²",
@@ -46,9 +48,10 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/studer.jpg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3136453554",
     status: "Sous offre",
+    badges: ["Exclusivité"],
   },
   {
-    id: 7, // ✅ id unique (avant c'était 2)
+    id: 7,
     title: "Appartement 5 pièces 112 m²",
     price: 550000,
     location: "Péron (01630)",
@@ -58,6 +61,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Appartement",
     imageUrl: "/images/piller.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3089369842",
+    badges: ["Nouveauté"],
   },
   {
     id: 3,
@@ -82,6 +86,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Propriété",
     imageUrl: "/images/pereira_00001_2.jpg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3056257502",
+    badges: ["Coup de cœur"],
   },
   {
     id: 5,
@@ -107,8 +112,8 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/st-jean.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3097744101",
   },
-   {
-   id: 7,
+  {
+    id: 8, // ✅ (avant 7) pour éviter doublon
     title: "Appartement 3 pièces 61m²",
     price: 345000,
     location: "Saint Genis Pouilly (01630)",
@@ -118,8 +123,22 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Appartement",
     imageUrl: "/images/guyot.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3105580714",
+    badges: ["Nouveauté"],
   },
 ];
+
+function badgeClass(label: string) {
+  const l = label.toLowerCase();
+  if (l.includes("sous offre"))
+    return "bg-amber-500/95 text-white border border-amber-400/50";
+  if (l.includes("exclu"))
+    return "bg-slate-900/90 text-white border border-white/20";
+  if (l.includes("nouveau"))
+    return "bg-blue-600/90 text-white border border-white/20";
+  if (l.includes("coup"))
+    return "bg-rose-600/90 text-white border border-white/20";
+  return "bg-white/90 text-slate-900 border border-slate-200";
+}
 
 const PropertyList: React.FC<Props> = ({ filters, onResetFilters }) => {
   const filtered = MOCK_PROPERTIES.filter((p) => {
@@ -132,7 +151,6 @@ const PropertyList: React.FC<Props> = ({ filters, onResetFilters }) => {
 
   const handleViewAll = () => {
     onResetFilters?.();
-    // petit confort : reste bien calé sur la section
     document.getElementById("nos-biens")?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -157,7 +175,12 @@ const PropertyList: React.FC<Props> = ({ filters, onResetFilters }) => {
             className="flex items-center gap-2 text-slate-900 font-bold hover:text-blue-600 transition-colors"
           >
             Voir tout le catalogue
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -170,70 +193,103 @@ const PropertyList: React.FC<Props> = ({ filters, onResetFilters }) => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filtered.map((prop) => (
-            <a
-              key={`${prop.id}-${prop.url}`} // ✅ key béton même si tu changes des ids plus tard
-              href={prop.url}
-              target="_blank"
-              rel="noreferrer"
-              className="group cursor-pointer block"
-            >
-              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-4 apple-shadow group-hover:shadow-lg transition-all">
-                <img
-                  src={`${import.meta.env.BASE_URL}${prop.imageUrl.replace(/^\//, "")}`}
-                  alt={prop.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+          {filtered.map((prop) => {
+            const tags = [
+              ...(prop.badges ?? []),
+              ...(prop.status ? [prop.status] : []),
+            ];
 
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold text-slate-900 shadow-sm">
-                  {prop.type}
+            return (
+              <a
+                key={`${prop.id}-${prop.url}`}
+                href={prop.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group cursor-pointer block"
+              >
+                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-4 apple-shadow group-hover:shadow-lg transition-all">
+                  <img
+                    src={`${import.meta.env.BASE_URL}${prop.imageUrl.replace(
+                      /^\//,
+                      ""
+                    )}`}
+                    alt={prop.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+
+                  {/* ✅ badges (type + autres) */}
+                  <div className="absolute top-4 left-4 flex flex-col gap-2">
+                    <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold text-slate-900 shadow-sm">
+                      {prop.type}
+                    </div>
+
+                    {tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2">
+                        {tags.map((b) => (
+                          <div
+                            key={b}
+                            className={`px-2 py-1 rounded-lg text-[11px] font-bold shadow-sm backdrop-blur-sm ${badgeClass(
+                              b
+                            )}`}
+                          >
+                            {b}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={(e) => e.preventDefault()}
+                    className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-all"
+                    aria-label="Favori"
+                  >
+                    ♥
+                  </button>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={(e) => e.preventDefault()}
-                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-all"
-                  aria-label="Favori"
-                >
-                  ♥
-                </button>
-              </div>
+                <div className="space-y-1">
+                  <p className="text-lg font-bold text-slate-900">
+                    {new Intl.NumberFormat("fr-FR", {
+                      style: "currency",
+                      currency: "EUR",
+                      maximumFractionDigits: 0,
+                    }).format(prop.price)}
+                  </p>
 
-              <div className="space-y-1">
-                <p className="text-lg font-bold text-slate-900">
-                  {new Intl.NumberFormat("fr-FR", {
-                    style: "currency",
-                    currency: "EUR",
-                    maximumFractionDigits: 0,
-                  }).format(prop.price)}
-                </p>
+                  <h3 className="text-slate-800 font-medium truncate">
+                    {prop.title}
+                  </h3>
 
-                <h3 className="text-slate-800 font-medium truncate">
-                  {prop.title}
-                </h3>
+                  <p className="text-sm text-slate-500 flex items-center gap-2">
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19.5 10.5c0 7-7.5 11-7.5 11s-7.5-4-7.5-11a7.5 7.5 0 1115 0z"
+                      />
+                    </svg>
+                    {prop.location}
+                  </p>
 
-                <p className="text-sm text-slate-500 flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19.5 10.5c0 7-7.5 11-7.5 11s-7.5-4-7.5-11a7.5 7.5 0 1115 0z"
-                    />
-                  </svg>
-                  {prop.location}
-                </p>
-
-                <p className="text-xs text-slate-400">{prop.sqft} m²</p>
-              </div>
-            </a>
-          ))}
+                  <p className="text-xs text-slate-400">{prop.sqft} m²</p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -241,4 +297,3 @@ const PropertyList: React.FC<Props> = ({ filters, onResetFilters }) => {
 };
 
 export default PropertyList;
-
