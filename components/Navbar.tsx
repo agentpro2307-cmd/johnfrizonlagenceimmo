@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 type Props = {
   onContactClick?: () => void;
 };
+
+// ✅ Mets tes vrais liens ici
+const INSTAGRAM_URL = "https://www.instagram.com/TON_COMPTE/";
+const FACEBOOK_URL = "https://www.facebook.com/TON_COMPTE/";
+const LINKEDIN_URL = "https://www.linkedin.com/in/TON_COMPTE/";
 
 const PHONE_INTL = "+33634162716";
 const WHATSAPP_MESSAGE = encodeURIComponent(
@@ -12,15 +17,31 @@ const WHATSAPP_URL = `https://wa.me/${PHONE_INTL.replace("+", "")}?text=${WHATSA
 
 export default function Navbar({ onContactClick }: Props) {
   const [openSocial, setOpenSocial] = useState(false);
+  const socialRef = useRef<HTMLDivElement | null>(null);
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const goNosBiens = () => {
     window.dispatchEvent(new Event("reset-property-filters"));
     scrollTo("nos-biens");
   };
+
+  // ✅ Ferme le dropdown si clic en dehors
+  useEffect(() => {
+    const onDown = (e: MouseEvent) => {
+      if (!openSocial) return;
+      const target = e.target as Node;
+      if (socialRef.current && !socialRef.current.contains(target)) {
+        setOpenSocial(false);
+      }
+    };
+    window.addEventListener("mousedown", onDown);
+    return () => window.removeEventListener("mousedown", onDown);
+  }, [openSocial]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[1000] px-4 pt-4">
@@ -43,7 +64,7 @@ export default function Navbar({ onContactClick }: Props) {
           </div>
         </button>
 
-        {/* Nav */}
+        {/* Nav (desktop) */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700">
           <button type="button" className="hover:text-slate-900" onClick={() => scrollTo("top")}>
             Accueil
@@ -53,43 +74,60 @@ export default function Navbar({ onContactClick }: Props) {
             Nos Biens
           </button>
 
+          {/* ✅ ICI : bon id */}
           <button
             type="button"
             className="hover:text-slate-900"
-            onClick={() => scrollTo("services")}
+            onClick={() => scrollTo("nos-services")}
           >
             Nos Services
           </button>
 
           {/* Réseaux sociaux */}
-          <div className="relative">
+          <div className="relative" ref={socialRef}>
             <button
               type="button"
               className="hover:text-slate-900 inline-flex items-center gap-2"
               onClick={() => setOpenSocial((v) => !v)}
+              aria-expanded={openSocial}
             >
               Réseaux sociaux <span className="text-slate-400">▼</span>
             </button>
 
             {openSocial && (
-              <div
-                className="absolute right-0 mt-2 w-56 rounded-2xl bg-white apple-shadow border border-slate-100 p-2"
-                onMouseLeave={() => setOpenSocial(false)}
-              >
-                <a className="block px-3 py-2 rounded-xl hover:bg-slate-50" href="#" target="_blank" rel="noreferrer">
+              <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-white apple-shadow border border-slate-100 p-2">
+                <a
+                  className="block px-3 py-2 rounded-xl hover:bg-slate-50"
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpenSocial(false)}
+                >
                   Instagram
                 </a>
-                <a className="block px-3 py-2 rounded-xl hover:bg-slate-50" href="#" target="_blank" rel="noreferrer">
+                <a
+                  className="block px-3 py-2 rounded-xl hover:bg-slate-50"
+                  href={FACEBOOK_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpenSocial(false)}
+                >
                   Facebook
                 </a>
-                <a className="block px-3 py-2 rounded-xl hover:bg-slate-50" href="#" target="_blank" rel="noreferrer">
+                <a
+                  className="block px-3 py-2 rounded-xl hover:bg-slate-50"
+                  href={LINKEDIN_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpenSocial(false)}
+                >
                   LinkedIn
                 </a>
               </div>
             )}
           </div>
 
-          {/* WhatsApp */}
+          {/* WhatsApp (bouton direct) */}
           <a
             href={WHATSAPP_URL}
             target="_blank"
