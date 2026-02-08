@@ -78,7 +78,8 @@ export default function Navbar({ onContactClick }: Props) {
           <button
             type="button"
             className="hover:text-slate-900"
-            onClick={() => scrollTo("nos-services")}
+      onClick={() => scrollTo("faisons-connaissance")}
+
           >
             Nos Services
           </button>
