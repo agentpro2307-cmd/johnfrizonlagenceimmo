@@ -144,7 +144,12 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
 
               <button
                 type="button"
-                onClick={() => scrollTo("nos-services")}
+               onClick={() =>
+  document
+    .getElementById("faisons-connaissance")
+    ?.scrollIntoView({ behavior: "smooth" })
+}
+
                 className="rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-slate-800"
               >
                 Découvrir →
