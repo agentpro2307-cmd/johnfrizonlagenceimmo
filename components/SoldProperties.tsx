@@ -38,12 +38,12 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     soldInDays: 5,
     exclusivite: true,
     images: [
-      "/images/vendus/stay_00401.jpeg",
-      "/images/vendus/stay_00404.jpeg",
-      "/images/vendus/stay_00402.jpeg",
-      "/images/vendus/stay_00403.jpeg",
-      "/images/vendus/stay_00407.jpeg",
-      "/images/vendus/stay_00406.jpeg",
+      "/images/stay_00401.jpeg",
+      "/images/stay_00404.jpeg",
+      "/images/stay_00402.jpeg",
+      "/images/stay_00403.jpeg",
+      "/images/stay_00407.jpeg",
+      "/images/stay_00406.jpeg",
     ],
   },
   {
@@ -130,16 +130,17 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
   const placeholder = `${import.meta.env.BASE_URL}images/placeholder.jpg`;
 
   return (
-    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-4 apple-shadow">
-      <img
-        src={src}
-        alt={alt}
-        className="w-full h-full object-cover"
-        loading="lazy"
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).src = placeholder;
-        }}
-      />
+    <div className="relative overflow-hidden rounded-2xl border border-white/50 bg-white apple-shadow">
+  <div className="aspect-[16/10] w-full bg-slate-100">
+    <img
+      src={resolveImg(current)}
+      alt={alt}
+      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
+      loading="lazy"
+    />
+  </div>
+</div>
+
 
       {/* voile */}
       <div className="absolute inset-0 bg-black/25" />
