@@ -20,9 +20,18 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     priceSold: 895000,
     soldInDays: 60,
     exclusivite: false,
-    imageUrl: "/images/vendus/peron.jpg",
+    images: [
+      "/images/vendus/peron4.jpg",
+      "/images/vendus/peron2.jpeg",
+      "/images/vendus/peron3.jpg",
+      "/images/vendus/peron1.jpg",
+      "/images/vendus/peron6.jpg",
+      "/images/vendus/peron7.jpg",
+      "/images/vendus/peron5.jpeg",
+    ],
   },
 ];
+
 
 function badgeClass(label: string) {
   const l = label.toLowerCase();
