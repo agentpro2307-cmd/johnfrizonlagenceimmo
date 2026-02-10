@@ -29,6 +29,23 @@ const SOLD_PROPERTIES: SoldProperty[] = [
       "/images/peron7.jpg",
     ],
   },
+  {
+    id: 2,
+    title: "Maison T5 Piscine 800m²",
+    commune: "Thoiry (01710)",
+    priceListed: 817000,
+    priceSold: 810000,
+    soldInDays: 2,
+    exclusivite: false,
+    images: [
+      "/images/vendus/leo1.jpeg",
+      "/images/vendus/leo2.jpeg",
+      "/images/vendus/leo3.jpeg",
+      "/images/vendus/leo4.jpeg",
+      "/images/vendus/leo5.jpeg",
+      "/images/vendus/leo6.jpeg",
+    ],
+  },
    {
     id: 2,
     title: "Maison T5 2017 242m² Dpe A & A",
