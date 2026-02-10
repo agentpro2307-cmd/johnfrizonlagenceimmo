@@ -42,10 +42,12 @@ function Modal({
           <h3 className="text-xl md:text-2xl font-bold text-slate-900">
             {title}
           </h3>
+
           <button
             onClick={onClose}
             className="rounded-xl px-3 py-2 text-slate-600 hover:bg-slate-100"
             aria-label="Fermer"
+            type="button"
           >
             ✕
           </button>
@@ -54,22 +56,22 @@ function Modal({
         <div className="mt-4 text-slate-700 leading-relaxed">{children}</div>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:justify-end">
-  <button
-    onClick={onClose}
-    className="rounded-2xl px-5 py-3 font-semibold border border-slate-200 text-slate-900 hover:bg-slate-50"
-  >
-    Fermer
-  </button>
+          <button
+            onClick={onClose}
+            className="rounded-2xl px-5 py-3 font-semibold border border-slate-200 text-slate-900 hover:bg-slate-50"
+            type="button"
+          >
+            Fermer
+          </button>
 
-  <a
-    href="#contact"
-    onClick={onClose}
-    className="rounded-2xl px-5 py-3 font-semibold bg-slate-900 text-white hover:opacity-90 text-center"
-  >
-    Nous contacter
-  </a>
-</div>
-
+          <a
+            href="#contact"
+            onClick={onClose}
+            className="rounded-2xl px-5 py-3 font-semibold bg-slate-900 text-white hover:opacity-90 text-center"
+          >
+            Nous contacter
+          </a>
+        </div>
       </div>
     </div>
   );
@@ -85,13 +87,13 @@ const Features: React.FC = () => {
         icon: "⛰️",
         title: "Expertise Locale Unique",
         excerpt:
-          "Notre connaissance approfondie du Pays de Gex et de la région transfrontalière valorise votre bien au plus juste.",
+          "Connaissance fine du Pays de Gex et du secteur frontalier pour valoriser votre bien au plus juste.",
         modalTitle: "Expertise locale du Pays de Gex & secteur frontalier",
         modalBody: (
           <>
             <p>
               Je connais le Pays de Gex, ses micro-quartiers, ses dynamiques de
-              prix, et surtout les attentes réelles des acheteurs (frontaliers,
+              prix, et les attentes réelles des acheteurs (frontaliers,
               familles, investisseurs). Mon rôle : transformer la localisation
               de votre bien en <strong>avantage concret</strong> dans la
               négociation.
@@ -104,12 +106,10 @@ const Features: React.FC = () => {
               <li>Estimation au plus juste (ni “gonflée”, ni sous-évaluée)</li>
               <li>Positionnement vs biens concurrents en temps réel</li>
               <li>
-                Argumentaire “quartier” : écoles, transports, commodités,
-                exposition, copro, charges
+                Argumentaire quartier : écoles, transports, commodités, copro,
+                charges
               </li>
-              <li>
-                Stratégie de prix : prix d’appel ou prix ferme selon la demande
-              </li>
+              <li>Stratégie de prix : prix d’appel ou prix ferme</li>
             </ul>
 
             <h4 className="mt-5 font-bold text-slate-900">Ma méthode</h4>
@@ -126,12 +126,12 @@ const Features: React.FC = () => {
         icon: "📸",
         title: "Stratégie Premium",
         excerpt:
-          "Photos professionnelles, visites virtuelles et marketing ciblé sur les portails les plus influents.",
+          "Photos pro, visite virtuelle et marketing ciblé sur les portails les plus efficaces.",
         modalTitle: "Stratégie Premium : mise en valeur qui fait vendre mieux",
         modalBody: (
           <>
             <p>
-              Un bien se vend rarement “sur la fiche technique”. Il se vend sur
+              Un bien se vend rarement sur la fiche technique. Il se vend sur
               une <strong>projection</strong>. Mon approche : présenter votre
               bien comme une expérience — sans tricher, mais en le rendant
               irrésistible.
@@ -146,10 +146,12 @@ const Features: React.FC = () => {
               <li>Suivi des performances (clics, demandes, visites)</li>
             </ul>
 
-            <h4 className="mt-5 font-bold text-slate-900">Pourquoi ça marche</h4>
+            <h4 className="mt-5 font-bold text-slate-900">
+              Pourquoi ça marche
+            </h4>
             <ul className="mt-2 list-disc pl-5 space-y-1">
               <li>Plus de visibilité → plus de demandes qualifiées</li>
-              <li>Meilleure perception → moins de négociation “gratuite”</li>
+              <li>Meilleure perception → moins de négociation</li>
               <li>Décision plus rapide → délai de vente réduit</li>
             </ul>
           </>
@@ -160,22 +162,24 @@ const Features: React.FC = () => {
         icon: "🤝",
         title: "Confiance & Transparence",
         excerpt:
-          "Un interlocuteur unique pour un suivi quotidien. Nous gérons tout, de l’estimation à l’acte.",
+          "Un interlocuteur unique, un suivi clair, et un accompagnement jusqu’à la signature.",
         modalTitle: "Confiance & Transparence : suivi clair et humain",
         modalBody: (
           <>
             <p>
-              Vous avez un interlocuteur unique, disponible, et un suivi
-              concret. Mon objectif : que vous sachiez toujours{" "}
-              <strong>où on en est</strong>, <strong>ce qui se passe</strong>,
-              et <strong>ce qu’on décide ensemble</strong>.
+              Vous avez un interlocuteur unique, disponible, et un suivi concret.
+              Mon objectif : que vous sachiez toujours{" "}
+              <strong>où on en est</strong>, <strong>ce qui se passe</strong> et{" "}
+              <strong>ce qu’on décide ensemble</strong>.
             </p>
 
-            <h4 className="mt-5 font-bold text-slate-900">Ce que je vous apporte</h4>
+            <h4 className="mt-5 font-bold text-slate-900">
+              Ce que je vous apporte
+            </h4>
             <ul className="mt-2 list-disc pl-5 space-y-1">
               <li>Compte-rendu après chaque visite (retours + objections)</li>
               <li>Pré-qualification des acheteurs (financement, délais)</li>
-              <li>Recommandations d’ajustement (si nécessaire)</li>
+              <li>Recommandations d’ajustement si nécessaire</li>
               <li>Accompagnement jusqu’à la signature (notaire, étapes)</li>
             </ul>
 
@@ -194,22 +198,20 @@ const Features: React.FC = () => {
   const active = features.find((f) => f.id === openId);
 
   return (
-  <section id="faisons-connaissance" className="scroll-mt-28 py-24 bg-slate-50">
-    <div className="max-w-7xl mx-auto px-6">
-      <div className="text-center mb-16">
-        <h2 className="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase mb-4">
-          Notre proposition
-        </h2>
-        <p className="text-4xl font-bold text-slate-900">
-          Pourquoi nous confier votre projet ?
-        </p>
-        <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
-          Nous ne nous contentons pas de vendre des biens, nous créons des
-          connexions entre des lieux d’exception et des vies à construire.
-        </p>
-      </div>
-
-
+    <section id="faisons-connaissance" className="scroll-mt-28 py-24 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase mb-4">
+            Notre proposition
+          </h2>
+          <p className="text-4xl font-bold text-slate-900">
+            Pourquoi nous confier votre projet ?
+          </p>
+          <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
+            Nous ne nous contentons pas de vendre des biens, nous créons des
+            connexions entre des lieux d’exception et des vies à construire.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {features.map((f) => (
@@ -236,17 +238,17 @@ const Features: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
 
-           <Modal
-        open={Boolean(active)}
-        title={active?.modalTitle ?? ""}
-        onClose={() => setOpenId(null)}
-      >
-        {active?.modalBody}
-      </Modal>
-    </div>
-  </section>
-);
+        <Modal
+          open={Boolean(active)}
+          title={active?.modalTitle ?? ""}
+          onClose={() => setOpenId(null)}
+        >
+          {active?.modalBody}
+        </Modal>
+      </div>
+    </section>
+  );
+};
 
 export default Features;
