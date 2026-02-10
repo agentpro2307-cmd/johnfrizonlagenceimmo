@@ -26,7 +26,7 @@ function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-stretch sm:items-center justify-stretch sm:justify-center"
+      className="fixed inset-0 z-[9999]"
       role="dialog"
       aria-modal="true"
       aria-label={title}
@@ -36,54 +36,50 @@ function Modal({
         type="button"
         className="absolute inset-0 bg-black/50"
         onClick={onClose}
-        aria-label="Fermer la fenêtre"
+        aria-label="Fermer"
       />
 
-      {/* card */}
-      <div className="relative w-full h-full sm:h-auto sm:max-h-[85vh] sm:max-w-2xl bg-white sm:rounded-3xl shadow-xl overflow-hidden flex flex-col">
-        {/* header */}
-        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-5 pt-[max(16px,env(safe-area-inset-top))] pb-4 border-b border-slate-100 bg-white">
-          <h3 className="text-lg sm:text-xl font-bold text-slate-900 pr-10">
-            {title}
-          </h3>
+      {/* panel full screen mobile */}
+      <div className="absolute inset-0 bg-white">
+        {/* close */}
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute right-4 top-4 rounded-xl px-3 py-2 text-slate-700 hover:bg-slate-100"
+          aria-label="Fermer"
+        >
+          ✕
+        </button>
 
-          <button
-            type="button"
-            onClick={onClose}
-            className="absolute right-3 top-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-slate-100"
-            aria-label="Fermer"
-          >
-            ✕
-          </button>
-        </div>
-
-        {/* body */}
-        <div className="flex-1 overflow-y-auto px-5 py-4 text-slate-700 leading-relaxed">
+        {/* content */}
+        <div className="h-full overflow-y-auto px-5 pt-16 pb-28 text-slate-700 leading-relaxed [-webkit-overflow-scrolling:touch]">
+          <h3 className="text-xl font-bold text-slate-900 mb-4">{title}</h3>
           {children}
         </div>
 
-        {/* footer */}
-        <div className="sticky bottom-0 z-10 bg-white border-t border-slate-100 px-5 pt-4 pb-[max(16px,env(safe-area-inset-bottom))] flex flex-col sm:flex-row gap-3 sm:justify-end">
-          <button
-            type="button"
-            onClick={onClose}
-            className="rounded-2xl px-5 py-3 font-semibold border border-slate-200 text-slate-900 hover:bg-slate-50"
-          >
-            Fermer
-          </button>
-
+        {/* bottom CTA */}
+        <div className="absolute left-0 right-0 bottom-0 bg-white border-t border-slate-100 p-4">
           <a
             href="#contact"
             onClick={onClose}
-            className="rounded-2xl px-5 py-3 font-semibold bg-slate-900 text-white hover:opacity-90 text-center"
+            className="block w-full rounded-2xl px-5 py-4 font-semibold bg-slate-900 text-white text-center hover:opacity-90"
           >
             Nous contacter
           </a>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="mt-3 block w-full rounded-2xl px-5 py-4 font-semibold border border-slate-200 text-slate-900 text-center hover:bg-slate-50"
+          >
+            Fermer
+          </button>
         </div>
       </div>
     </div>
   );
 }
+
 
 
 const Features: React.FC = () => {
