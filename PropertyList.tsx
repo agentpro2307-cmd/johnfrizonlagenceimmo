@@ -245,14 +245,7 @@ const PropertyList: React.FC<Props> = ({ filters, onResetFilters }) => {
                     )}
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={(e) => e.preventDefault()}
-                    className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-all"
-                    aria-label="Favori"
-                  >
-                    ♥
-                  </button>
+                  
                 </div>
 
                 <div className="space-y-1">
