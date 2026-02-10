@@ -19,20 +19,17 @@ export default function Navbar({ onContactClick }: Props) {
   const [openSocial, setOpenSocial] = useState(false);
   const socialRef = useRef<HTMLDivElement | null>(null);
 
- const scrollTo = (id: string) => {
+const scrollTo = (id: string) => {
   const el = document.getElementById(id);
-
-  // si jamais l'id n'existe pas, on met quand même le hash (utile debug)
   if (!el) {
     window.location.hash = id;
     return;
   }
-
-  const NAV_OFFSET = 110; // hauteur approx navbar + marge
+  const NAV_OFFSET = 110;
   const y = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET;
-
   window.scrollTo({ top: y, behavior: "smooth" });
 };
+
 
 
   const goNosBiens = () => {
