@@ -59,7 +59,8 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
       </div>
 
       {/* Main grid */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-screen-xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
         {/* LEFT */}
         <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight tracking-tight text-slate-900">
@@ -168,7 +169,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
       </div>
 
       {/* Search bar */}
-      <div className="max-w-5xl mx-auto px-6 mt-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 mt-16 relative z-10">
         <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 apple-shadow border border-white/40 flex flex-wrap lg:flex-nowrap gap-4 items-end">
           <div className="flex-1 min-w-[200px] space-y-2">
             <label className="text-xs font-bold text-slate-400 uppercase ml-1">Type de bien 🏠</label>
