@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 type FeatureId = "expertise" | "premium" | "transparence" | "connaissance";
 
@@ -43,7 +43,7 @@ function Modal({
       <div className="relative w-full max-w-2xl rounded-3xl bg-white shadow-xl overflow-hidden">
         {/* header sticky */}
         <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-5 py-4 border-b border-slate-100 bg-white">
-          <h3 className="text-lg sm:text-xl font-bold text-slate-900 pr-8">
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900 pr-10">
             {title}
           </h3>
 
@@ -85,9 +85,16 @@ function Modal({
   );
 }
 
-
 const Features: React.FC = () => {
   const [openId, setOpenId] = useState<FeatureId | null>(null);
+
+  // ✅ bloque le scroll de la page quand la modal est ouverte (mobile)
+  useEffect(() => {
+    document.body.style.overflow = openId ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [openId]);
 
   const features: Feature[] = useMemo(
     () => [
@@ -102,7 +109,7 @@ const Features: React.FC = () => {
           <>
             <p>
               Je connais le Pays de Gex, ses micro-quartiers, ses dynamiques de
-              prix, et les attentes réelles des acheteurs (frontaliers,
+              prix, et surtout les attentes réelles des acheteurs (frontaliers,
               familles, investisseurs). Mon rôle : transformer la localisation
               de votre bien en <strong>avantage concret</strong> dans la
               négociation.
@@ -176,8 +183,8 @@ const Features: React.FC = () => {
         modalBody: (
           <>
             <p>
-              Vous avez un interlocuteur unique, disponible, et un suivi concret.
-              Mon objectif : que vous sachiez toujours{" "}
+              Vous avez un interlocuteur unique, disponible, et un suivi
+              concret. Mon objectif : que vous sachiez toujours{" "}
               <strong>où on en est</strong>, <strong>ce qui se passe</strong> et{" "}
               <strong>ce qu’on décide ensemble</strong>.
             </p>
@@ -201,84 +208,84 @@ const Features: React.FC = () => {
         ),
       },
       {
-  id: "connaissance",
-  icon: "👋",
-  title: "Faisons connaissance",
-  excerpt:
-    "Un accompagnement humain, stratégique et premium — pour vendre mieux ou acheter sereinement.",
-  modalTitle: "Faisons connaissance",
-  modalBody: (
-    <>
-      <p>
-        Après 5 années comme coach sportif, puis plus de 290 accompagnements
-        réussis en tant que conseiller en prévoyance et responsable en gestion de
-        patrimoine, j’ai choisi de relever un défi qui me passionne depuis
-        longtemps : l’immobilier.
-      </p>
+        id: "connaissance",
+        icon: "👋",
+        title: "Faisons connaissance",
+        excerpt:
+          "Un accompagnement humain, stratégique et premium — pour vendre mieux ou acheter sereinement.",
+        modalTitle: "Faisons connaissance",
+        modalBody: (
+          <>
+            <p>
+              Après 5 années comme coach sportif, puis plus de 290
+              accompagnements réussis en tant que conseiller en prévoyance et
+              responsable en gestion de patrimoine, j’ai choisi de relever un
+              défi qui me passionne depuis longtemps : l’immobilier.
+            </p>
 
-      <h4 className="mt-5 font-bold text-slate-900">
-        Trois mots guident mon quotidien
-      </h4>
-      <ul className="mt-2 list-disc pl-5 space-y-1">
-        <li>
-          <strong>Stratégie</strong> : bâtir un plan d’action sur mesure à chaque
-          projet immobilier.
-        </li>
-        <li>
-          <strong>Impact</strong> : faire la différence sur un marché
-          concurrentiel grâce à la valorisation, la communication et la précision
-          du conseil.
-        </li>
-        <li>
-          <strong>Victoire</strong> : la réussite d’une vente ou d’un achat,
-          c’est avant tout celle de mes clients.
-        </li>
-      </ul>
+            <h4 className="mt-5 font-bold text-slate-900">
+              Trois mots guident mon quotidien
+            </h4>
+            <ul className="mt-2 list-disc pl-5 space-y-1">
+              <li>
+                <strong>Stratégie</strong> : bâtir un plan d’action sur mesure à
+                chaque projet immobilier.
+              </li>
+              <li>
+                <strong>Impact</strong> : faire la différence sur un marché
+                concurrentiel grâce à la valorisation, la communication et la
+                précision du conseil.
+              </li>
+              <li>
+                <strong>Victoire</strong> : la réussite d’une vente ou d’un
+                achat, c’est avant tout celle de mes clients.
+              </li>
+            </ul>
 
-      <h4 className="mt-5 font-bold text-slate-900">Ma force</h4>
-      <p className="mt-2">
-        C’est la relation humaine. Je ne me contente pas de vendre un bien :
-        j’accompagne chaque personne, chaque famille, dans une étape clé de leur
-        vie.
-      </p>
+            <h4 className="mt-5 font-bold text-slate-900">Ma force</h4>
+            <p className="mt-2">
+              C’est la relation humaine. Je ne me contente pas de vendre un
+              bien : j’accompagne chaque personne, chaque famille, dans une
+              étape clé de leur vie.
+            </p>
 
-      <h4 className="mt-5 font-bold text-slate-900">Mon approche</h4>
-      <ul className="mt-2 list-disc pl-5 space-y-1">
-        <li>Écoute, transparence et confiance mutuelle</li>
-        <li>Un objectif : comprendre pour mieux conseiller</li>
-        <li>Une vision de la valeur d’un bien : financière et émotionnelle</li>
-      </ul>
+            <h4 className="mt-5 font-bold text-slate-900">Mon approche</h4>
+            <ul className="mt-2 list-disc pl-5 space-y-1">
+              <li>Écoute, transparence et confiance mutuelle</li>
+              <li>Un objectif : comprendre pour mieux conseiller</li>
+              <li>Une vision de la valeur d’un bien : financière et émotionnelle</li>
+            </ul>
 
-      <h4 className="mt-5 font-bold text-slate-900">
-        Mise en valeur de chaque bien
-      </h4>
-      <ul className="mt-2 list-disc pl-5 space-y-1">
-        <li>Photos professionnelles</li>
-        <li>Vidéos immersives</li>
-        <li>Vues drone</li>
-        <li>Diffusion ciblée sur plateformes et réseaux sociaux</li>
-      </ul>
+            <h4 className="mt-5 font-bold text-slate-900">
+              Mise en valeur de chaque bien
+            </h4>
+            <ul className="mt-2 list-disc pl-5 space-y-1">
+              <li>Photos professionnelles</li>
+              <li>Vidéos immersives</li>
+              <li>Vues drone</li>
+              <li>Diffusion ciblée sur plateformes et réseaux sociaux</li>
+            </ul>
 
-      <p className="mt-5">
-        Authentique, investi et profondément humain, j’avance à vos côtés avec la
-        même énergie qu’un coach et la rigueur d’un stratège.
-      </p>
+            <p className="mt-5">
+              Authentique, investi et profondément humain, j’avance à vos côtés
+              avec la même énergie qu’un coach et la rigueur d’un stratège.
+            </p>
 
-      <p className="mt-5">
-        Si vous cherchez un agent immobilier de confiance, capable de combiner
-        expertise, accompagnement personnalisé et résultats, rencontrons-nous pour
-        écrire ensemble votre prochaine victoire.
-      </p>
+            <p className="mt-5">
+              Si vous cherchez un agent immobilier de confiance, capable de
+              combiner expertise, accompagnement personnalisé et résultats,
+              rencontrons-nous pour écrire ensemble votre prochaine victoire.
+            </p>
 
-      <p className="mt-6 text-sm text-slate-500">
-        Agent commercial (Entreprise individuelle) — Spécialisé en transaction,
-        estimation et valorisation immobilière. <br />
-        Slogan : Stratégie • Impact • Victoire
-      </p>
-    </>
-  ),
-},
-
+            <p className="mt-6 text-sm text-slate-500">
+              Agent commercial (Entreprise individuelle) — Spécialisé en
+              transaction, estimation et valorisation immobilière.
+              <br />
+              Slogan : Stratégie • Impact • Victoire
+            </p>
+          </>
+        ),
+      },
     ],
     []
   );
@@ -286,7 +293,10 @@ const Features: React.FC = () => {
   const active = features.find((f) => f.id === openId);
 
   return (
-    <section id="faisons-connaissance" className="scroll-mt-28 py-24 bg-slate-50">
+    <section
+      id="faisons-connaissance"
+      className="scroll-mt-28 py-24 bg-slate-50"
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase mb-4">
@@ -301,11 +311,11 @@ const Features: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {features.map((f) => (
             <div
               key={f.id}
-              className="bg-slate-50 border border-slate-100 rounded-[40px] p-10"
+              className="bg-white/80 backdrop-blur border border-white/60 rounded-[40px] p-10 apple-shadow apple-shadow-hover transition-all"
             >
               <div className="h-12 w-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center text-xl">
                 {f.icon}
