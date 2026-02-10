@@ -142,19 +142,14 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
                 <div className="text-xs text-slate-500">Votre conseiller immobilier — Pays de Gex</div>
               </div>
 
-              <button
-                type="button"
-               onClick={() =>
-  document
-    .getElementById("faisons-connaissance")
-    ?.scrollIntoView({ behavior: "smooth" })
-}
-onClick={() => scrollTo("faisons-connaissance")}
+             <button
+  type="button"
+  onClick={() => scrollTo("faisons-connaissance")}
+  className="rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-slate-800"
+>
+  Découvrir →
+</button>
 
-                className="rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-slate-800"
-              >
-                Découvrir →
-              </button>
             </div>
 
             <div className="mt-3 flex flex-wrap gap-2">
