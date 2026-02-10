@@ -122,6 +122,13 @@ export default function Navbar({ onContactClick }: Props) {
                   rel="noreferrer"
                   onClick={() => setOpenSocial(false)}
                 >
+                  <a
+  href="#biens-vendus"
+  className="text-sm font-semibold text-slate-700 hover:text-slate-900 transition"
+>
+  Biens vendus
+</a>
+
                   LinkedIn
                 </a>
               </div>
