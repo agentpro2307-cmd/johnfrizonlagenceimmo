@@ -14,13 +14,13 @@ type SoldProperty = {
 const SOLD_PROPERTIES: SoldProperty[] = [
   {
     id: 1,
-    title: "Appartement 3 pièces 61 m²",
-    commune: "Saint-Genis-Pouilly (01630)",
-    priceListed: 349000,
-    priceSold: 345000,
-    soldInDays: 21,
-    exclusivite: true,
-    imageUrl: "/images/vendus/vendu-01.jpg", // ✅ mets ton image ici
+    title: "Maison de standing T8 de 328m²",
+    commune: "Péron (01630)",
+    priceListed: 895000,
+    priceSold: 895000,
+    soldInDays: 60,
+    exclusivite: false,
+    imageUrl: "/images/vendus/peron.jpg", // ✅ mets ton image ici
   },
 ];
 
