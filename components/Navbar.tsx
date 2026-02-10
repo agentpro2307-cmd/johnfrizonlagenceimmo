@@ -91,12 +91,13 @@ const scrollTo = (id: string) => {
 
   {/* ✅ NOUVEAU : Biens vendus */}
   <button
-    type="button"
-    className="hover:text-slate-900"
-    onClick={() => scrollTo("biens-vendus")}
-  >
-    Biens vendus
-  </button>
+  type="button"
+  className="hover:text-slate-900"
+  onClick={() => scrollTo("biens-vendus")}
+>
+  Biens vendus
+</button>
+
 
   <button
     type="button"
