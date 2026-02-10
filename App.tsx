@@ -4,6 +4,7 @@ import Hero from "./Hero";
 import Features from "./Features";
 import PropertyList from "./PropertyList";
 import Testimonials from "./Testimonials";
+import SoldProperties from "./components/SoldProperties";
 import CTA from "./CTA";
 import Footer from "./Footer";
 import FormModal from "./FormModal";
