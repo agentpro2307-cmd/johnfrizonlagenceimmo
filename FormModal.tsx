@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function FormModal({ isOpen, onClose, type }: Props) {
-  const FORM_ENDPOINT = "https://formspree.io/f/xojnaynp";
+  const FORM_ENDPOINT = "https://formspree.io/f/xykdkwwz";
 
 
   const [name, setName] = useState("");
