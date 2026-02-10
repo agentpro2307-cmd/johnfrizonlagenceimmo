@@ -60,8 +60,8 @@ function Modal({
           >
             Fermer
           </button>
-          <a
-            href="#"
+        <a href="#contact" className="...">Nous contacter</a>
+
             className="rounded-2xl px-5 py-3 font-semibold bg-slate-900 text-white hover:opacity-90 text-center"
           >
             Nous contacter
