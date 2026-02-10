@@ -83,17 +83,19 @@ export default function SoldProperties() {
             const tags = [p.exclusivite ? "Exclusivité" : "Simple", "Vendu"];
 
             // ✅ chemin image compatible GitHub Pages
-            const imgSrc = `${import.meta.env.BASE_URL}${p.imageUrl.replace(/^\//, "")}`;
+            const safePath = (p.imageUrl ?? "").replace(/^\//, "");
+const imgSrc = `${import.meta.env.BASE_URL}${safePath}`;
 
-            return (
-              <div key={p.id} className="group">
-                <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-4 apple-shadow group-hover:shadow-lg transition-all">
-                  <img
-                    src={imgSrc}
-                    alt={p.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
+<img
+  src={imgSrc}
+  alt={p.title}
+  className="w-full h-full object-cover"
+  onError={(e) => {
+    (e.currentTarget as HTMLImageElement).src =
+      `${import.meta.env.BASE_URL}images/placeholder.jpg`;
+  }}
+/>
+
 
                   <div className="absolute inset-0 bg-black/25" />
 
