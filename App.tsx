@@ -40,9 +40,12 @@ const App: React.FC = () => {
 
         <Features />
 
-        <PropertyList filters={filters} onResetFilters={() => setFilters({})} />
+<PropertyList filters={filters} onResetFilters={() => setFilters({})} />
 
-        <Testimonials />
+<SoldProperties />   {/* ✅ ICI : section Biens vendus */}
+
+<Testimonials />
+
 
         <CTA onEstimate={() => openForm("estimation")} onAppointment={() => openForm("short")} />
       </main>
