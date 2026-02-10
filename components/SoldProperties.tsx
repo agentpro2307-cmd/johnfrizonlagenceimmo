@@ -29,6 +29,23 @@ const SOLD_PROPERTIES: SoldProperty[] = [
       "/images/peron7.jpg",
     ],
   },
+   {
+    id: 2,
+    title: "Maison T5 2017 242m² Dpe A & A",
+    commune: "Challex (01630)",
+    priceListed: 695000,
+    priceSold: 680000,
+    soldInDays: 14,
+    exclusivite: true,
+    images: [
+      "/images/vendus/cha1.jpg",
+      "/images/vendus/cha2.jpeg",
+      "/images/vendus/cha3.jpg",
+      "/images/vendus/cha4.jpg",
+      "/images/vendus/cha5.jpg",
+      "/images/vendus/cha6.jpg",
+    ],
+  },
 ];
 
 
