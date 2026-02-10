@@ -8,7 +8,7 @@ type SoldProperty = {
   priceSold: number;
   soldInDays: number;
   exclusivite: boolean;
-  image: string; // 
+  image: string[]; // 
 };
 
 const SOLD_PROPERTIES: SoldProperty[] = [
@@ -112,47 +112,34 @@ function formatDelay(days: number) {
 
 // ✅ Carrousel simple, sans lib
 function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
+  const safeImages = Array.isArray(images) ? images.filter(Boolean) : [];
   const [idx, setIdx] = React.useState(0);
 
-  const safeImages = Array.isArray(images) ? images.filter(Boolean) : [];
-  if (safeImages.length === 0) {
-    // fallback si aucune image
-    const fallback = `${import.meta.env.BASE_URL}images/placeholder.jpg`;
-    return (
-      <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-4 apple-shadow bg-slate-100">
-        <img src={fallback} alt={alt} className="w-full h-full object-cover" />
-      </div>
-    );
-  }
+  const hasImages = safeImages.length > 0;
+  const current = hasImages ? safeImages[Math.min(idx, safeImages.length - 1)] : "";
 
-  const current = safeImages[idx] ?? safeImages[0];
-  const src = `${import.meta.env.BASE_URL}${current.replace(/^\//, "")}`;
   const placeholder = `${import.meta.env.BASE_URL}images/placeholder.jpg`;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/50 bg-white apple-shadow">
-  <div className="aspect-[16/10] w-full bg-slate-100">
-    <img
-      src={resolveImg(current)}
-      alt={alt}
-      className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
-      loading="lazy"
-    />
-  </div>
-</div>
+    <div className="group relative overflow-hidden rounded-2xl border border-white/50 bg-white apple-shadow">
+      <div className="aspect-[16/10] w-full bg-slate-100">
+        <img
+          src={hasImages ? resolveImg(current) : placeholder}
+          alt={alt}
+          className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
+          loading="lazy"
+          onError={(e) => {
+            e.currentTarget.src = placeholder;
+          }}
+        />
+      </div>
 
-
-      {/* voile */}
-      <div className="absolute inset-0 bg-black/25" />
-
-      {/* flèches */}
+      {/* flèches + dots seulement si > 1 */}
       {safeImages.length > 1 && (
         <>
           <button
             type="button"
-            onClick={() =>
-              setIdx((v) => (v - 1 + safeImages.length) % safeImages.length)
-            }
+            onClick={() => setIdx((v) => (v - 1 + safeImages.length) % safeImages.length)}
             className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white rounded-full w-9 h-9 font-bold text-slate-900"
             aria-label="Photo précédente"
           >
@@ -168,14 +155,14 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
             ›
           </button>
 
-          {/* points */}
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
             {safeImages.map((_, i) => (
-              <span
+              <button
                 key={i}
-                className={`h-1.5 w-1.5 rounded-full ${
-                  i === idx ? "bg-white" : "bg-white/50"
-                }`}
+                type="button"
+                onClick={() => setIdx(i)}
+                className={`h-1.5 w-1.5 rounded-full ${i === idx ? "bg-white" : "bg-white/50"}`}
+                aria-label={`Aller à la photo ${i + 1}`}
               />
             ))}
           </div>
@@ -184,6 +171,7 @@ function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
     </div>
   );
 }
+
 
 export default function SoldProperties() {
   return (
@@ -208,6 +196,11 @@ export default function SoldProperties() {
             return (
               <div key={p.id} className="group">
                 <div className="relative">
+                  const resolveImg = (path: string) => {
+  const clean = path.replace(/^\//, "");
+  return `${import.meta.env.BASE_URL}${clean}`;
+};
+
                   <ImageCarousel images={p.images} alt={p.title} />
 
                   {/* badges */}
