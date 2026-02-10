@@ -66,86 +66,97 @@ export default function Navbar({ onContactClick }: Props) {
 
         {/* Nav (desktop) */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-700">
-          <button type="button" className="hover:text-slate-900" onClick={() => scrollTo("top")}>
-            Accueil
-          </button>
+  <button
+    type="button"
+    className="hover:text-slate-900"
+    onClick={() => scrollTo("top")}
+  >
+    Accueil
+  </button>
 
-          <button type="button" className="hover:text-slate-900" onClick={goNosBiens}>
-            Nos Biens
-          </button>
+  <button
+    type="button"
+    className="hover:text-slate-900"
+    onClick={goNosBiens}
+  >
+    Nos Biens
+  </button>
 
-          {/* ✅ ICI : bon id */}
-          <button
-            type="button"
-            className="hover:text-slate-900"
-      onClick={() => scrollTo("faisons-connaissance")}
+  {/* ✅ NOUVEAU : Biens vendus */}
+  <button
+    type="button"
+    className="hover:text-slate-900"
+    onClick={() => scrollTo("biens-vendus")}
+  >
+    Biens vendus
+  </button>
 
-          >
-            Nos Services
-          </button>
+  <button
+    type="button"
+    className="hover:text-slate-900"
+    onClick={() => scrollTo("faisons-connaissance")}
+  >
+    Nos Services
+  </button>
 
-          {/* Réseaux sociaux */}
-          <div className="relative" ref={socialRef}>
-            <button
-              type="button"
-              className="hover:text-slate-900 inline-flex items-center gap-2"
-              onClick={() => setOpenSocial((v) => !v)}
-              aria-expanded={openSocial}
-            >
-              Réseaux sociaux <span className="text-slate-400">▼</span>
-            </button>
+  {/* Réseaux sociaux */}
+  <div className="relative" ref={socialRef}>
+    <button
+      type="button"
+      className="hover:text-slate-900 inline-flex items-center gap-2"
+      onClick={() => setOpenSocial((v) => !v)}
+      aria-expanded={openSocial}
+    >
+      Réseaux sociaux <span className="text-slate-400">▼</span>
+    </button>
 
-            {openSocial && (
-              <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-white apple-shadow border border-slate-100 p-2">
-                <a
-                  className="block px-3 py-2 rounded-xl hover:bg-slate-50"
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => setOpenSocial(false)}
-                >
-                  Instagram
-                </a>
-                <a
-                  className="block px-3 py-2 rounded-xl hover:bg-slate-50"
-                  href={FACEBOOK_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => setOpenSocial(false)}
-                >
-                  Facebook
-                </a>
-                <a
-                  className="block px-3 py-2 rounded-xl hover:bg-slate-50"
-                  href={LINKEDIN_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => setOpenSocial(false)}
-                >
-                  <a
-  href="#biens-vendus"
-  className="text-sm font-semibold text-slate-700 hover:text-slate-900 transition"
->
-  Biens vendus
-</a>
+    {openSocial && (
+      <div className="absolute right-0 mt-2 w-56 rounded-2xl bg-white apple-shadow border border-slate-100 p-2">
+        <a
+          className="block px-3 py-2 rounded-xl hover:bg-slate-50"
+          href={INSTAGRAM_URL}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => setOpenSocial(false)}
+        >
+          Instagram
+        </a>
 
-                  LinkedIn
-                </a>
-              </div>
-            )}
-          </div>
+        <a
+          className="block px-3 py-2 rounded-xl hover:bg-slate-50"
+          href={FACEBOOK_URL}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => setOpenSocial(false)}
+        >
+          Facebook
+        </a>
 
-          {/* WhatsApp (bouton direct) */}
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl px-3 py-2 bg-white/70 hover:bg-white border border-slate-200"
-            title="WhatsApp"
-          >
-            WhatsApp
-          </a>
-        </nav>
+        <a
+          className="block px-3 py-2 rounded-xl hover:bg-slate-50"
+          href={LINKEDIN_URL}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => setOpenSocial(false)}
+        >
+          LinkedIn
+        </a>
+      </div>
+    )}
+  </div>
+
+  {/* WhatsApp */}
+  <a
+    href={WHATSAPP_URL}
+    target="_blank"
+    rel="noreferrer"
+    className="inline-flex items-center gap-2 rounded-xl px-3 py-2 bg-white/70 hover:bg-white border border-slate-200"
+    title="WhatsApp"
+  >
+    WhatsApp
+  </a>
+</nav>
+
 
         {/* CTA */}
         <button
