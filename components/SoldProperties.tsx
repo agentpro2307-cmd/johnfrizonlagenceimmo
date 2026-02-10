@@ -224,9 +224,7 @@ export default function SoldProperties() {
                   </div>
 
                   {/* délai */}
-                  <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-slate-900">
-                    ⏱ {formatDelay(p.soldInDays)}
-                  </div>
+                  
                 </div>
 
                 <div className="space-y-1">
