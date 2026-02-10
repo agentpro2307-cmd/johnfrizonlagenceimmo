@@ -194,21 +194,21 @@ const Features: React.FC = () => {
   const active = features.find((f) => f.id === openId);
 
   return (
-<section id="faisons-connaissance" className="scroll-mt-28 py-24 bg-slate-50">
-  <div className="max-w-7xl mx-auto px-6"
+  <section id="faisons-connaissance" className="scroll-mt-28 py-24 bg-slate-50">
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="text-center mb-16">
+        <h2 className="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase mb-4">
+          Notre proposition
+        </h2>
+        <p className="text-4xl font-bold text-slate-900">
+          Pourquoi nous confier votre projet ?
+        </p>
+        <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
+          Nous ne nous contentons pas de vendre des biens, nous créons des
+          connexions entre des lieux d’exception et des vies à construire.
+        </p>
+      </div>
 
-        <div className="text-center mb-16">
-          <h2 className="text-sm font-bold tracking-[0.2em] text-slate-400 uppercase mb-4">
-            Notre proposition
-          </h2>
-          <p className="text-4xl font-bold text-slate-900">
-            Pourquoi nous confier votre projet ?
-          </p>
-          <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
-            Nous ne nous contentons pas de vendre des biens, nous créons des
-            connexions entre des lieux d’exception et des vies à construire.
-          </p>
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {features.map((f) => (
