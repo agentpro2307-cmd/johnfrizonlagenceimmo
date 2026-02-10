@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 
-type FeatureId = "expertise" | "premium" | "transparence";
+type FeatureId = "expertise" | "premium" | "transparence" | "connaissance";
 
 type Feature = {
   id: FeatureId;
@@ -191,6 +191,85 @@ const Features: React.FC = () => {
           </>
         ),
       },
+      {
+  id: "connaissance",
+  icon: "👋",
+  title: "Faisons connaissance",
+  excerpt:
+    "Un accompagnement humain, stratégique et premium — pour vendre mieux ou acheter sereinement.",
+  modalTitle: "Faisons connaissance",
+  modalBody: (
+    <>
+      <p>
+        Après 5 années comme coach sportif, puis plus de 290 accompagnements
+        réussis en tant que conseiller en prévoyance et responsable en gestion de
+        patrimoine, j’ai choisi de relever un défi qui me passionne depuis
+        longtemps : l’immobilier.
+      </p>
+
+      <h4 className="mt-5 font-bold text-slate-900">
+        Trois mots guident mon quotidien
+      </h4>
+      <ul className="mt-2 list-disc pl-5 space-y-1">
+        <li>
+          <strong>Stratégie</strong> : bâtir un plan d’action sur mesure à chaque
+          projet immobilier.
+        </li>
+        <li>
+          <strong>Impact</strong> : faire la différence sur un marché
+          concurrentiel grâce à la valorisation, la communication et la précision
+          du conseil.
+        </li>
+        <li>
+          <strong>Victoire</strong> : la réussite d’une vente ou d’un achat,
+          c’est avant tout celle de mes clients.
+        </li>
+      </ul>
+
+      <h4 className="mt-5 font-bold text-slate-900">Ma force</h4>
+      <p className="mt-2">
+        C’est la relation humaine. Je ne me contente pas de vendre un bien :
+        j’accompagne chaque personne, chaque famille, dans une étape clé de leur
+        vie.
+      </p>
+
+      <h4 className="mt-5 font-bold text-slate-900">Mon approche</h4>
+      <ul className="mt-2 list-disc pl-5 space-y-1">
+        <li>Écoute, transparence et confiance mutuelle</li>
+        <li>Un objectif : comprendre pour mieux conseiller</li>
+        <li>Une vision de la valeur d’un bien : financière et émotionnelle</li>
+      </ul>
+
+      <h4 className="mt-5 font-bold text-slate-900">
+        Mise en valeur de chaque bien
+      </h4>
+      <ul className="mt-2 list-disc pl-5 space-y-1">
+        <li>Photos professionnelles</li>
+        <li>Vidéos immersives</li>
+        <li>Vues drone</li>
+        <li>Diffusion ciblée sur plateformes et réseaux sociaux</li>
+      </ul>
+
+      <p className="mt-5">
+        Authentique, investi et profondément humain, j’avance à vos côtés avec la
+        même énergie qu’un coach et la rigueur d’un stratège.
+      </p>
+
+      <p className="mt-5">
+        Si vous cherchez un agent immobilier de confiance, capable de combiner
+        expertise, accompagnement personnalisé et résultats, rencontrons-nous pour
+        écrire ensemble votre prochaine victoire.
+      </p>
+
+      <p className="mt-6 text-sm text-slate-500">
+        Agent commercial (Entreprise individuelle) — Spécialisé en transaction,
+        estimation et valorisation immobilière. <br />
+        Slogan : Stratégie • Impact • Victoire
+      </p>
+    </>
+  ),
+},
+
     ],
     []
   );
