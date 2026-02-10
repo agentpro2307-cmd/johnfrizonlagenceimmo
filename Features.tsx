@@ -26,7 +26,7 @@ function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4"
+      <div className="fixed inset-0 z-[9999] flex items-stretch sm:items-center justify-stretch sm:justify-center" ...
       role="dialog"
       aria-modal="true"
       aria-label={title}
@@ -40,9 +40,11 @@ function Modal({
       />
 
       {/* card */}
-      <div className="relative w-full max-w-2xl rounded-3xl bg-white shadow-xl overflow-hidden">
+      <div className="relative w-full h-full sm:h-auto sm:max-h-[85vh] sm:max-w-2xl bg-white sm:rounded-3xl shadow-xl overflow-hidden">
+
         {/* header sticky */}
-        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-5 py-4 border-b border-slate-100 bg-white">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-5 pt-[max(16px,env(safe-area-inset-top))] pb-4 border-b border-slate-100 bg-white">
+
           <h3 className="text-lg sm:text-xl font-bold text-slate-900 pr-10">
             {title}
           </h3>
@@ -58,12 +60,14 @@ function Modal({
         </div>
 
         {/* body scrollable */}
-        <div className="max-h-[75vh] sm:max-h-[80vh] overflow-y-auto px-5 py-4 text-slate-700 leading-relaxed">
-          {children}
-        </div>
+        <div className="flex-1 overflow-y-auto px-5 py-4 text-slate-700 leading-relaxed">
+  {children}
+</div>
+
 
         {/* footer sticky */}
-        <div className="sticky bottom-0 z-10 bg-white border-t border-slate-100 px-5 py-4 flex flex-col sm:flex-row gap-3 sm:justify-end">
+        <div className="sticky bottom-0 z-10 bg-white border-t border-slate-100 px-5 pt-4 pb-[max(16px,env(safe-area-inset-bottom))] flex flex-col sm:flex-row gap-3 sm:justify-end">
+
           <button
             type="button"
             onClick={onClose}
