@@ -26,40 +26,48 @@ function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center px-4"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4"
       role="dialog"
       aria-modal="true"
       aria-label={title}
-      onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/50" />
+      {/* overlay */}
+      <button
+        type="button"
+        className="absolute inset-0 bg-black/50"
+        onClick={onClose}
+        aria-label="Fermer la fenêtre"
+      />
 
-      <div
-        className="relative w-full max-w-2xl rounded-3xl bg-white p-6 md:p-8 shadow-xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="text-xl md:text-2xl font-bold text-slate-900">
+      {/* card */}
+      <div className="relative w-full max-w-2xl rounded-3xl bg-white shadow-xl overflow-hidden">
+        {/* header sticky */}
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-5 py-4 border-b border-slate-100 bg-white">
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900 pr-8">
             {title}
           </h3>
 
           <button
-            onClick={onClose}
-            className="rounded-xl px-3 py-2 text-slate-600 hover:bg-slate-100"
-            aria-label="Fermer"
             type="button"
+            onClick={onClose}
+            className="absolute right-3 top-3 rounded-xl px-3 py-2 text-slate-600 hover:bg-slate-100"
+            aria-label="Fermer"
           >
             ✕
           </button>
         </div>
 
-        <div className="mt-4 text-slate-700 leading-relaxed">{children}</div>
+        {/* body scrollable */}
+        <div className="max-h-[75vh] sm:max-h-[80vh] overflow-y-auto px-5 py-4 text-slate-700 leading-relaxed">
+          {children}
+        </div>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:justify-end">
+        {/* footer sticky */}
+        <div className="sticky bottom-0 z-10 bg-white border-t border-slate-100 px-5 py-4 flex flex-col sm:flex-row gap-3 sm:justify-end">
           <button
+            type="button"
             onClick={onClose}
             className="rounded-2xl px-5 py-3 font-semibold border border-slate-200 text-slate-900 hover:bg-slate-50"
-            type="button"
           >
             Fermer
           </button>
@@ -76,6 +84,7 @@ function Modal({
     </div>
   );
 }
+
 
 const Features: React.FC = () => {
   const [openId, setOpenId] = useState<FeatureId | null>(null);
