@@ -210,6 +210,7 @@ const Features: React.FC = () => {
       </div>
 
 
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {features.map((f) => (
             <div
@@ -237,15 +238,15 @@ const Features: React.FC = () => {
         </div>
       </div>
 
-      <Modal
+           <Modal
         open={Boolean(active)}
         title={active?.modalTitle ?? ""}
         onClose={() => setOpenId(null)}
       >
         {active?.modalBody}
       </Modal>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Features;
