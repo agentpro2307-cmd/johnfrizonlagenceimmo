@@ -21,12 +21,12 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     soldInDays: 60,
     exclusivite: false,
     images: [
-      "/images/vendus/peron5.jpeg",
-      "/images/vendus/peron4.jpg",
-      "/images/vendus/peron3.jpg",
-      "/images/vendus/peron2.jpeg",
-      "/images/vendus/peron1.jpg",
-      "/images/vendus/peron7.jpg",
+      "/images/peron5.jpeg",
+      "/images/peron4.jpg",
+      "/images/peron3.jpg",
+      "/images/peron2.jpeg",
+      "/images/peron1.jpg",
+      "/images/peron7.jpg",
     ],
   },
 ];
