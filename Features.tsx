@@ -54,19 +54,22 @@ function Modal({
         <div className="mt-4 text-slate-700 leading-relaxed">{children}</div>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:justify-end">
-          <button
-            onClick={onClose}
-            className="rounded-2xl px-5 py-3 font-semibold border border-slate-200 text-slate-900 hover:bg-slate-50"
-          >
-            Fermer
-          </button>
-        <a href="#contact" className="...">Nous contacter</a>
+  <button
+    onClick={onClose}
+    className="rounded-2xl px-5 py-3 font-semibold border border-slate-200 text-slate-900 hover:bg-slate-50"
+  >
+    Fermer
+  </button>
 
-            className="rounded-2xl px-5 py-3 font-semibold bg-slate-900 text-white hover:opacity-90 text-center"
-          >
-            Nous contacter
-          </a>
-        </div>
+  <a
+    href="#contact"
+    onClick={onClose}
+    className="rounded-2xl px-5 py-3 font-semibold bg-slate-900 text-white hover:opacity-90 text-center"
+  >
+    Nous contacter
+  </a>
+</div>
+
       </div>
     </div>
   );
