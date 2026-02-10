@@ -117,7 +117,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
 
         {/* RIGHT (desktop) */}
         <div className="hidden lg:block relative animate-in fade-in zoom-in duration-1000">
-          <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-4 apple-shadow">
+          <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-5 apple-shadow">
             <img
               src={`${import.meta.env.BASE_URL}images/escarnot.jpeg`}
               className="w-full h-full object-cover rounded-2xl"
@@ -135,7 +135,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
           </div>
 
           {/* Petit cadre sous la photo + bouton Découvrir (scroll vers services) */}
-          <div className="mt-4 rounded-2xl bg-white/85 backdrop-blur border border-white/60 apple-shadow p-4">
+          <div className="mt-8 rounded-2xl bg-white/85 backdrop-blur border border-white/60 apple-shadow p-4">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <div className="text-sm font-bold text-slate-900">Faisons connaissance</div>
