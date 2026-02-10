@@ -83,8 +83,9 @@ export default function SoldProperties() {
             const tags = [p.exclusivite ? "Exclusivité" : "Simple", "Vendu"];
 
             // ✅ chemin image compatible GitHub Pages
-            const safePath = (p.imageUrl ?? "").replace(/^\//, "");
-const imgSrc = `${import.meta.env.BASE_URL}${safePath}`;
+            const current = images?.[idx] ?? images?.[0] ?? "";
+const src = `${import.meta.env.BASE_URL}${current.replace(/^\//, "")}`;
+
 
 <img
   src={imgSrc}
