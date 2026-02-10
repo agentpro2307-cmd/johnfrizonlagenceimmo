@@ -91,6 +91,24 @@ const TESTIMONIALS: TestimonialUI[] = [
     avatar: "",
     rating: 5,
   },
+  {
+    id: "6",
+    companyLogo: "",
+    quote: "Je recommande viviement Mr Frizon. Notre projet a été facile grâce à lui. Disponibilité, rapidité, à l'écoute...super pro. Nous n'avons pas eu par le passé de tels compliments à faire sur un agent , tellement nous étions considérés comme un produit et non des personnes avec un beau projet humain. Merci Mr Frizon de nous avoir aidé à réaliser notre rêve avec cette belle villa qui nous régale tous les jours.",
+    author: "Esther Wonder",
+    role: "Acheteur",
+    avatar: "",
+    rating: 5,
+  },
+   {
+    id: "7",
+    companyLogo: "",
+    quote: "",
+    author: "Surriya Pascucci",
+    role: "Acheteur",
+    avatar: "",
+    rating: 5,
+  },
 ];
 
 const Testimonials: React.FC = () => {
