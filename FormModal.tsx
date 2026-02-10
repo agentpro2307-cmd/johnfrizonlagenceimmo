@@ -5,7 +5,7 @@ type Mode = "short" | "qualifying" | "estimation";
 type Props = {
   isOpen: boolean;
   onClose: () => void;
-  type: string; // "short" | "qualifying" | "estimation"
+  type: Mode;
 };
 
 export default function FormModal({ isOpen, onClose, type }: Props) {
@@ -40,7 +40,6 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isOpen, onClose]);
 
-  // ✅ bloque le scroll de la page derrière (mobile surtout)
   useEffect(() => {
     if (!isOpen) return;
     const prev = document.body.style.overflow;
@@ -59,7 +58,7 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
       ? "Estimer mon bien"
       : "Nous contacter";
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const payload: Record<string, string> = {
@@ -67,13 +66,12 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
       name,
       phone,
       email,
+      _replyto: email,
       message,
       estimation: isEstimation ? "oui" : "non",
-      _subject: isEstimation
-        ? "Nouvelle demande d'estimation"
-        : type === "short"
-        ? "Nouvelle demande de rendez-vous"
-        : "Nouveau message",
+      _subject: `[Site] ${
+        isEstimation ? "Demande d'estimation" : type === "short" ? "RDV" : "Contact"
+      } - ${name}`,
     };
 
     if (isEstimation) {
@@ -85,6 +83,8 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
     }
 
     try {
+      console.log("Posting to:", FORM_ENDPOINT);
+
       const formData = new FormData();
       Object.entries(payload).forEach(([k, v]) => formData.append(k, v));
 
@@ -94,11 +94,16 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
         headers: { Accept: "application/json" },
       });
 
-      if (!res.ok) throw new Error("Formspree error");
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        console.log("Formspree error:", res.status, data);
+        throw new Error("Formspree error");
+      }
 
       alert("Merci ! Votre demande a bien été envoyée.");
       onClose();
     } catch (err) {
+      console.log(err);
       alert("Oups… impossible d’envoyer pour le moment. Réessaie ou appelle-moi.");
     }
   };
@@ -109,7 +114,6 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
       role="dialog"
       aria-modal="true"
     >
-      {/* overlay cliquable */}
       <button
         type="button"
         className="absolute inset-0 bg-black/50"
@@ -117,14 +121,12 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
         onClick={onClose}
       />
 
-      {/* ✅ container : plein écran en mobile, carte sur desktop */}
       <div
         className="relative w-full md:max-w-2xl bg-white md:rounded-3xl shadow-xl
                    h-[100dvh] md:h-auto md:max-h-[85dvh]
                    flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* ✅ header sticky : X toujours visible */}
         <div className="sticky top-0 z-10 bg-white/95 backdrop-blur border-b border-slate-100 px-6 py-4 md:rounded-t-3xl flex items-start justify-between gap-4">
           <h3 className="text-xl md:text-2xl font-bold text-slate-900">{title}</h3>
 
@@ -138,7 +140,6 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
           </button>
         </div>
 
-        {/* ✅ contenu scrollable */}
         <div className="flex-1 overflow-y-auto px-6 py-5">
           <label className="inline-flex items-center gap-2 text-sm text-slate-700 cursor-pointer select-none">
             <input
@@ -153,6 +154,7 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input
+                name="name"
                 className="w-full rounded-2xl border border-slate-200 px-4 py-3"
                 placeholder="Nom"
                 value={name}
@@ -160,6 +162,7 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
                 required
               />
               <input
+                name="phone"
                 className="w-full rounded-2xl border border-slate-200 px-4 py-3"
                 placeholder="Téléphone"
                 value={phone}
@@ -169,6 +172,7 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
             </div>
 
             <input
+              name="email"
               className="w-full rounded-2xl border border-slate-200 px-4 py-3"
               placeholder="Email"
               type="email"
@@ -179,18 +183,18 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
 
             {isEstimation && (
               <div className="rounded-2xl border border-slate-200 p-4 space-y-4">
-                <p className="font-semibold text-slate-900">
-                  Informations pour l’estimation
-                </p>
+                <p className="font-semibold text-slate-900">Informations pour l’estimation</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input
+                    name="city"
                     className="w-full rounded-2xl border border-slate-200 px-4 py-3"
                     placeholder="Commune"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                   />
                   <input
+                    name="propertyType"
                     className="w-full rounded-2xl border border-slate-200 px-4 py-3"
                     placeholder="Type de bien (appartement, maison...)"
                     value={propertyType}
@@ -200,6 +204,7 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <input
+                    name="surface"
                     className="w-full rounded-2xl border border-slate-200 px-4 py-3"
                     placeholder="Surface (m²)"
                     inputMode="numeric"
@@ -207,6 +212,7 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
                     onChange={(e) => setSurface(e.target.value)}
                   />
                   <input
+                    name="rooms"
                     className="w-full rounded-2xl border border-slate-200 px-4 py-3"
                     placeholder="Pièces"
                     inputMode="numeric"
@@ -214,6 +220,7 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
                     onChange={(e) => setRooms(e.target.value)}
                   />
                   <input
+                    name="timeline"
                     className="w-full rounded-2xl border border-slate-200 px-4 py-3"
                     placeholder="Délai (optionnel)"
                     value={timeline}
@@ -224,17 +231,13 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
             )}
 
             <textarea
+              name="message"
               className="w-full rounded-2xl border border-slate-200 px-4 py-3 min-h-[120px]"
-              placeholder={
-                isEstimation
-                  ? "Détails utiles (travaux, charges, vue, expo...)"
-                  : "Votre message"
-              }
+              placeholder={isEstimation ? "Détails utiles (travaux, charges, vue, expo...)" : "Votre message"}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
 
-            {/* ✅ footer sticky : bouton toujours accessible sur mobile */}
             <div className="sticky bottom-0 bg-white pt-3 pb-2">
               <button
                 className="w-full rounded-2xl bg-slate-900 text-white font-semibold py-3 hover:opacity-90"
