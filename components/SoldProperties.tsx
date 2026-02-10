@@ -8,7 +8,7 @@ type SoldProperty = {
   priceSold: number;
   soldInDays: number;
   exclusivite: boolean;
-  imageUrl: string; // ex: "/images/vendus/peron.jpg"
+  image: string; // 
 };
 
 const SOLD_PROPERTIES: SoldProperty[] = [
@@ -21,13 +21,12 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     soldInDays: 60,
     exclusivite: false,
     images: [
-      "/images/vendus/peron4.jpg",
-      "/images/vendus/peron2.jpeg",
-      "/images/vendus/peron3.jpg",
-      "/images/vendus/peron1.jpg",
-      "/images/vendus/peron6.jpg",
-      "/images/vendus/peron7.jpg",
       "/images/vendus/peron5.jpeg",
+      "/images/vendus/peron4.jpg",
+      "/images/vendus/peron3.jpg",
+      "/images/vendus/peron2.jpeg",
+      "/images/vendus/peron1.jpg",
+      "/images/vendus/peron7.jpg",
     ],
   },
 ];
@@ -60,6 +59,80 @@ function formatDelay(days: number) {
   return `${months} mois`;
 }
 
+// ✅ Carrousel simple, sans lib
+function ImageCarousel({ images, alt }: { images: string[]; alt: string }) {
+  const [idx, setIdx] = React.useState(0);
+
+  const safeImages = Array.isArray(images) ? images.filter(Boolean) : [];
+  if (safeImages.length === 0) {
+    // fallback si aucune image
+    const fallback = `${import.meta.env.BASE_URL}images/placeholder.jpg`;
+    return (
+      <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-4 apple-shadow bg-slate-100">
+        <img src={fallback} alt={alt} className="w-full h-full object-cover" />
+      </div>
+    );
+  }
+
+  const current = safeImages[idx] ?? safeImages[0];
+  const src = `${import.meta.env.BASE_URL}${current.replace(/^\//, "")}`;
+  const placeholder = `${import.meta.env.BASE_URL}images/placeholder.jpg`;
+
+  return (
+    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden mb-4 apple-shadow">
+      <img
+        src={src}
+        alt={alt}
+        className="w-full h-full object-cover"
+        loading="lazy"
+        onError={(e) => {
+          (e.currentTarget as HTMLImageElement).src = placeholder;
+        }}
+      />
+
+      {/* voile */}
+      <div className="absolute inset-0 bg-black/25" />
+
+      {/* flèches */}
+      {safeImages.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={() =>
+              setIdx((v) => (v - 1 + safeImages.length) % safeImages.length)
+            }
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white rounded-full w-9 h-9 font-bold text-slate-900"
+            aria-label="Photo précédente"
+          >
+            ‹
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setIdx((v) => (v + 1) % safeImages.length)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white rounded-full w-9 h-9 font-bold text-slate-900"
+            aria-label="Photo suivante"
+          >
+            ›
+          </button>
+
+          {/* points */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+            {safeImages.map((_, i) => (
+              <span
+                key={i}
+                className={`h-1.5 w-1.5 rounded-full ${
+                  i === idx ? "bg-white" : "bg-white/50"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function SoldProperties() {
   return (
     <section
@@ -67,7 +140,6 @@ export default function SoldProperties() {
       className="scroll-mt-28 py-24 bg-white border-t border-slate-100"
     >
       <div className="max-w-screen-xl mx-auto px-6 lg:px-8">
-        {/* Header */}
         <div className="mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">
             Biens vendus
@@ -77,29 +149,16 @@ export default function SoldProperties() {
           </p>
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {SOLD_PROPERTIES.map((p) => {
             const tags = [p.exclusivite ? "Exclusivité" : "Simple", "Vendu"];
 
-            // ✅ chemin image compatible GitHub Pages
-            const current = images?.[idx] ?? images?.[0] ?? "";
-const src = `${import.meta.env.BASE_URL}${current.replace(/^\//, "")}`;
+            return (
+              <div key={p.id} className="group">
+                <div className="relative">
+                  <ImageCarousel images={p.images} alt={p.title} />
 
-
-<img
-  src={imgSrc}
-  alt={p.title}
-  className="w-full h-full object-cover"
-  onError={(e) => {
-    (e.currentTarget as HTMLImageElement).src =
-      `${import.meta.env.BASE_URL}images/placeholder.jpg`;
-  }}
-/>
-
-
-                  <div className="absolute inset-0 bg-black/25" />
-
+                  {/* badges */}
                   <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                     {tags.map((b) => (
                       <span
@@ -113,6 +172,7 @@ const src = `${import.meta.env.BASE_URL}${current.replace(/^\//, "")}`;
                     ))}
                   </div>
 
+                  {/* délai */}
                   <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-lg text-xs font-bold text-slate-900">
                     ⏱ {formatDelay(p.soldInDays)}
                   </div>
