@@ -127,6 +127,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Appartement",
     imageUrl: "/images/guyot.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3105580714",
+    status: "Sous offre",
     badges: ["Exclusivité"],
   },
 ];
