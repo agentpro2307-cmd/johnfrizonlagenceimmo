@@ -25,8 +25,8 @@ type Props = {
 const MOCK_PROPERTIES: Property[] = [
   {
     id: 1,
-    title: "Chalet 6 pièces 160 m²",
-    price: 395000,
+    title: "Chalet 5 pièces 160 m²",
+    price: 350000,
     location: "Échallon (01130)",
     beds: 0,
     baths: 0,
