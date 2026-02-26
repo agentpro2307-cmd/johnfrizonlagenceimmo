@@ -7,6 +7,10 @@ type SoldProperty = {
   soldInDays: number;
   exclusivite: boolean;
   images: string[];
+
+  // ✅ optionnels : si tu ne les mets pas, rien ne s'affiche (pas de NaN)
+  priceListed?: number; // prix affiché
+  priceSold?: number;   // prix vendu
 };
 
 const SOLD_PROPERTIES: SoldProperty[] = [
@@ -14,7 +18,6 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     id: 1,
     title: "Maison de standing T8 de 328m²",
     commune: "Péron (01630)",
-   
     soldInDays: 60,
     exclusivite: false,
     images: [
@@ -25,12 +28,13 @@ const SOLD_PROPERTIES: SoldProperty[] = [
       "/images/peron1.jpg",
       "/images/peron7.jpg",
     ],
+    // priceListed: 690000,
+    // priceSold: 670000,
   },
   {
     id: 4,
     title: "Appartement T3 de 90m²",
     commune: "Péron (01630)",
-  
     soldInDays: 5,
     exclusivite: true,
     images: [
@@ -41,12 +45,13 @@ const SOLD_PROPERTIES: SoldProperty[] = [
       "/images/stay_00407.jpeg",
       "/images/stay_00406.jpeg",
     ],
+    // priceListed: 320000,
+    // priceSold: 315000,
   },
   {
     id: 3,
     title: "Maison T5 Piscine 800m²",
     commune: "Thoiry (01710)",
- 
     soldInDays: 2,
     exclusivite: false,
     images: [
@@ -57,12 +62,13 @@ const SOLD_PROPERTIES: SoldProperty[] = [
       "/images/vendus/leo5.jpeg",
       "/images/vendus/leo6.jpeg",
     ],
+    // priceListed: 590000,
+    // priceSold: 600000,
   },
   {
     id: 2,
     title: "Maison T5 2017 242m² Dpe A & A",
     commune: "Challex (01630)",
-  
     soldInDays: 14,
     exclusivite: true,
     images: [
@@ -73,6 +79,8 @@ const SOLD_PROPERTIES: SoldProperty[] = [
       "/images/vendus/cha5.jpg",
       "/images/vendus/cha6.jpg",
     ],
+    // priceListed: 750000,
+    // priceSold: 740000,
   },
 ];
 
@@ -182,6 +190,9 @@ export default function SoldProperties() {
           {SOLD_PROPERTIES.map((p) => {
             const tags = [p.exclusivite ? "Exclusivité" : "Simple", "Vendu"];
 
+            const hasPriceSold = typeof p.priceSold === "number" && Number.isFinite(p.priceSold);
+            const hasPriceListed = typeof p.priceListed === "number" && Number.isFinite(p.priceListed);
+
             return (
               <div key={p.id} className="group">
                 <div className="relative">
@@ -191,7 +202,9 @@ export default function SoldProperties() {
                     {tags.map((b) => (
                       <span
                         key={`${p.id}-${b}`}
-                        className={`px-2 py-1 rounded-lg text-[11px] font-bold shadow-sm backdrop-blur-sm ${badgeClass(b)}`}
+                        className={`px-2 py-1 rounded-lg text-[11px] font-bold shadow-sm backdrop-blur-sm ${badgeClass(
+                          b
+                        )}`}
                       >
                         {b}
                       </span>
@@ -199,7 +212,42 @@ export default function SoldProperties() {
                   </div>
                 </div>
 
-             
+                <div className="space-y-1 mt-4">
+                  {/* ✅ Bloc prix : affiché seulement si au moins un prix existe */}
+                  {(hasPriceSold || hasPriceListed) && (
+                    <div className="flex items-baseline gap-3">
+                      {hasPriceSold && (
+                        <p className="text-lg font-bold text-slate-900">{formatEUR(p.priceSold!)}</p>
+                      )}
+                      {hasPriceListed && (
+                        <p className="text-sm text-slate-500 line-through">{formatEUR(p.priceListed!)}</p>
+                      )}
+                    </div>
+                  )}
+
+                  <h3 className="text-slate-900 font-semibold truncate">{p.title}</h3>
+
+                  <p className="text-sm text-slate-500 flex items-center gap-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19.5 10.5c0 7-7.5 11-7.5 11s-7.5-4-7.5-11a7.5 7.5 0 1115 0z"
+                      />
+                    </svg>
+                    {p.commune}
+                  </p>
+
+                  <p className="text-xs text-slate-400">Délai : {formatDelay(p.soldInDays)}</p>
+                </div>
+              </div>
             );
           })}
         </div>
