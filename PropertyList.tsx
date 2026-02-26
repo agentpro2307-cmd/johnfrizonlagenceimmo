@@ -115,6 +115,7 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/st-jean.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3097744101",
      badges: ["Spécial investissement"],
+    status: "Sous offre",
   },
   {
     id: 8, // ✅ (avant 7) pour éviter doublon
