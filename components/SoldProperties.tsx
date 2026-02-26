@@ -4,8 +4,6 @@ type SoldProperty = {
   id: number;
   title: string;
   commune: string;
-  priceListed: number;
-  priceSold: number;
   soldInDays: number;
   exclusivite: boolean;
   images: string[];
