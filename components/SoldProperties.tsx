@@ -200,24 +200,20 @@ export default function SoldProperties() {
                 </div>
 
                 <div className="space-y-1 mt-4">
-                  <div className="flex items-baseline gap-3">
-                    <p className="text-lg font-bold text-slate-900">{formatEUR(p.priceSold)}</p>
-                    <p className="text-sm text-slate-500 line-through">{formatEUR(p.priceListed)}</p>
-                  </div>
+  {(Number.isFinite(p.priceSold) || Number.isFinite(p.priceListed)) && (
+    <div className="flex items-baseline gap-3">
+      {Number.isFinite(p.priceSold) && (
+        <p className="text-lg font-bold text-slate-900">{formatEUR(p.priceSold)}</p>
+      )}
+      {Number.isFinite(p.priceListed) && (
+        <p className="text-sm text-slate-500 line-through">{formatEUR(p.priceListed)}</p>
+      )}
+    </div>
+  )}
 
-                  <h3 className="text-slate-900 font-semibold truncate">{p.title}</h3>
-
-                  <p className="text-sm text-slate-500 flex items-center gap-2">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.5 10.5c0 7-7.5 11-7.5 11s-7.5-4-7.5-11a7.5 7.5 0 1115 0z" />
-                    </svg>
-                    {p.commune}
-                  </p>
-
-                  <p className="text-xs text-slate-400">Délai : {formatDelay(p.soldInDays)}</p>
-                </div>
-              </div>
+  <h3 className="text-slate-900 font-semibold truncate">{p.title}</h3>
+  ...
+</div>
             );
           })}
         </div>
