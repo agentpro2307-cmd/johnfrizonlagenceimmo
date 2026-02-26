@@ -182,7 +182,7 @@ export default function SoldProperties() {
         <div className="mb-12">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">Biens vendus</h2>
           <p className="mt-3 text-slate-500 max-w-2xl">
-            Prix affiché, prix vendu, délai, et stratégie (exclusivité ou simple).
+           
           </p>
         </div>
 
