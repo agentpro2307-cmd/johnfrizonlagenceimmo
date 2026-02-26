@@ -16,8 +16,7 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     id: 1,
     title: "Maison de standing T8 de 328m²",
     commune: "Péron (01630)",
-    priceListed: 895000,
-    priceSold: 895000,
+   
     soldInDays: 60,
     exclusivite: false,
     images: [
@@ -33,8 +32,7 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     id: 4,
     title: "Appartement T3 de 90m²",
     commune: "Péron (01630)",
-    priceListed: 380000,
-    priceSold: 370000,
+  
     soldInDays: 5,
     exclusivite: true,
     images: [
@@ -50,8 +48,7 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     id: 3,
     title: "Maison T5 Piscine 800m²",
     commune: "Thoiry (01710)",
-    priceListed: 817000,
-    priceSold: 810000,
+ 
     soldInDays: 2,
     exclusivite: false,
     images: [
@@ -67,8 +64,7 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     id: 2,
     title: "Maison T5 2017 242m² Dpe A & A",
     commune: "Challex (01630)",
-    priceListed: 695000,
-    priceSold: 680000,
+  
     soldInDays: 14,
     exclusivite: true,
     images: [
