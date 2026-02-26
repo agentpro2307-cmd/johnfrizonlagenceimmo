@@ -33,7 +33,7 @@ const MOCK_PROPERTIES: Property[] = [
     sqft: 160,
     type: "Chalet",
     imageUrl: "/images/escarnot.jpeg",
-    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3079918529",
+    url: "https://www.lagenceimmo01.fr/vente/maison-chalet-5-pieces-echallon-01130,VM959",
     badges: ["Exclusivité"],
   },
   {
