@@ -199,21 +199,7 @@ export default function SoldProperties() {
                   </div>
                 </div>
 
-                <div className="space-y-1 mt-4">
-  {(Number.isFinite(p.priceSold) || Number.isFinite(p.priceListed)) && (
-    <div className="flex items-baseline gap-3">
-      {Number.isFinite(p.priceSold) && (
-        <p className="text-lg font-bold text-slate-900">{formatEUR(p.priceSold)}</p>
-      )}
-      {Number.isFinite(p.priceListed) && (
-        <p className="text-sm text-slate-500 line-through">{formatEUR(p.priceListed)}</p>
-      )}
-    </div>
-  )}
-
-  <h3 className="text-slate-900 font-semibold truncate">{p.title}</h3>
-  ...
-</div>
+             
             );
           })}
         </div>
