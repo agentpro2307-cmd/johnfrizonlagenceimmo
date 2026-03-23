@@ -48,7 +48,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Maison",
     imageUrl: "/images/salledebains.jpg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3165039229",
-    status: "Exclusivité",
+    status: "",
     badges: ["Exclusivité"],
   },
   {
