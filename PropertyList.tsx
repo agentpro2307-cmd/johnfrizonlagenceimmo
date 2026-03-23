@@ -37,6 +37,7 @@ const MOCK_PROPERTIES: Property[] = [
     status: ,
     badges: ["Nouveauté"],
   },
+  {
    id: 9,
     title: "Grange rénovée 7 pièces 203 m²",
     price: 875000,
