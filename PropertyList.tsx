@@ -23,6 +23,33 @@ type Props = {
 };
 
 const MOCK_PROPERTIES: Property[] = [
+   {
+    id: 10,
+    title: "Villa 7 pièces 200 m²",
+    price: 1095000,
+    location: "Thoiry  (01710)",
+    beds: 0,
+    baths: 0,
+    sqft: 160,
+    type: "Villa",
+    imageUrl: "/images/villathoiry.jpg",
+    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3162555708",
+    status: ,
+    badges: ["Nouveauté"],
+  },
+   id: 9,
+    title: "Grange rénovée 7 pièces 203 m²",
+    price: 875000,
+    location: "Léaz (01200)",
+    beds: 0,
+    baths: 0,
+    sqft: 203,
+    type: "Maison",
+    imageUrl: "/images/salledebains.jpg",
+    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3165039229",
+    status: "Exclusivité",
+    badges: ["Exclusivité"],
+  },
   {
     id: 1,
     title: "Chalet 5 pièces 160 m²",
