@@ -45,7 +45,7 @@ const MOCK_PROPERTIES: Property[] = [
     beds: 0,
     baths: 0,
     sqft: 203,
-    type: "Maison",
+    type: "Gamme Luxe",
     imageUrl: "/images/grange.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3165039229",
     status: "",
