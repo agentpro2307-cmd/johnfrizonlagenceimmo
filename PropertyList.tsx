@@ -65,20 +65,7 @@ const MOCK_PROPERTIES: Property[] = [
     status: "",
     badges: ["Nouveauté"],
   },
-  {
-    id: 4,
-    title: "Appartement 5 pièces 112 m²",
-    price: 550000,
-    location: "Péron (01630)",
-    beds: 0,
-    baths: 0,
-    sqft: 112,
-    type: "Appartement",
-    imageUrl: "/images/piller.png",
-    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3089369842",
-       badges: ["Exclusivité"],
-     status: "Sous offre",
-  },
+
   {
     id: 5,
     title: "Appartement 2 pièces 51 m²",
@@ -118,20 +105,7 @@ const MOCK_PROPERTIES: Property[] = [
     url: "https://www.bellesdemeures.com/annonces/vente/tt-2-tb-2-pl-515/252813665/?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR148&sort_order_ab_test=sort_order_reference&feature_aiEnrichment=false#ln=classified_search_results&m=classified_search_results_classified_classified_detail_L",
      badges: ["Coup de coeur"],
   },
-  {
-    id: 9, // 
-    title: "Appartement 3 pièces 61m²",
-    price: 345000,
-    location: "Saint Genis Pouilly (01630)",
-    beds: 0,
-    baths: 0,
-    sqft: 61,
-    type: "Appartement",
-    imageUrl: "/images/guyot.png",
-    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3105580714",
-    status: "Sous offre",
-    badges: ["Exclusivité"],
-  },
+  
 ];
 
 function badgeClass(label: string) {
