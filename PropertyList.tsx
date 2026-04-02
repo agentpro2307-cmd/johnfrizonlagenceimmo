@@ -32,7 +32,7 @@ const MOCK_PROPERTIES: Property[] = [
     baths: 0,
     sqft: 160,
     type: "Villa",
-    imageUrl: "/images/villathoiry.",
+    imageUrl: "/images/villathoiry.jpg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3162555708",
     status: "",
     badges: ["Nouveauté"],
