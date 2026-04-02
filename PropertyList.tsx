@@ -46,7 +46,7 @@ const MOCK_PROPERTIES: Property[] = [
     baths: 0,
     sqft: 203,
     type: "Gamme Luxe",
-    imageUrl: "/images/grange.png",
+    imageUrl: "/images/images/ChatGPT Image 20 mars 2026, 01_37_22.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3165039229",
     status: "",
     badges: ["Exclusivité"],
