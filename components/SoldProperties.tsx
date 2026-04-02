@@ -101,9 +101,9 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     ],
   },
   {
-    id: 5,
+    id: 7,
     title: "Appartement 5 pièces 112m²",
-    commune: "Peron (01130)",
+    commune: "Peron (01630)",
     soldInDays: 90,
     exclusivite: false,
     images: [
@@ -111,6 +111,32 @@ const SOLD_PROPERTIES: SoldProperty[] = [
       "/images/vendus/VA2316_14_original.jpg",
       "/images/vendus/piller.png",
       "/images/vendus/VA2316_4_original.jpg",
+    ],
+  },
+   {
+    id: 8,
+    title: "Appartement 2 pièces 34m²",
+    commune: "Saint Jean de Gonvilles (01630)",
+    soldInDays: 60,
+    exclusivite: false,
+    images: [
+      "/images/vendus/VA2396_4_original.jpg",
+      "/images/vendus/VA2396_5_original.jpg",
+      "/images/vendus/VA2396_8_original.jpg",
+    ],
+  },
+  {
+    id: 9,
+    title: "Appartement 3 pièces 61m²",
+    commune: "Saint Genis-Pouilly (01630)",
+    soldInDays: 45,
+    exclusivite: false,
+    images: [
+      "/images/vendus/guyot.png",
+      "/images/vendus/VA2402_7_original.jpg",
+      "/images/vendus/VA2402_12_original.jpg",
+      "/images/vendus/VA2402_13_original.jpg",
+      "/images/vendus/VA2402_9_original.jpg",
     ],
   },
 ];
