@@ -24,7 +24,7 @@ type Props = {
 
 const MOCK_PROPERTIES: Property[] = [
    {
-    id: 10,
+    id: 1,
     title: "Villa 7 pièces 200 m²",
     price: 1095000,
     location: "Thoiry  (01710)",
@@ -38,7 +38,7 @@ const MOCK_PROPERTIES: Property[] = [
     badges: ["Nouveauté"],
   },
   {
-   id: 9,
+   id: 2,
     title: "Grange rénovée 7 pièces 203 m²",
     price: 875000,
     location: "Léaz (01200)",
@@ -66,7 +66,7 @@ const MOCK_PROPERTIES: Property[] = [
     badges: ["Exclusivité"],
   },
   {
-    id: 2,
+    id: 3,
     title: "Appartement 4 pièces 84 m²",
     price: 375000,
     location: "Péron (01630)",
@@ -80,7 +80,7 @@ const MOCK_PROPERTIES: Property[] = [
     badges: ["Exclusivité"],
   },
   {
-    id: 7,
+    id: 4,
     title: "Appartement 5 pièces 112 m²",
     price: 550000,
     location: "Péron (01630)",
@@ -94,7 +94,7 @@ const MOCK_PROPERTIES: Property[] = [
      status: "Sous offre",
   },
   {
-    id: 3,
+    id: 5,
     title: "Appartement 2 pièces 51 m²",
     price: 190000,
     location: "Annemasse 74100 · Quartier Vernand",
@@ -107,7 +107,7 @@ const MOCK_PROPERTIES: Property[] = [
      badges: ["Exclusivité"],
   },
   {
-    id: 4,
+    id: 6,
     title: "Maison 5 pièces 113 m²",
     price: 435000,
     location: "Collonges 01550",
@@ -120,7 +120,7 @@ const MOCK_PROPERTIES: Property[] = [
     badges: ["Nouveauté"],
   },
   {
-    id: 5,
+    id: 7,
     title: "Villa 8 pièces 228 m²",
     price: 697000,
     location: "Farges 01550",
@@ -133,7 +133,7 @@ const MOCK_PROPERTIES: Property[] = [
      badges: ["Coup de coeur"],
   },
   {
-    id: 6,
+    id: 8,
     title: "Appartement 2 pièces 34 m²",
     price: 215000,
     location: "Saint-Jean-de-Gonville 01630",
@@ -147,7 +147,7 @@ const MOCK_PROPERTIES: Property[] = [
     status: "Sous offre",
   },
   {
-    id: 8, // ✅ (avant 7) pour éviter doublon
+    id: 9, // 
     title: "Appartement 3 pièces 61m²",
     price: 345000,
     location: "Saint Genis Pouilly (01630)",
@@ -158,6 +158,20 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/guyot.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3105580714",
     status: "Sous offre",
+    badges: ["Exclusivité"],
+  },
+   {
+    id: 10, // 
+    title: "Maison 7 pièces 184m²",
+    price: 495000,
+    location: "Belleydoux (01130)",
+    beds: 0,
+    baths: 0,
+    sqft: 61,
+    type: "Maison",
+    imageUrl: "/images/Belleydoux.png",
+    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3170036947",
+    status: "",
     badges: ["Exclusivité"],
   },
 ];
