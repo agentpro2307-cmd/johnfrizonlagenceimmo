@@ -95,9 +95,9 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     exclusivite: true,
     images: [
       "/images/studer.jpg",
-      "/images/vendus/VA2439_2_original.jpg",
-      "/images/vendus/VA2439_3_original.jpg",
-      "/images/vendus/VA2439_5_original.jpg",
+      "/images/vendus/VA24392original.jpg",
+      "/images/vendus/VA24393original.jpg",
+      "/images/vendus/VA24395original.jpg",
     ],
   },
   {
@@ -138,7 +138,7 @@ const SOLD_PROPERTIES: SoldProperty[] = [
       "/images/vendus/VA24027original.jpg",
       "/images/vendus/VA240212original.jpg",
       "/images/vendus/VA240213original.jpg",
-      "/images/vendus/VA2402_9original.jpg",
+      "/images/vendus/VA24029original.jpg",
     ],
   },
 ];
