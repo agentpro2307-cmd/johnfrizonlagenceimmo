@@ -107,9 +107,9 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     soldInDays: 90,
     exclusivite: false,
     images: [
+             "/images/vendus/piller.png",
        "/images/vendus/VA231614original.jpg",
       "/images/vendus/VA231613original.jpg",
-       "/images/vendus/piller.png",
       "/images/vendus/VA23164original.jpg",
     ],
   },
