@@ -120,9 +120,9 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
         <div className="hidden lg:block relative animate-in fade-in zoom-in duration-1000">
           <div className="relative w-full aspect-video rounded-3xl overflow-hidden glass-nav p-5 apple-shadow">
             <img
-              src={`${import.meta.env.BASE_URL}images/ChatGPT Image 20 mars 2026, 01_37_22moi bleu pro.jpg}
-              className="w-full h-full object-cover rounded-2xl"
-              alt="Featured Property"
+  src={`${import.meta.env.BASE_URL}images/ChatGPT Image 20 mars 2026, 01_37_22moi bleu pro.jpg`}
+  className="w-full h-full object-cover rounded-2xl"
+  alt="Featured Property"
             />
 
             <div className="absolute bottom-8 right-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-xl border border-white/50">
