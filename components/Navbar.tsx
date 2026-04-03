@@ -61,7 +61,7 @@ const scrollTo = (id: string) => {
           aria-label="Accueil"
         >
           <img
-            src={`${import.meta.env.BASE_URL}images/logo.png`}
+            src={`${import.meta.env.BASE_URL}images/LogoAgenceImmoColor.png`}
             alt="Logo"
             className="w-10 h-10 rounded-2xl object-cover"
           />
