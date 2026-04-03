@@ -74,6 +74,15 @@ const TESTIMONIALS: TestimonialUI[] = [
     rating: 5,
   },
   {
+    id: "8",
+    companyLogo: "",
+    quote: "Agent très compétent. Professionnel, efficace et à l’écoute. Merci pour vos conseils et votre disponibilité.",
+    author: "LKS",
+    role: "Acheteur",
+    avatar: "",
+    rating: 5,
+  },
+  {
     id: "4",
     companyLogo: "",
     quote: "",
