@@ -63,7 +63,7 @@ const scrollTo = (id: string) => {
           <img
             src={`${import.meta.env.BASE_URL}images/LogoAgenceImmoColor.png`}
             alt="Logo"
-            className="w-10 h-10 rounded-2xl object-cover"
+            className="w-16 h-16 rounded-2xl object-cover"
           />
           <div className="text-left leading-tight">
             <div className="font-bold text-slate-900">John Frizon</div>
