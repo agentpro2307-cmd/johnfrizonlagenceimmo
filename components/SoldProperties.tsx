@@ -95,9 +95,9 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     exclusivite: true,
     images: [
       "/images/studer.jpg",
-      "/images/VA2439_2_original.jpg",
-      "/images/VA2439_3_original.jpg",
-      "/images/VA2439_5_original.jpg",
+      "/images/vendus/VA2439_2_original.jpg",
+      "/images/vendus/VA2439_3_original.jpg",
+      "/images/vendus/VA2439_5_original.jpg",
     ],
   },
   {
@@ -107,9 +107,9 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     soldInDays: 90,
     exclusivite: false,
     images: [
+       "/images/vendus/VA2316_14_original.jpg"
       "/images/vendus/VA2316_13_original.jpg",
        "/images/vendus/piller.png",
-      "/images/vendus/VA2316_14_original.jpg"
       "/images/vendus/VA2316_4_original.jpg",
     ],
   },
@@ -120,9 +120,10 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     soldInDays: 60,
     exclusivite: false,
     images: [
-       "/images/vendus/VA2396_8_original.jpg",
-      "/images/vendus/VA2396_4_original.jpg",
-      "/images/vendus/VA2396_5_original.jpg",
+      "/images/vendus/VA23965original.jpg",
+      "/images/vendus/VA23968original.jpg",
+      "/images/vendus/VA23964original.jpg",
+
      
     ],
   },
@@ -134,10 +135,10 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     exclusivite: false,
     images: [
       "/images/guyot.png",
-      "/images/vendus/VA2402_7_original.jpg",
-      "/images/vendus/VA2402_12_original.jpg",
-      "/images/vendus/VA2402_13_original.jpg",
-      "/images/vendus/VA2402_9_original.jpg",
+      "/images/vendus/VA24027original.jpg",
+      "/images/vendus/VA240212original.jpg",
+      "/images/vendus/VA240213original.jpg",
+      "/images/vendus/VA2402_9original.jpg",
     ],
   },
 ];
