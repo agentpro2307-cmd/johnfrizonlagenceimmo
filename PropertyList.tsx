@@ -102,7 +102,7 @@ const MOCK_PROPERTIES: Property[] = [
     sqft: 228,
     type: "Villa",
     imageUrl: "/images/majetniak.png",
-    url: "https://www.bellesdemeures.com/annonces/vente/tt-2-tb-2-pl-515/252813665/?serp_view=list&search=distributionTypes%3DBuy%26estateTypes%3DHouse%2CApartment%26locations%3DAD08FR148&sort_order_ab_test=sort_order_reference&feature_aiEnrichment=false#ln=classified_search_results&m=classified_search_results_classified_classified_detail_L",
+    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3158757894",
      badges: ["Coup de coeur"],
   },
   
