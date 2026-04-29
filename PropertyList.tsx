@@ -35,7 +35,7 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/Belleydoux.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3170036947",
     status: "",
-    badges: ["Exclusivité"],
+    badges: ["sous offre"],
   },
   {
    id: 2,
@@ -50,34 +50,6 @@ const MOCK_PROPERTIES: Property[] = [
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3165039229",
     status: "",
     badges: ["Exclusivité"],
-  },
-   {
-    id: 1,
-    title: "Villa 7 pièces 200 m²",
-    price: 1095000,
-    location: "Thoiry  (01710)",
-    beds: 0,
-    baths: 0,
-    sqft: 160,
-    type: "Villa",
-    imageUrl: "/images/villathoiry.jpg",
-    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3162555708",
-    status: "",
-    badges: ["Nouveauté"],
-  },
-
-  {
-    id: 5,
-    title: "Appartement 2 pièces 51 m²",
-    price: 190000,
-    location: "Annemasse 74100 · Quartier Vernand",
-    beds: 0,
-    baths: 0,
-    sqft: 51,
-    type: "Appartement",
-    imageUrl: "/images/traitée.jpg",
-    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3115340035",
-     badges: ["Exclusivité"],
   },
   {
     id: 6,
@@ -103,7 +75,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Villa",
     imageUrl: "/images/majetniak.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3158757894",
-     badges: ["Coup de coeur"],
+     badges: ["offre bienvenue"],
   },
   
 ];
