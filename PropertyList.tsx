@@ -62,7 +62,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Maison mitoyenne",
     imageUrl: "/images/pereira_00001_2.jpg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3056257502",
-    badges: ["Nouveauté"],
+    badges: ["Idéal 1er achat"],
   },
   {
     id: 7,
