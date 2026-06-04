@@ -40,7 +40,7 @@ const MOCK_PROPERTIES: Property[] = [
   {
    id: 2,
     title: "Grange rénovée 7 pièces 203 m²",
-    price: 875000,
+    price: 845000,
     location: "Léaz (01200)",
     beds: 0,
     baths: 0,
