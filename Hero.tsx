@@ -131,7 +131,7 @@ const Hero: React.FC<HeroProps> = ({ onFindHome, onEstimate, onSearch }) => {
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Exclusivité</span>
               </div>
               <h3 className="text-lg font-bold">Maison 7 pièces</h3>
-              <p className="text-xl font-medium text-slate-900">875 000€</p>
+              <p className="text-xl font-medium text-slate-900">845 000€</p>
             </div>
           </div>
 
