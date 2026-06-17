@@ -23,6 +23,19 @@ type Props = {
 };
 
 const MOCK_PROPERTIES: Property[] = [
+    {
+    id: 7,
+    title: "Appartement T3/62 m² - Garage double et Balcon côté forêt",
+    price: 375000,
+    location: "Echenevex 01170",
+    beds: 0,
+    baths: 0,
+    sqft: 62,
+    type: "Appartement",
+    imageUrl: "/images/sejourbis.png",
+    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3217271271",
+     badges: ["exclusivité"],
+  },
    {
     id: 10, // 
     title: "Maison 7 pièces 184m²",
@@ -63,19 +76,6 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/pereira_00001_2.jpg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3056257502",
     badges: ["Idéal 1er achat"],
-  },
-  {
-    id: 7,
-    title: "Villa 8 pièces 228 m²",
-    price: 697000,
-    location: "Farges 01550",
-    beds: 0,
-    baths: 0,
-    sqft: 228,
-    type: "Villa",
-    imageUrl: "/images/majetniak.png",
-    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3158757894",
-     badges: ["offre bienvenue"],
   },
   
 ];
