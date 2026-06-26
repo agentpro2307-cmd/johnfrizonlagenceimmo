@@ -75,7 +75,7 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/grange.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3165039229",
     status: "",
-    badges: ["Faire offre"],
+    badges: ["Offre bienvenue"],
   },
   {
     id: 6,
@@ -88,7 +88,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Maison mitoyenne",
     imageUrl: "/images/pereira_00001_2.jpg",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3056257502",
-    badges: ["Idéal 1er achat"],
+    badges: ["Urgent"],
   },
   
 ];
