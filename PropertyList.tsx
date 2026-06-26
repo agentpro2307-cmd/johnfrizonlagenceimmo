@@ -61,7 +61,7 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/Belleydoux.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3170036947",
     status: "",
-    badges: ["sous offre"],
+    badges: ["sous compromis"],
   },
   {
    id: 2,
@@ -75,7 +75,7 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/grange.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3165039229",
     status: "",
-    badges: ["Exclusivité"],
+    badges: ["Faire offre"],
   },
   {
     id: 6,
