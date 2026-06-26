@@ -86,7 +86,7 @@ const MOCK_PROPERTIES: Property[] = [
     baths: 0,
     sqft: 113,
     type: "Maison mitoyenne",
-    imageUrl: "/images/pereira_00001_2.jpg",
+    imageUrl: "/images/Collonges.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3056257502",
     badges: ["Urgent"],
   },
