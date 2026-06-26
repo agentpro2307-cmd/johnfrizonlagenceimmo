@@ -34,7 +34,20 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Appartement",
     imageUrl: "/images/sejourbis.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3217271271",
-     badges: ["exclusivité"],
+     badges: ["sous offre"],
+  },  {
+    id: 10, // 
+    title: "Maison 5 pièces 150m²",
+    price: 595000,
+    location: "Farges (01550)",
+    beds: 0,
+    baths: 0,
+    sqft: 61,
+    type: "Maison",
+    imageUrl: "/images/terrasse2.png",
+    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3220379930",
+    status: "",
+    badges: ["Nouveauté"],
   },
    {
     id: 10, // 
