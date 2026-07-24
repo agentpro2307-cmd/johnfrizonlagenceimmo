@@ -30,6 +30,21 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     ],
   },
   {
+     id: 1,
+    title: "Appartement T3 de 62m²",
+    commune: "Echenevex (01170)",
+    soldInDays: 3,
+    exclusivite: false,
+    images: [
+     "/images/belleydoux1.jpg",
+      "/images/belleydoux2.jpg",
+      "/images/belleydoux3.jpg",
+      "/images/belleydoux4.jpg",
+      "/images/belleydoux5.jpg",
+      "/images/belleydoux6.jpg",
+       ],
+  },
+  {
     id: 2,
     title: "Appartement T3 de 90m²",
     commune: "Péron (01630)",
