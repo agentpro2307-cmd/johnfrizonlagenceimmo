@@ -55,7 +55,7 @@ const CTA: React.FC<Props> = ({ onEstimate, onAppointment }) => {
               </div>
               <div>
                 <div className="text-sm text-slate-200">Email direct</div>
-                <div className="font-bold">jfrizon@lagenceimmo01.fr</div>
+                <div className="font-bold">jfrizon@lagenceimmo.com</div>
               </div>
             </div>
           </div>
