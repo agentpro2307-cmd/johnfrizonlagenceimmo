@@ -34,7 +34,7 @@ const MOCK_PROPERTIES: Property[] = [
     type: "Appartement",
     imageUrl: "/images/sejourbis.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3217271271",
-     badges: ["sous offre"],
+     badges: ["sous compromis"],
   },  {
     id: 10, // 
     title: "Maison 5 pièces 150m²",
@@ -49,20 +49,7 @@ const MOCK_PROPERTIES: Property[] = [
     status: "",
     badges: ["sous offre"],
   },
-   {
-    id: 10, // 
-    title: "Maison 7 pièces 184m²",
-    price: 495000,
-    location: "Belleydoux (01130)",
-    beds: 0,
-    baths: 0,
-    sqft: 184,
-    type: "Maison",
-    imageUrl: "/images/Belleydoux.png",
-    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3170036947",
-    status: "",
-    badges: ["sous compromis"],
-  },
+   
   {
    id: 2,
     title: "Grange rénovée 7 pièces 203 m²",
