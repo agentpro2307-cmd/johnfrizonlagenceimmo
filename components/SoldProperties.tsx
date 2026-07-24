@@ -36,7 +36,7 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     soldInDays: 3,
     exclusivite: false,
     images: [
-     "/images/belleydoux1.jpg",
+     "/images/belleydoux1.png",
       "/images/belleydoux2.jpg",
       "/images/belleydoux3.jpg",
       "/images/belleydoux4.jpg",
