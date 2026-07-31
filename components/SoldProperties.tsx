@@ -31,8 +31,8 @@ const SOLD_PROPERTIES: SoldProperty[] = [
   },
   {
      id: 1,
-    title: "Appartement T3 de 62m²",
-    commune: "Echenevex (01170)",
+    title: "Maison T7 de 184m²",
+    commune: "Belleydoux (01130)",
     soldInDays: 3,
     exclusivite: false,
     images: [
