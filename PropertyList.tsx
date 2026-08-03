@@ -47,7 +47,7 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/terrasse2.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3220379930",
     status: "",
-    badges: ["sous offre"],
+    badges: ["sous compromis"],
   },
    
   {
