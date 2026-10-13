@@ -23,10 +23,11 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     soldAtAskingPrice: true,
     exclusivite: false,
     images: [
-      "/images/terrasse2.png", // Photo 1 : remplacer le chemin si besoin
-      "", // Photo 2 : ajouter le chemin ici
-      "", // Photo 3 : ajouter le chemin ici
-      "", // Photo 4 : ajouter le chemin ici
+      "/images/terrasse2.png",
+      "/images/Giacsejour.png",
+      "/images/Giaccuisine.png",
+      "/images/Giacsalon.png",
+      "/images/Giacchambre.png",
     ],
   },
   {
