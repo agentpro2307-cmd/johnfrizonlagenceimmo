@@ -1,5 +1,5 @@
 import React from "react";
-import { Testimonial } from "../types";
+import { Testimonial } from "./types";
 
 function StarRating({ value = 5 }: { value?: number }) {
   return (
