@@ -50,7 +50,7 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     title: "Maison T7 de 184m²",
     commune: "Belleydoux (01130)",
     soldInDays: 3,
-    exclusivite: false,
+    exclusivite: true,
     images: [
      "/images/belleydoux1.png",
       "/images/belleydoux2.jpg",
@@ -110,7 +110,7 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     title: "Chalet 5 pièces 160m²",
     commune: "Echallon (01130)",
     soldInDays: 90,
-    exclusivite: false,
+    exclusivite: true,
     images: [
       "/images/vendus/escarnot.jpg",
       "/images/vendus/escarnot_00001.jpg",
@@ -136,7 +136,7 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     title: "Appartement 5 pièces 112m²",
     commune: "Peron (01630)",
     soldInDays: 90,
-    exclusivite: false,
+    exclusivite: true,
     images: [
              "/images/vendus/piller.png",
        "/images/vendus/VA231614original.jpg",
@@ -163,7 +163,7 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     title: "Appartement 3 pièces 61m²",
     commune: "Saint Genis-Pouilly (01630)",
     soldInDays: 45,
-    exclusivite: false,
+    exclusivite: true,
     images: [
       "/images/vendus/guyot.png",
       "/images/vendus/VA24027original.jpg",
