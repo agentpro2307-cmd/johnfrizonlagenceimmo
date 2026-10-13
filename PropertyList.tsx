@@ -35,21 +35,7 @@ const MOCK_PROPERTIES: Property[] = [
     imageUrl: "/images/sejourbis.png",
     url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3217271271",
      badges: ["sous compromis"],
-  },  {
-    id: 10, // 
-    title: "Maison 5 pièces 150m²",
-    price: 595000,
-    location: "Farges (01550)",
-    beds: 0,
-    baths: 0,
-    sqft: 131,
-    type: "Maison",
-    imageUrl: "/images/terrasse2.png",
-    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3220379930",
-    status: "",
-    badges: ["sous compromis"],
-  },
-   
+  },   
   {
    id: 2,
     title: "Grange rénovée 7 pièces 203 m²",

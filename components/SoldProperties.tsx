@@ -4,7 +4,8 @@ type SoldProperty = {
   id: number;
   title: string;
   commune: string;
-  soldInDays: number;
+  soldInDays?: number;
+  soldAtAskingPrice?: boolean;
   exclusivite: boolean;
   images: string[];
 
@@ -14,6 +15,20 @@ type SoldProperty = {
 };
 
 const SOLD_PROPERTIES: SoldProperty[] = [
+  {
+    id: 10,
+    title: "Maison 5 pièces 150m²",
+    commune: "Farges (01550)",
+    soldInDays: 7,
+    soldAtAskingPrice: true,
+    exclusivite: false,
+    images: [
+      "/images/terrasse2.png", // Photo 1 : remplacer le chemin si besoin
+      "", // Photo 2 : ajouter le chemin ici
+      "", // Photo 3 : ajouter le chemin ici
+      "", // Photo 4 : ajouter le chemin ici
+    ],
+  },
   {
     id: 1,
     title: "Maison de standing T8 de 328m²",
@@ -183,6 +198,7 @@ function formatEUR(value: number) {
 }
 
 function formatDelay(days: number) {
+  if (days === 7) return "1 semaine";
   if (days < 14) return `${days} jours`;
   const weeks = Math.round(days / 7);
   if (weeks <= 8) return `${weeks} sem.`;
@@ -262,7 +278,7 @@ export default function SoldProperties() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {SOLD_PROPERTIES.map((p) => {
-            const tags = [p.exclusivite ? "Exclusivité" : "Simple", "Vendu"];
+            const tags = [p.exclusivite ? "Exclusivité" : "Simple", p.soldAtAskingPrice ? "Vendu au prix" : "Vendu"];
 
             const hasPriceSold = typeof p.priceSold === "number" && Number.isFinite(p.priceSold);
             const hasPriceListed = typeof p.priceListed === "number" && Number.isFinite(p.priceListed);
@@ -319,7 +335,9 @@ export default function SoldProperties() {
                     {p.commune}
                   </p>
 
-                  <p className="text-xs text-slate-400">Délai : {formatDelay(p.soldInDays)}</p>
+                  {typeof p.soldInDays === "number" && (
+                    <p className="text-xs text-slate-400">Délai : {formatDelay(p.soldInDays)}</p>
+                  )}
                 </div>
               </div>
             );
