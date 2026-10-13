@@ -50,19 +50,7 @@ const MOCK_PROPERTIES: Property[] = [
     status: "",
     badges: ["Exclusivité"],
   },
-  {
-    id: 6,
-    title: "Maison 5 pièces 113 m²",
-    price: 435000,
-    location: "Collonges 01550",
-    beds: 0,
-    baths: 0,
-    sqft: 113,
-    type: "Maison mitoyenne",
-    imageUrl: "/images/Collonges.png",
-    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3056257502",
-    badges: ["Urgent"],
-  },
+  
   
 ];
 
