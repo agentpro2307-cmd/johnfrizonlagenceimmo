@@ -13,7 +13,9 @@ const socials = [
   ['Facebook', 'https://www.facebook.com/profile.php?id=61578031168900'],
   ['LinkedIn', 'https://www.linkedin.com/in/john-frizon-l%E2%80%99agence-immo-8a749a2b6'],
 ];
-type FormKind = 'short' | 'qualifying' | 'estimation';
+type FormKind = 'short' | 'qualifying' | 'estimation' | 'open-house';
+// Renseigner ici le chemin de la vidéo lorsqu’elle sera prête.
+const openHouseVideo: string | null = null;
 const Arrow = () => <span className="arrow" aria-hidden="true">↗</span>;
 const Tag = ({ children }: { children: React.ReactNode }) => <span className="eyebrow"><i />{children}</span>;
 function Icon({ kind }: { kind: 'house' | 'key' | 'pin' | 'camera' | 'chat' }) {
@@ -100,6 +102,7 @@ function App() {
           </div>
         </div>
       </section>
+      <section id="visite-privee-leaz" className="open-house-section" aria-labelledby="open-house-title"><div className="container open-house-banner"><img className="open-house-background" src={asset('images/grange.png')} alt="La grange rénovée proposée à la visite privée à Léaz" loading="lazy" />{openHouseVideo && <video className="open-house-background" src={asset(openHouseVideo)} poster={asset('images/grange.png')} autoPlay muted loop playsInline controls aria-label="Présentation de la maison de Léaz" />}<div className="open-house-copy"><Tag>INVITATION · LÉAZ</Tag><h2 id="open-house-title">Découvrez cette maison<br /><em>lors d’une visite privée.</em></h2><p className="open-house-details">Grange rénovée · 203 m² · 5 chambres · 829 000 €</p><p>Des volumes généreux, du caractère et un moment réservé pour vous projeter. Inscrivez-vous pour être recontacté et organiser votre venue.</p><div className="button-row"><button className="pill" onClick={() => openForm('open-house')}>Me préinscrire à la visite privée <Arrow /></button><a className="open-house-link" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3165039229" target="_blank" rel="noreferrer">Découvrir la maison ↗</a></div><p className="open-house-note">Sur rendez-vous après échange téléphonique. Date et créneau à confirmer. Adresse communiquée après validation.</p></div></div></section>
       <section id="faisons-connaissance" className="section about-section">
         <div className="container about-panel">
           <div className="portrait"><img src={asset('images/john-frizon-portrait.jpg')} alt="John Frizon, votre conseiller immobilier" loading="lazy" /><a className="portrait-badge" href={google} target="_blank" rel="noreferrer">★ Avis clients sur Google</a><div className="portrait-caption"><h3>John Frizon</h3><p>Agent commercial indépendant<br />L’agence immo · Pays de Gex</p></div></div>
