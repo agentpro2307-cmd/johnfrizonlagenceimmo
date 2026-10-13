@@ -5,7 +5,6 @@ type SoldProperty = {
   title: string;
   commune: string;
   soldInDays?: number;
-  soldAtAskingPrice?: boolean;
   exclusivite: boolean;
   images: string[];
 
@@ -20,7 +19,6 @@ const SOLD_PROPERTIES: SoldProperty[] = [
     title: "Maison 5 pièces 150m²",
     commune: "Farges (01550)",
     soldInDays: 7,
-    soldAtAskingPrice: true,
     exclusivite: false,
     images: [
       "/images/terrasse2.png",
@@ -279,7 +277,7 @@ export default function SoldProperties() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {SOLD_PROPERTIES.map((p) => {
-            const tags = [p.exclusivite ? "Exclusivité" : "Simple", p.soldAtAskingPrice ? "Vendu au prix" : "Vendu"];
+            const tags = [p.exclusivite ? "Exclusivité" : "Simple", "Vendu"];
 
             const hasPriceSold = typeof p.priceSold === "number" && Number.isFinite(p.priceSold);
             const hasPriceListed = typeof p.priceListed === "number" && Number.isFinite(p.priceListed);
