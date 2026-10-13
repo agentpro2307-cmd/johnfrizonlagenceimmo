@@ -48,10 +48,7 @@ function App() {
   const [promo, setPromo] = useState(false);
   const promoDialog = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    let seen = false;
-    try { seen = sessionStorage.getItem('leaz-private-visit-seen') === '1'; } catch {}
-    if (seen) return;
-    const timer = window.setTimeout(() => { setPromo(true); try { sessionStorage.setItem('leaz-private-visit-seen', '1'); } catch {} }, 1200);
+    const timer = window.setTimeout(() => setPromo(true), 1200);
     return () => window.clearTimeout(timer);
   }, []);
   useEffect(() => {
@@ -187,3 +184,4 @@ function ContactForm() {
   return <form className="contact-form" onSubmit={submit}><h3>Faites-moi part de votre projet</h3><div className="form-grid"><label>Nom *<input name="name" autoComplete="name" required /></label><label>Email *<input name="email" type="email" autoComplete="email" required /></label></div><div className="form-grid"><label>Téléphone<input name="phone" type="tel" autoComplete="tel" /></label><label>Votre projet<select name="project"><option>Vendre mon bien</option><option>Acheter un bien</option><option>Faire estimer mon bien</option><option>Autre demande</option></select></label></div><label>Message *<textarea name="message" rows={4} required /></label><p className="privacy-note">Ces informations servent à répondre à votre demande. <a href={asset('politique-confidentialite.html')}>Confidentialité</a></p><button className="pill dark submit-button" disabled={status === 'sending'}>{status === 'sending' ? 'Envoi en cours…' : 'Envoyer mon message'} <Arrow /></button><p role="status" className={`form-status ${status}`}>{status === 'success' ? 'Merci, votre demande a bien été envoyée.' : status === 'error' ? 'L’envoi a échoué. Réessayez ou contactez-moi au 06 34 16 27 16.' : ''}</p></form>;
 }
 export default App;
+
