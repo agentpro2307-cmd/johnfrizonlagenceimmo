@@ -23,11 +23,11 @@ export default function FormModal({ isOpen, onClose, type }: Props) {
     return () => { document.body.style.overflow = previous; window.removeEventListener('keydown', handleKey); priorFocus?.focus(); };
   }, [isOpen, onClose]);
   if (!isOpen) return null;
-  const title = type === 'open-house' ? 'Votre visite privée à Léaz' : estimation ? 'Faire estimer mon bien' : type === 'qualifying' ? 'Confier ma recherche' : 'Parlons de votre projet';
+  const title = type === 'open-house' ? 'Votre visite privée à Léaz (01200)' : estimation ? 'Faire estimer mon bien' : type === 'qualifying' ? 'Confier ma recherche' : 'Parlons de votre projet';
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault(); const form = e.currentTarget; const data = new FormData(form);
     data.set('type', type); data.set('estimation', estimation ? 'oui' : 'non');
-    if (type === 'open-house') data.set('bien', 'Grange rénovée Léaz — 203 m² — 829 000 €');
+    if (type === 'open-house') data.set('bien', 'Grange rénovée Léaz (01200) — 203 m² — 829 000 €');
     data.set('_subject', type === 'open-house' ? 'Préinscription visite privée — Léaz' : estimation ? 'Nouvelle demande d’estimation' : type === 'qualifying' ? 'Nouvelle recherche immobilière' : 'Nouvelle demande de contact');
     setStatus('sending');
     try { const res = await fetch('https://formspree.io/f/xykdkwwz', { method: 'POST', body: data, headers: { Accept: 'application/json' } }); if (!res.ok) throw new Error(); setStatus('success'); form.reset(); } catch { setStatus('error'); }
