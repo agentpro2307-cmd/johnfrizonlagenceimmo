@@ -31,7 +31,7 @@ export const properties: Property[] = [
   {
     id: 8,
     title: "Appartement T3 avec balcon et garage",
-    price: 329000,
+    price: 299000,
     location: "Valleiry (74520)",
     beds: 2,
     baths: 1,
