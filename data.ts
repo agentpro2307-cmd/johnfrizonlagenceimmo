@@ -8,6 +8,7 @@ type Property = {
   sqft: number;
   type: string;
   imageUrl: string;
+  images?: string[];
   url: string;
   status?: string;     // ex: "Sous offre"
   badges?: string[];   // ex: ["Exclusivité", "Nouveauté"]
@@ -27,6 +28,26 @@ type SoldProperty = {
 };
 
 export const properties: Property[] = [
+  {
+    id: 8,
+    title: "Appartement T3 avec balcon et garage",
+    price: 329000,
+    location: "Valleiry (74520)",
+    beds: 2,
+    baths: 1,
+    sqft: 67.23,
+    type: "Appartement",
+    imageUrl: "/images/valleiry/salon.jpg",
+    images: [
+      "/images/valleiry/salon.jpg",
+      "/images/valleiry/balcon.jpg",
+      "/images/valleiry/cuisine.jpg",
+      "/images/valleiry/chambre.jpg",
+      "/images/valleiry/garage.jpg",
+    ],
+    url: "https://www.leboncoin.fr/ad/ventes_immobilieres/3275182493",
+    badges: ["Exclusivité", "Nouveauté"],
+  },
     {
     id: 7,
     title: "Appartement T3/62 m² - Garage double et Balcon côté forêt",
