@@ -14,8 +14,6 @@ const socials = [
   ['LinkedIn', 'https://www.linkedin.com/in/john-frizon-l%E2%80%99agence-immo-8a749a2b6'],
 ];
 type FormKind = 'short' | 'qualifying' | 'estimation' | 'open-house';
-// Renseigner ici le chemin de la vidéo lorsqu’elle sera prête.
-const openHouseVideo: string | null = null;
 const Arrow = () => <span className="arrow" aria-hidden="true">↗</span>;
 const Tag = ({ children }: { children: React.ReactNode }) => <span className="eyebrow"><i />{children}</span>;
 function Icon({ kind }: { kind: 'house' | 'key' | 'pin' | 'camera' | 'chat' }) {
@@ -45,29 +43,6 @@ function Carousel({ images, title }: { images: string[]; title: string }) {
 }
 const delay = (d: number) => d === 1 ? '1 jour' : d === 7 ? '1 semaine' : d < 14 ? `${d} jours` : d <= 56 ? `${Math.round(d / 7)} semaines` : `${Math.round(d / 30)} mois`;
 function App() {
-  const [promo, setPromo] = useState(false);
-  const promoDialog = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const timer = window.setTimeout(() => setPromo(true), 1200);
-    return () => window.clearTimeout(timer);
-  }, []);
-  useEffect(() => {
-    if (!promo) return;
-    const previousFocus = document.activeElement as HTMLElement | null;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    promoDialog.current?.querySelector<HTMLElement>('button')?.focus();
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setPromo(false);
-      if (event.key !== 'Tab') return;
-      const items = Array.from(promoDialog.current?.querySelectorAll<HTMLElement>('button,a[href],video[controls]') || []) as HTMLElement[];
-      const first = items[0], last = items[items.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => { document.body.style.overflow = previousOverflow; window.removeEventListener('keydown', onKey); previousFocus?.focus(); };
-  }, [promo]);
   const [form, setForm] = useState<FormKind | null>(null);
   const closeForm = useCallback(() => setForm(null), []);
   const [menu, setMenu] = useState(false);
@@ -170,7 +145,6 @@ function App() {
     </main>
     <footer className="site-footer"><div className="container footer-main"><div className="footer-brand"><a className="brand" href="#top"><img src={asset('images/LogoAgenceImmoWhite.png')} alt="L’agence immo" /><span>John Frizon<small>L’AGENCE IMMO</small></span></a><p>Transaction, estimation et valorisation immobilière.<br />Un accompagnement personnel dans le Pays de Gex et ses environs.</p><div className="footer-socials">{socials.map(([n, u]) => <a href={u} key={n} target="_blank" rel="noreferrer">{n} ↗</a>)}</div></div><div><h3>DÉCOUVRIR</h3><a href="https://www.lagenceimmo.com/fr/conseiller/john.frizon,118" target="_blank" rel="noreferrer">Ma page L’agence immo ↗</a>{nav.slice(1).map(([n, h]) => <a href={h} key={h}>{n}</a>)}</div><div><h3>VOTRE PROJET</h3><button onClick={() => openForm('estimation')}>Estimer mon bien</button><button onClick={() => openForm('qualifying')}>Confier ma recherche</button><a href={google} target="_blank" rel="noreferrer">Avis clients Google</a></div><div><h3>CONTACT</h3><a href="tel:+33634162716">06 34 16 27 16</a><a href="mailto:jfrizon@lagenceimmo.com">jfrizon@lagenceimmo.com</a><p>Agent commercial indépendant<br />Entreprise individuelle</p></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} John Frizon · L’agence immo</span><a href={asset('politique-confidentialite.html')}>Politique de confidentialité</a></div></footer>
     <a className="whatsapp-float" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Contacter John Frizon sur WhatsApp"><Icon kind="chat" /></a>
-    {promo && (<div className="modal-backdrop event-popup-backdrop" onMouseDown={e => { if (e.target === e.currentTarget) setPromo(false); }}><div className="open-house-banner event-popup" role="dialog" aria-modal="true" aria-labelledby="open-house-title" ref={promoDialog}><button className="event-popup-close" aria-label="Fermer l’invitation" onClick={() => setPromo(false)}>✕</button><img className="open-house-background" src={asset('images/grange.png')} alt="La grange rénovée proposée à la visite privée à Léaz" loading="lazy" />{openHouseVideo && <video className="open-house-background" src={asset(openHouseVideo)} poster={asset('images/grange.png')} autoPlay muted loop playsInline controls aria-label="Présentation de la maison de Léaz" />}<div className="open-house-copy"><Tag>INVITATION · LÉAZ (01200)</Tag><h2 id="open-house-title">Découvrez cette maison<br /><em>lors d’une visite privée.</em></h2><p className="open-house-details">Léaz (01200) · Grange rénovée · 203 m² · 5 chambres · 829 000 €</p><p>Des volumes généreux, du caractère et un moment réservé pour vous projeter. Inscrivez-vous pour être recontacté et organiser votre venue.</p><div className="button-row"><button className="pill" onClick={() => { setPromo(false); openForm('open-house'); }}>Me préinscrire à la visite privée <Arrow /></button><a className="open-house-link" href="https://www.leboncoin.fr/ad/ventes_immobilieres/3165039229" target="_blank" rel="noreferrer">Découvrir la maison ↗</a></div><p className="open-house-note">Sur rendez-vous après échange téléphonique. Date et créneau à confirmer. Adresse communiquée après validation.</p></div></div></div>)}
     <FormModal isOpen={form !== null} onClose={closeForm} type={form || 'short'} />
   </>;
 }
